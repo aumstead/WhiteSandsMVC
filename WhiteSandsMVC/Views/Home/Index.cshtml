@@ -1,0 +1,270 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<partial name="Partials/_BannerSlideshow" />
+
+<div class="hero" id="intersection">
+    <h1 class="hero__title">White Sands Resort</h1>
+    <hr class="hero__hr" />
+    <div class="award">
+        <div class="award__leaf award__leaf--left"></div>
+        <div class="award__text-container">
+            <p class="award__title">2019 Best Island Hotel</p>
+            <p class="award__attribute">
+                Bangkok Leisure and Luxury Online
+            </p>
+        </div>
+        <div class="award__leaf award__leaf--right"></div>
+    </div>
+</div>
+
+<section class="info-section">
+    <p class="info-section__address">
+        5 Maenam, Koh Samet, Suratthani, Thailand 84330
+    </p>
+    <hr class="info-section__hr" />
+    <div class="info-section__btn-flex-container">
+        <a href="#" class="small-btn">+(66) 077 984477</a>
+        <a href="#" class="small-btn">Location</a>
+    </div>
+
+    <p class="info-section__description info-section__description--resort">
+        Newly opened in 2019, White Sands Resort is a new class of
+        luxury hotel on Koh Samet. Never before has island-paradise been
+        paired with such modern elegance and extravagance. Here you will
+        find a destination with with world-class facilities and the most
+        exquisite food and drink in the Gulf of Thailand.
+    </p>
+</section>
+
+<section class="accomodations">
+    <h2 class="accomodations__title">ACCOMODATIONS</h2>
+    <div class="accomodations-carousel">
+        <div class="carousel-cell">
+            <img src="~/images/accomodation1.jpg"
+                 alt=""
+                 class="carousel-img" />
+            <div class="accomodations__details-container">
+                <a href="#" class="large-btn accomodations__large-btn">All accomodations</a>
+                <h4 class="accomodations__details-heading">
+                    One-bedroom suite
+                </h4>
+                <p class="accomodations__details-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing
+                    elit. Id, ratione! Aspernatur at fugiat rem velit
+                    accusantium nihil tempora expedita, ad quod
+                    provident nisi culpa voluptate quidem assumenda
+                    animi recusandae doloremque?
+                </p>
+                <a href="#" class="small-btn accomodations__small-btn">Details</a>
+                @*buttons for mobile view*@
+                <a href="#" class="large-btn accomodations__large-btn--mobile">Details</a>
+                <a href="#" class="small-btn accomodations__small-btn--mobile">All accomodations</a>
+            </div>
+        </div>
+        <div class="carousel-cell">
+            <img src="~/images/accomodation2.jpg"
+                 alt=""
+                 class="carousel-img" />
+            <div class="accomodations__details-container">
+                <a href="#" class="large-btn accomodations__large-btn">All accomodations</a>
+                <h4 class="accomodations__details-heading">Two-bedroom villa with pool</h4>
+                <p class="accomodations__details-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing
+                    elit. Consequuntur possimus vero placeat expedita
+                    optio, perspiciatis incidunt ex ducimus, vel
+                    reiciendis veniam illum dolor ratione eos velit.
+                    Quas quibusdam maiores cupiditate provident ullam
+                    voluptatibus ducimus.
+                </p>
+                <a href="#" class="small-btn accomodations__small-btn">Details</a>
+                @*buttons for mobile view*@
+                <a href="#" class="large-btn accomodations__large-btn--mobile">Details</a>
+                <a href="#" class="small-btn accomodations__small-btn--mobile">All accomodations</a>
+            </div>
+        </div>
+        <div class="carousel-cell">
+            <img src="~/images/accomodation3.jpg"
+                 alt=""
+                 class="carousel-img" />
+            <div class="accomodations__details-container">
+                <a href="#" class="large-btn accomodations__large-btn">All accomodations</a>
+                <h4 class="accomodations__details-heading">Three-bedroom Family residence</h4>
+                <p class="accomodations__details-text">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing
+                    elit. Reprehenderit voluptatum vero beatae
+                    quibusdam. Corporis a, totam, temporibus magnam
+                    labore velit tempore aspernatur aperiam maxime
+                    possimus necessitatibus!
+                </p>
+                <a href="#" class="small-btn accomodations__small-btn">Details</a>
+                @*buttons for mobile view*@
+                <a href="#" class="large-btn accomodations__large-btn--mobile">Details</a>
+                <a href="#" class="small-btn accomodations__small-btn--mobile">All accomodations</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<partial name="Partials/_Discount" />
+
+<section class="guest-photos">
+    <div class="photos__flex-container">
+        <figure class="photos__column photos__column--1">
+            <img src="/images/guest1.jpg"
+                 alt=""
+                 class="photos__photo photos__photo--guest1" />
+            <figcaption class="photos__caption">
+                <svg class="photos__icon icon-camera"><use xlink:href="/images/symbol-defs.svg#icon-camera"></use></svg>@@DunderMifflinPaperCo
+            </figcaption>
+        </figure>
+
+        <figure class="photos__column photos__column--2">
+            <div class="photos__wrapper photos__wrapper--3">
+                <img src="/images/guest2.jpg"
+                     alt=""
+                     class="photos__photo photos__photo--guest2" />
+                <figcaption class="photos__caption">
+                    <svg class="photos__icon icon-camera"><use xlink:href="/images/symbol-defs.svg#icon-camera"></use></svg>@@PamBeasley113
+                </figcaption>
+            </div>
+        </figure>
+    </div>
+    <a href="#" class="large-btn guest-photos__btn">More guest photos</a>
+</section>
+
+<section class="mid-page-hero mid-page-hero--one">
+    <h4 class="mid-page-hero__heading">Privacy in Paradise</h4>
+    <p class="mid-page-hero__text">Enjoy a quiet afternoon on Koh Samet's longest private beach, Ao Phai, and wade into the warm waters of San Chalam Bay.</p>
+</section>
+
+<section class="info-section">
+    <h2 class="info-section__title info-section__title">White Sands Spa</h2>
+    <hr class="info-section__small-hr" />
+    <p class="info-section__description info-section__description--spa">
+        Restore calm and tranquility with traditional Thai yoga massage. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci consectetur est optio odio at deserunt laborum tempore temporibus, ratione, saepe molestiae exercitationem architecto. Odit officiis inventore aperiam repudiandae consequuntur. Animi.
+    </p>
+    <div class="spa-photos">
+        <figure class="spa-photos__column">
+            <img src="/images/spa1.jpg"
+                 alt=""
+                 class="spa-photos__photo spa-photos__photo--spa1" />
+        </figure>
+        <figure class="spa-photos__column">
+            <img src="/images/spa2.jpg"
+                 alt=""
+                 class="spa-photos__photo spa-photos__photo--spa2" />
+        </figure>
+    </div>
+    <a href="#" class="large-btn spa-photos__btn">White Sands Spa</a>
+</section>
+
+<div class="activities-hero"></div>
+
+<div class="activities-heading">
+    <h2 class="activities-heading__title">Experience Koh Samet</h2>
+    <hr class="activities-heading__small-hr" />
+</div>
+
+<section class="activities">
+    <div class="activity activity--one">
+        <div class="activity__wrapper">
+            <img src="/images/experience2.jpg" alt="" class="activity__photo activity__photo--one" />
+            <div class="activity-text-wrapper activity-text-wrapper--one">
+                <h4 class="activities__heading activities__heading--one">Island Hopping</h4>
+                <p class="activities__text activities__text--one">Explore the dozens of limestone islands dotting Koh Samet's skyline. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam temporibus ea soluta quidem maiores. Animi.</p>
+                <a href="#" class="small-btn activities__small-btn activities__small-btn--one">Details</a>
+            </div>
+        </div>
+    </div>
+    <div class="activity activity--two">
+        <img src="/images/experience3.jpg" alt="" class="activity__photo activity__photo--two">
+        <div class="activity-text-wrapper activity-text-wrapper--two">
+            <h4 class="activities__heading activities__heading--two">World-Class Diving</h4>
+            <p class="activities__text activities__text--two">Learn to scuba dive from our experienced in-house instructors, or take your skills to the next level by exploring some of the best dives in the Gulf of Thailand. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur et culpa voluptates natus ex voluptatem aliquid omnis dolorum sunt illum.</p>
+            <a href="#" class="small-btn activities__small-btn activities__small-btn--left">Details</a>
+        </div>
+    </div>
+    <div class="activity activity--three">
+        <div class="activity-text-wrapper activity-text-wrapper--three">
+            <h4 class="activities__heading activities__heading--three">Cooking Lessons</h4>
+            <p class="activities__text activities__text--three">Spend the morning learning to prepare some of Thailand's signature dishes. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non odio, corrupti soluta iure veniam accusamus rerum doloribus est modi, culpa eligendi maiores officia dicta! Est!</p>
+            <a href="#" class="small-btn activities__small-btn activities__small-btn--three">Details</a>
+        </div>
+        <img src="/images/experience4.jpg" alt="" class="activity__photo activity__photo--three">
+    </div>
+    <div class="activity activity--four">
+        <img src="/images/experience5.jpg" alt="" class="activity__photo activity__photo--four">
+        <div class="activity-text-wrapper activity-text-wrapper--four">
+            <h4 class="activities__heading activities__heading--four">Scenic Trails</h4>
+            <p class="activities__text activities__text--four">Choose one of Koh Samet's three peaks for a picture perfect view of the skyline and nearby islands. Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, perferendis delectus dolor possimus tenetur vel.</p>
+            <a href="#" class="small-btn activities__small-btn activities__small-btn--left">Details</a>
+        </div>
+    </div>
+</section>
+
+<section class="activities-mobile">
+    <div class="secondary-carousel">
+        <div class="activities-mobile__carousel-cell">
+            <img src="/images/experience2-mobile.jpg"
+                 alt=""
+                 class="carousel-img" />
+            <div class="activities-mobile__details-container">
+                <h4 class="activities-mobile__details-heading">
+                    Island Hopping
+                </h4>
+                <p class="activities-mobile__details-text">
+                    Explore the dozens of limestone islands dotting Koh Samet's skyline. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam temporibus ea soluta quidem maiores. Animi.
+                </p>
+                <a href="#" class="small-btn activities-mobile__small-btn">Details</a>
+            </div>
+        </div>
+        <div class="activities-mobile__carousel-cell">
+            <img src="/images/experience3-mobile.jpg"
+                 alt=""
+                 class="carousel-img" />
+            <div class="activities-mobile__details-container">
+                <h4 class="activities-mobile__details-heading">World-Class Diving</h4>
+                <p class="activities-mobile__details-text">
+                    Learn to scuba dive from our experienced in-house instructors, or take your skills to the next level by exploring some of the best dives in the Gulf of Thailand. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur et culpa voluptates natus ex voluptatem aliquid omnis dolorum sunt illum.
+                </p>
+                <a href="#" class="small-btn activities-mobile__small-btn">Details</a>
+            </div>
+        </div>
+        <div class="activities-mobile__carousel-cell">
+            <img src="/images/experience4-mobile.jpg"
+                 alt=""
+                 class="carousel-img" />
+            <div class="activities-mobile__details-container">
+                <h4 class="activities-mobile__details-heading">Cooking Lessons</h4>
+                <p class="activities-mobile__details-text">
+                    Spend the morning learning to prepare some of Thailand's signature dishes. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non odio, corrupti soluta iure veniam accusamus rerum doloribus est modi, culpa eligendi maiores officia dicta! Est!
+                </p>
+                <a href="#" class="small-btn activities-mobile__small-btn">Details</a>
+            </div>
+        </div>
+        <div class="activities-mobile__carousel-cell">
+            <img src="/images/experience5-mobile.jpg"
+                 alt=""
+                 class="carousel-img" />
+            <div class="activities-mobile__details-container">
+                <h4 class="activities-mobile__details-heading">Scenic Trails</h4>
+                <p class="activities-mobile__details-text">
+                    Choose one of Koh Samet's three peaks for a picture perfect view of the skyline and nearby islands. Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, perferendis delectus dolor possimus tenetur vel.
+                </p>
+                <a href="#" class="small-btn activities-mobile__small-btn">Details</a>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="activities-btn-container">
+    <a href="#" class="large-btn activities-btn">More Experiences</a>
+</div>
+
+<partial name="Partials/_Footer" />
+
+@section Scripts {
+    <script src="~/js/flickity.pkgd.min.js"></script>
+    <script src="~/js/HomeIndex.js"></script>
+}  

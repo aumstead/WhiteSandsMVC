@@ -1,0 +1,123 @@
+﻿.discount {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.discount__hr {
+    width: 90rem;
+    border: none;
+    background-color: var(--color-black);
+}
+
+.discount__hr-thick {
+    height: 2px;
+}
+.discount__hr-thick--top {
+    margin-top: var(--margin-large);
+}
+.discount__hr-thick--bottom {
+    margin-top: .3rem;
+}
+
+.discount__hr-thin {
+    height: 1px;
+}
+.discount__hr-thin--top {
+    margin-top: .3rem;
+}
+
+.discount__content-container {
+    display: flex;
+    width: 90rem;
+}
+
+.discount__content {
+    width: 50%;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
+
+.discount__title {
+    font-family: var(--font-sans);
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    font-weight: 300;
+}
+
+.discount__heading {
+    font-family: var(--font-sans);
+    font-size: 1.8rem;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+
+.discount__text {
+    font-family: var(--font-text);
+    font-size: 1.8rem;
+    line-height: 2.5rem;
+    letter-spacing: .03rem;
+}
+
+.discount__img {
+    width: 50%;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    padding-right: 4rem;
+    padding-left: 2rem;
+}
+
+.discount__buttons-container {
+    display: flex;
+    margin-top: 4rem;
+    align-items: baseline;
+}
+
+.discount__large-btn {
+    margin-right: 3rem;
+}
+
+@media only screen and (max-width: 1100px) {
+
+}
+
+@media only screen and (max-width: 900px) {
+    .discount__hr {
+        width: 85%;
+    }
+
+    .discount__content-container {
+        width: 85%;
+    }
+
+    .discount__img {
+        display: none;
+    }
+
+    .discount__content {
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .discount__content-container {
+        justify-content: center;
+    }
+
+
+}
+
+@media only screen and (max-width: 500px) {
+    .discount__content-container {
+        width: 100%;
+    }
+    .discount__content {
+        width: 95%;
+    }
+}

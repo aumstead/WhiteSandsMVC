@@ -1,0 +1,54 @@
+﻿.carousel-cell {
+    width: 85rem;
+    margin-right: 3rem;
+    background-size: cover;
+    opacity: .3;
+}
+
+.carousel-cell.is-selected {
+    opacity: 1;
+    transition: opacity 2s;
+}
+
+.carousel-img {
+    height: 50rem;
+    width: 100%;
+}
+
+.flickity-page-dots {
+    display: none;
+}
+
+.flickity-button {
+    display: none;
+}
+
+@media only screen and (max-width: 1100px) {
+    .carousel-cell {
+        width: 70%;
+    }
+
+    .carousel-img {
+        height: 35%;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .carousel-cell {
+        width: 70%;
+    }
+
+    .carousel-img {
+        height: 40%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+/*    .carousel-cell {
+        width: 70%;
+    }
+
+    .carousel-img {
+        height: 45%;
+    }*/
+}

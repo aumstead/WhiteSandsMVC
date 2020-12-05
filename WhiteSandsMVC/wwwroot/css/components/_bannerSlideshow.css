@@ -1,0 +1,42 @@
+﻿.slideshow {
+    height: 90vh;
+    width: 100%;
+    position: absolute;
+}
+
+.slide {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: bottom;
+    position: absolute;
+}
+
+.slide--1 {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1) 30%, rgba(0, 0, 0, 0.3) 70%, rgba(0, 0, 0, 0.6)), url(../../images/slides/hero4.jpg)
+}
+
+.slide--2 {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1) 30%, rgba(0, 0, 0, 0.3) 70%, rgba(0, 0, 0, 0.6)), url(../../images/slides/hero3.jpg)
+}
+
+.slide--3 {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1) 30%, rgba(0, 0, 0, 0.3) 70%, rgba(0, 0, 0, 0.6)), url(../../images/slides/hero2.jpg)
+}
+
+.slide--4 {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1) 30%, rgba(0, 0, 0, 0.3) 70%, rgba(0, 0, 0, 0.6)), url(../../images/slides/hero1.jpg)
+}
+
+.zoom {
+    animation-name: fader;
+    animation-duration: 3s;
+    animation-delay: 4s;
+}
+
+@media only screen and (max-width: 550px) {
+    .slideshow {
+        height: 75vh;
+    }
+}
+

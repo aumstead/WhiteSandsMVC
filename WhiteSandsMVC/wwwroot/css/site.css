@@ -1,0 +1,19 @@
+﻿@import 'flickity.min.css';
+
+@import '_variables.css';
+
+@import 'base/_base.css';
+@import 'base/_animations.css';
+
+@import 'layout/_navigation.css';
+@import 'layout/_mobileNavigation.css';
+
+@import 'components/_buttons.css';
+@import 'components/_bannerSlideshow.css';
+@import 'components/_carousel.css';
+@import 'components/_discount.css';
+@import 'components/accomodationsCarousel.css';
+@import 'components/mobileActivitiesCarousel.css';
+@import 'components/_footer.css';
+
+@import 'pages/home/index.css';

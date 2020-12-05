@@ -1,0 +1,29 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    box-sizing: border-box;
+}
+
+.header {
+    position: relative;
+}
+
+/*@media only screen and (min-width: 1200px) {
+    html {
+        font-size: 75%;
+    }
+}*/
+
+@media only screen and (max-width: 500px) {
+    html {
+        font-size: 55%;
+    }
+}

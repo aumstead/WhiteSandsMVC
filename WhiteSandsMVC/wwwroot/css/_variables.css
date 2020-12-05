@@ -1,0 +1,19 @@
+﻿:root {
+    /*colors*/
+    --color-white: #fff;
+    --color-black: #000;
+    --color-grey: rgb(182, 182, 182);
+    --color-dark-grey: rgb(85, 85, 85);
+
+    /*font sizes */
+    --section-heading: 3rem;
+
+    /*font families */
+    --font-text: 'Cormorant Garamond', serif;
+    --font-sans: 'Work Sans', sans-serif;
+
+    /*margin */
+    --margin-small: 3rem;
+    --margin-medium: 6rem;
+    --margin-large: 8rem;
+}

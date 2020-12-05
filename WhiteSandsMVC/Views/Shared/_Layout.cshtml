@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WhiteSandsMVC</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Josefin+Slab|Tangerine|Work+Sans:200,300,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <partial name="Partials/_FadeInNavbar" />
+        <partial name="Partials/_MobileNavigation" />
+    </header>
+
+    <main role="main">
+        @RenderBody()
+    </main>
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

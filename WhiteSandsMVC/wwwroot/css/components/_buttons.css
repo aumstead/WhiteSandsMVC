@@ -1,0 +1,32 @@
+﻿.small-btn {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.4rem;
+    color: var(--color-black);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    font-weight: 400;
+    text-transform: uppercase;
+    transition: color .5s;
+    letter-spacing: .1rem;
+}
+
+    .small-btn:hover {
+        color: var(--color-grey);
+    }
+
+.large-btn {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.4rem;
+    color: var(--color-white);
+    text-decoration: none;
+    background-color: var(--color-black);
+    text-transform: uppercase;
+    padding: 1.1rem 2.5rem;
+    letter-spacing: .1rem;
+    border: 1px solid var(--color-black);
+    transition: all .7s;
+}
+    .large-btn:hover {
+        background-color: var(--color-white);
+        color: var(--color-black);
+    }

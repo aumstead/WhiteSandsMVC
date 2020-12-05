@@ -1,0 +1,48 @@
+﻿.activities-mobile {
+    background-color: var(--color-black);
+    color: var(--color-white);
+}
+
+.activities-mobile__small-btn {
+    color: var(--color-white);
+    width: fit-content;
+    margin-left: 2rem;
+}
+
+.activities-mobile__carousel-cell {
+    width: 75%;
+    margin-right: 1.5rem;
+    background-size: cover;
+}
+
+.activities-mobile__details-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2.5rem;
+    border-left: 1px solid var(--color-white);
+}
+
+.activities-mobile__details-heading {
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    letter-spacing: .2rem;
+    margin-bottom: 1rem;
+    margin-left: 2rem;
+}
+
+.activities-mobile__details-text {
+    font-family: var(--font-text);
+    font-size: 1.8rem;
+    letter-spacing: .03rem;
+    width: 95%;
+    line-height: 2.5rem;
+    margin-bottom: 3rem;
+    margin-left: 2rem;
+}
+
+@media only screen and (min-width: 750px) {
+    .activities-mobile {
+        display: none;
+    }
+}
