@@ -33,24 +33,21 @@
 }
 
 .accomodations__details-heading {
-    font-family: var(--font-sans);
-    text-transform: uppercase;
-    font-size: 1.4rem;
-    letter-spacing: .2rem;
     margin-bottom: 1rem;
     margin-top: 2.5rem;
     width: 50%;
 }
 
 .accomodations__details-text {
-    font-family: var(--font-text);
-    font-size: 1.8rem;
-    letter-spacing: .03rem;
     width: 50%;
-    line-height: 2.5rem;
 }
 
 .accomodations__small-btn {
+    margin-top: 2.5rem;
+    align-self: flex-start;
+}
+
+.accomodations__small-btn--accomodations-controller {
     margin-top: 2.5rem;
     align-self: flex-start;
 }

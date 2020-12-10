@@ -1,0 +1,46 @@
+﻿@model CheckRatesViewModel
+
+<div class="check-rates-drawer" id="check-rates-drawer">
+    <div class="check-rates__content" id="check-rates-content">
+        <form class="check-rates__form">
+            <input type="hidden" asp-for="CheckInDate" id="check-in-hidden"/>
+            <input type="hidden" asp-for="CheckOutDate" id="check-out-hidden"/>
+
+            <div class="check-rates__form-control">
+                <label class="check-rates__label" for="date-input">Check In &mdash; Check Out</label>
+                <input class="check-rates__input check-rates__input--dates" type="text" name="dateinput" id="date-input"/>
+            </div>
+
+            <div class="check-rates__form-control">
+                <label class="check-rates__label" asp-for="Adults"></label>
+                <select class="check-rates__input check-rates__input--adults" asp-for="Adults">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+            </div>
+
+            <div class="check-rates__form-control">
+                <label class="check-rates__label" asp-for="Children"></label>
+                <select class="check-rates__input check-rates__input--children" asp-for="Children">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+
+            <div class="check-rates__form-control">
+                <label class="check-rates__label" asp-for="Promo"></label>
+                <input class="check-rates__input check-rates__input--promo" asp-for="Promo" />
+            </div>
+            <button type="submit" class="large-btn check-rates__btn">Check rates</button>
+        </form>
+        <button class="small-btn check-rates__hide-btn" id="check-rates-hide-btn"><partial name="Partials/Svgs/_ChevronUp" />&nbsp;Hide</button>
+    </div>
+</div>

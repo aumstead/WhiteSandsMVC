@@ -12,7 +12,7 @@
 }
 
 .footer-logo__svg {
-    -webkit-mask-image: url(/images/palm1.svg);
+    -webkit-mask-image: url(/images/svg/palm1.svg);
     -webkit-mask-size: cover;
     background-color: var(--color-white);
     height: 10rem;

@@ -1,0 +1,18 @@
+﻿@{
+
+}
+
+<nav class="nav nav--black">
+    <div class="nav__left-flex-container">
+        <div class="logo">
+            <a asp-controller="home" asp-action="index"><div class="logo__svg"></div></a>
+        </div>
+        <ul class="nav__ul">
+            <li><a asp-controller="home" asp-action="index" class="nav__link">Resort Overview</a></li>
+            <li><a asp-controller="accomodations" asp-action="index" class=@(ViewBag.Title == "Accomodations" ? "nav__link nav__link--active" : "nav__link") >Accomodations</a></li>
+            <li><a href="#" class="nav__link">Photos & Videos</a></li>
+            <li><a href="#" class="nav__link">Activities</a></li>
+        </ul>
+    </div>
+    <button class="large-btn large-btn--inverse large-btn--check-rates" id="check-rates-open-btn">Check rates</button>
+</nav>

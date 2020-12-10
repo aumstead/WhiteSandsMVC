@@ -1,15 +1,22 @@
 ﻿.nav {
     background-color: transparent;
     display: flex;
+    justify-content: space-between;
     position: fixed;
     width: 100%;
+    font-weight: 600;
+    text-transform: uppercase;
     z-index: 100;
     border-bottom: 1px solid var(--color-white);
     transition: background-color .7s;
     align-items: center;
-    height: 60px;
+    height: 9rem;
 }
 
+.nav__left-flex-container {
+    display: flex;
+    width: 100%;
+}
 .nav--black {
     background-color: var(--color-black);
     box-shadow: 0px 0px 30px 3px rgba(0,0,0,0.7);
@@ -20,6 +27,8 @@
     flex-direction: column;
     align-items: center;
     margin-left: 2rem;
+    margin-right: 2rem;
+    width: 12rem;
 }
 
 .logo__svg {
@@ -33,13 +42,12 @@
 .nav__ul {
     list-style: none;
     color: var(--color-white);
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-family: var(--font-sans);
     letter-spacing: .1rem;
     display: flex;
     align-items: center;
     flex: 1;
-    justify-content: space-evenly;
     padding: 2.5rem 0;
 }
 
@@ -47,6 +55,7 @@
     color: var(--color-white);
     text-decoration: none;
     transition: color .5s;
+    margin-right: 4rem;
 }
 .nav__link:hover {
     color: var(--color-grey);

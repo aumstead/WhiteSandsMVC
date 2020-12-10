@@ -126,9 +126,7 @@
 }
 
 .info-section__title {
-    font-family: var(--font-sans);
     font-size: var(--section-heading);
-    font-weight: 200;
     text-align: center;
     margin-top: 7rem;
 }
@@ -142,6 +140,8 @@
     font-weight: 200;
     text-align: center;
     margin-bottom: 5rem;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
 }
 
 /*/////////////////////////////*/
@@ -219,7 +219,7 @@
 /*/////////////////////////////*/
 .mid-page-hero {
     height: 90vh;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, .9)), url(/images/mid-hero1.jpg);
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, .9)), url(/images/HomeIndex/mid-hero1.jpg);
     background-size: cover;
     background-position: bottom;
     display: flex;
@@ -228,20 +228,12 @@
 }
 
 .mid-page-hero__heading {
-    font-family: var(--font-sans);
-    font-size: 1.8rem;
-    letter-spacing: .3rem;
-    text-transform: uppercase;
-    font-weight: 600;
     color: var(--color-white);
     margin-bottom: .5rem;
     margin-left: 2rem;
 }
 
 .mid-page-hero__text {
-    font-size: 1.8rem;
-    font-family: var(--font-text);
-    line-height: 3.5rem;
     color: var(--color-white);
     margin-bottom: 2rem;
     margin-left: 2rem;
@@ -284,7 +276,7 @@
     height: 110vh;
     background-position: bottom;
     background-size: cover;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0.9) 90%, rgba(0, 0, 0, 1) ), url(/images/experience1.jpg);
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0.9) 90%, rgba(0, 0, 0, 1) ), url(/images/HomeIndex/experience1.jpg);
 }
 
 .activities-heading {
@@ -295,9 +287,7 @@
 }
 
 .activities-heading__title {
-    font-family: var(--font-sans);
-    font-size: var(--section-heading);
-    font-weight: 200;
+    font-size: var(--section-heading);    
     text-align: center;
     padding-top: 7rem;
     color: var(--color-white);
@@ -320,10 +310,6 @@
 }
 
 .activities__heading {
-    font-family: var(--font-sans);
-    text-transform: uppercase;
-    font-size: 1.4rem;
-    letter-spacing: .2rem;
     margin-bottom: 1rem;
 }
 
@@ -340,10 +326,6 @@
 }
 
 .activities__text {
-    font-family: var(--font-text);
-    font-size: 1.8rem;
-    letter-spacing: .03rem;
-    line-height: 2.5rem;
     margin-bottom: 3rem;
 }
 

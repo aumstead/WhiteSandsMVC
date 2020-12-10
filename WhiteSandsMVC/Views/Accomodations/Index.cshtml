@@ -1,0 +1,350 @@
+﻿@{ 
+    ViewBag.Title = "Accomodations";
+}
+
+<partial name="Partials/_BlackNavbar" />
+<partial name="Partials/_CheckRatesDrawer" />
+
+<section class="featured-section">
+    <div class="featured-section__headings">
+        <h1 class=" section-heading featured-section__title">Accomodations</h1>
+        <h2 class="section-heading featured-section__subheading">Featured</h2>
+    </div>
+    <div class="accomodations-carousel">
+        <div class="carousel-cell">
+            <img src="/images/AccomodationsIndex/carousel1.jpg"
+                 alt=""
+                 class="carousel-img" />
+            <div class="accomodations__details-container">                
+                <h4 class="h4-heading accomodations__details-heading">
+                    One-bedroom Overwater Bungalow
+                </h4>
+                <p class="text-serif accomodations__details-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing
+                    elit. Id, ratione! Aspernatur at fugiat rem velit
+                    accusantium nihil tempora expedita, ad quod
+                    provident nisi culpa voluptate quidem assumenda
+                    animi recusandae doloremque?
+                </p>
+                <a href="#" class="small-btn small-btn--inverse accomodations__small-btn--accomodations-controller">Details</a>
+            </div>
+        </div>
+        <div class="carousel-cell">
+            <img src="/images/AccomodationsIndex/carousel2.jpg"
+                 alt=""
+                 class="carousel-img" />
+            <div class="accomodations__details-container">                
+                <h4 class="h4-heading accomodations__details-heading">Two-bedroom Overwater bungalow</h4>
+                <p class="text-serif accomodations__details-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing
+                    elit. Consequuntur possimus vero placeat expedita
+                    optio, perspiciatis incidunt ex ducimus, vel
+                    reiciendis veniam illum dolor ratione eos velit.
+                    Quas quibusdam maiores cupiditate provident ullam
+                    voluptatibus ducimus.
+                </p>
+                <a href="#" class="small-btn small-btn--inverse accomodations__small-btn--accomodations-controller">Details</a>
+            </div>
+        </div>
+        <div class="carousel-cell">
+            <img src="/images/AccomodationsIndex/carousel3.jpg"
+                 alt=""
+                 class="carousel-img" />
+            <div class="accomodations__details-container">                
+                <h4 class="h4-heading accomodations__details-heading">Up to 6 adults or 6 person family overwater suite with plunge pool</h4>
+                <p class="text-serif accomodations__details-text">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing
+                    elit. Reprehenderit voluptatum vero beatae
+                    quibusdam. Corporis a, totam, temporibus magnam
+                    labore velit tempore aspernatur aperiam maxime
+                    possimus necessitatibus!
+                </p>
+                <a href="#" class="small-btn small-btn--inverse accomodations__small-btn--accomodations-controller">Details</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="room-types">
+    <div class="filter">
+        <button class="filter__option" id="overwater-btn">Overwater Bungalow</button>
+        <button class="filter__option" id="beachfront-btn">Beachfront Rooms and Suites</button>
+        <button class="filter__option" id="villas-btn">Villa Estates</button>
+    </div>
+
+    <div class="room-type room-types__overwater">
+        <div class="room">
+            <img class="room__img" src="/images/AccomodationsIndex/bungalow4.jpg" />
+            <div class="room__info-container">
+                <h4 class="room__heading h4-heading">One-bedroom beach-view overwater bungalow</h4>
+                <div class="room-text">
+                    <div class="room-text__item-container">
+                        <img class="room-text__item-svg" src="~/images/svg/bed.svg" />
+                        <span class="room-text__item text-sans">One king bed. One full sofa bed</span>
+                    </div>
+                    <div class="room-text__item-container">
+                        <img class="room-text__item-svg" src="~/images/svg/ruler.svg" />
+                        <span class="room-text__item text-sans">100 m2 (1,080 sq.ft.)</span>
+                    </div>
+                    <div class="room-text__item-container">
+                        <img class="room-text__item-svg" src="~/images/svg/users.svg" />
+                        <span class="room-text__item text-sans">3 adults or 2 adults and 2 children (up to the age of 12)</span>
+                    </div>
+                </div>
+                <div class="room__ctas">
+                    <button class="large-btn room__check-rates-btn">Check Rates</button>
+                    <a href="#" class="large-btn large-btn--inverse">Details</a>
+                </div>
+            </div>
+        </div>
+        <div class="room">
+            <img class="room__img" src="/images/AccomodationsIndex/bungalow2.jpg" />
+            <div class="room__info-container">
+                <h4 class="room__heading h4-heading">Two-bedroom overwater bungalow suite</h4>
+                <div class="room-text">
+                    <div class="room-text__item-container">
+                        <img class="room-text__item-svg" src="~/images/svg/bed.svg" />
+                        <span class="room-text__item text-sans">Two king beds. Two full sofa beds</span>
+                    </div>
+                    <div class="room-text__item-container">
+                        <img class="room-text__item-svg" src="~/images/svg/ruler.svg" />
+                        <span class="room-text__item text-sans">207 m2 (2,228 sq.ft.)</span>
+                    </div>
+                    <div class="room-text__item-container">
+                        <img class="room-text__item-svg" src="~/images/svg/users.svg" />
+                        <span class="room-text__item text-sans">6 adults or 2 adults and 4 children (up to the age of 12)</span>
+                    </div>
+                </div>
+                <div class="room__ctas">
+                    <button class="large-btn room__check-rates-btn">Check Rates</button>
+                    <a href="#" class="large-btn large-btn--inverse">Details</a>
+                </div>
+            </div>
+        </div>
+        <div class="room">
+            <img class="room__img" src="/images/AccomodationsIndex/bungalow3.jpg" />
+            <div class="room__info-container">
+                <h4 class="room__heading h4-heading">Two-bedroom overwater bungalow suite with plunge pool</h4>
+                <div class="room-text">
+                    <div class="room-text__item-container">
+                        <img class="room-text__item-svg" src="~/images/svg/bed.svg" />
+                        <span class="room-text__item text-sans">One king bed and two queen beds. Two full sofa beds</span>
+                    </div>
+                    <div class="room-text__item-container">
+                        <img class="room-text__item-svg" src="~/images/svg/ruler.svg" />
+                        <span class="room-text__item text-sans">207 m2 (2,228 sq.ft.)</span>
+                    </div>
+                    <div class="room-text__item-container">
+                        <img class="room-text__item-svg" src="~/images/svg/users.svg" />
+                        <span class="room-text__item text-sans">6 adults or 2 adults and 4 children (up to the age of 12)</span>
+                    </div>
+                </div>
+                <div class="room__ctas">
+                    <button class="large-btn room__check-rates-btn">Check Rates</button>
+                    <a href="#" class="large-btn large-btn--inverse">Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="room-type room-types__beachfront">
+        <div class="room">
+            <img class="room__img" src="/images/AccomodationsIndex/beachfront6.jpg" />
+            <div class="room__info-container">
+                <h4 class="room__heading h4-heading">Deluxe beachfront room</h4>
+                <div class="room-text">
+                    <div class="room-text__item-container">
+                        <img class="room-text__item-svg" src="~/images/svg/bed.svg" />
+                        <span class="room-text__item text-sans">One king bed. One rollaway</span>
+                    </div>
+                    <div class="room-text__item-container">
+                        <img class="room-text__item-svg" src="~/images/svg/ruler.svg" />
+                        <span class="room-text__item text-sans">59 m2 (640 sq.ft.)</span>
+                    </div>
+                    <div class="room-text__item-container">
+                        <img class="room-text__item-svg" src="~/images/svg/users.svg" />
+                        <span class="room-text__item text-sans">2 adults or 2 adults and 1 child</span>
+                    </div>
+                </div>
+                <div class="room__ctas">
+                    <button class="large-btn room__check-rates-btn">Check Rates</button>
+                    <a href="#" class="large-btn large-btn--inverse">Details</a>
+                </div>
+            </div>
+        </div>
+        <div class="room">
+            <img class="room__img" src="/images/AccomodationsIndex/beachfront5.jpg" />
+            <div class="room__info-container">
+                <h4 class="room__heading h4-heading">beachfront one-bedroom suite</h4>
+                <div class="room-text">
+                    <div class="room-text__item-container">
+                        <img class="room-text__item-svg" src="~/images/svg/bed.svg" />
+                        <span class="room-text__item text-sans">One king bed. One full sofa bed</span>
+                    </div>
+                    <div class="room-text__item-container">
+                        <img class="room-text__item-svg" src="~/images/svg/ruler.svg" />
+                        <span class="room-text__item text-sans">130 m2 (1,400 sq.ft.)</span>
+                    </div>
+                    <div class="room-text__item-container">
+                        <img class="room-text__item-svg" src="~/images/svg/users.svg" />
+                        <span class="room-text__item text-sans">3 adults or 2 adults and 2 child</span>
+                    </div>
+                </div>
+                <div class="room__ctas">
+                    <button class="large-btn room__check-rates-btn">Check Rates</button>
+                    <a href="#" class="large-btn large-btn--inverse">Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="room-type room-types__villas ">
+        <div class="room">
+            <img class="room__img" src="/images/AccomodationsIndex/villas2.jpg" />
+            <div class="room__info-container">
+                <h4 class="room__heading h4-heading">three-bedroom villa estate with plunge pool</h4>
+                <div class="room-text">
+                    <div class="room-text__item-container">
+                        <img class="room-text__item-svg" src="~/images/svg/bed.svg" />
+                        <span class="room-text__item text-sans">Two king and two queen beds</span>
+                    </div>
+                    <div class="room-text__item-container">
+                        <img class="room-text__item-svg" src="~/images/svg/ruler.svg" />
+                        <span class="room-text__item text-sans">500 m2 (5,380 sq.ft.)</span>
+                    </div>
+                    <div class="room-text__item-container">
+                        <img class="room-text__item-svg" src="~/images/svg/users.svg" />
+                        <span class="room-text__item text-sans">6 adults or 2 adults and 4 children</span>
+                    </div>
+                </div>
+                <div class="room__ctas">
+                    <button class="large-btn room__check-rates-btn">Check Rates</button>
+                    <a href="#" class="large-btn large-btn--inverse">Details</a>
+                </div>
+            </div>
+        </div>
+        <div class="room">
+            <img class="room__img" src="/images/AccomodationsIndex/villas4.jpg" />
+            <div class="room__info-container">
+                <h4 class="room__heading h4-heading">two-bedroom beachfront villa estate</h4>
+                <div class="room-text">
+                    <div class="room-text__item-container">
+                        <img class="room-text__item-svg" src="~/images/svg/bed.svg" />
+                        <span class="room-text__item text-sans">One king and two queen beds. One full sofa bed</span>
+                    </div>
+                    <div class="room-text__item-container">
+                        <img class="room-text__item-svg" src="~/images/svg/ruler.svg" />
+                        <span class="room-text__item text-sans">300 m2 (3,228 sq.ft.)</span>
+                    </div>
+                    <div class="room-text__item-container">
+                        <img class="room-text__item-svg" src="~/images/svg/users.svg" />
+                        <span class="room-text__item text-sans">5 adults or 2 adults and 3 children</span>
+                    </div>
+                </div>
+                <div class="room__ctas">
+                    <button class="large-btn room__check-rates-btn">Check Rates</button>
+                    <a href="#" class="large-btn large-btn--inverse">Details</a>
+                </div>
+            </div>
+        </div>
+        <div class="room">
+            <img class="room__img" src="/images/AccomodationsIndex/villas3.jpg" />
+            <div class="room__info-container">
+                <h4 class="room__heading h4-heading">one-bedroom beachfront villa estate</h4>
+                <div class="room-text">
+                    <div class="room-text__item-container">
+                        <img class="room-text__item-svg" src="~/images/svg/bed.svg" />
+                        <span class="room-text__item text-sans">One king bed. One full sofa bed</span>
+                    </div>
+                    <div class="room-text__item-container">
+                        <img class="room-text__item-svg" src="~/images/svg/ruler.svg" />
+                        <span class="room-text__item text-sans">253 m2 (2,722 sq.ft.)</span>
+                    </div>
+                    <div class="room-text__item-container">
+                        <img class="room-text__item-svg" src="~/images/svg/users.svg" />
+                        <span class="room-text__item text-sans">3 adults or 2 adults and 2 children</span>
+                    </div>
+                </div>
+                <div class="room__ctas">
+                    <button class="large-btn room__check-rates-btn">Check Rates</button>
+                    <a href="#" class="large-btn large-btn--inverse">Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="amenities">
+    <hr class="discount__hr discount__hr-thick discount__hr-thick--top" />
+    <hr class="discount__hr discount__hr-thin discount__hr-thin--top" />
+
+    <h4 class="amenities__heading h4-heading">Featured Amenities</h4>
+
+    <div class="amenities__icons-container">
+        <div class="amenity">
+            <img class="amenity__icon" src="~/images/svg/amenities/wireless.svg" />
+            <span class="amenity__title text-sans">Standard wi-fi</span>
+        </div>
+        <div class="amenity">
+            <img class="amenity__icon" src="~/images/svg/amenities/newspaper.svg" />
+            <span class="amenity__title text-sans">Daily newspaper</span>
+        </div>
+        <div class="amenity">
+            <img class="amenity__icon" src="~/images/svg/amenities/lotus.svg" />
+            <span class="amenity__title text-sans">Spa</span>
+        </div>
+        <div class="amenity">
+            <img class="amenity__icon" src="~/images/svg/amenities/pool.svg" />
+            <span class="amenity__title text-sans">Pool</span>
+        </div>
+        <div class="amenity">
+            <img class="amenity__icon" src="~/images/svg/amenities/exercise.svg" />
+            <span class="amenity__title text-sans">Fitness facilities</span>
+        </div>
+        <div class="amenity">
+            <img class="amenity__icon" src="~/images/svg/amenities/room-service.svg" />
+            <span class="amenity__title text-sans">24 hour in-room dining</span>
+        </div>
+        <div class="amenity">
+            <img class="amenity__icon" src="~/images/svg/amenities/bear.svg" />
+            <span class="amenity__title text-sans">Family friendly</span>
+        </div>
+    </div>
+
+    <hr class="discount__hr discount__hr-thin discount__hr-thin--bottom" />
+    <hr class="discount__hr discount__hr-thick discount__hr-thick--bottom" />
+</section>
+
+<section class="policies">
+    <h3 class="h3-heading policies__heading">Policies</h3>
+    <div class="policy__container">
+        <button class="h4-heading policy-btn" id="check-in-btn">Check-in/-out times<partial name="Partials/Svgs/_CircleChevronDown" /></button>
+        <p class="text-serif policy" id="check-in-policy"><span class="policy__text--hide" id="check-in-span">Check-in time: 2:00 PM. Check-out time: 12:00 PM.</span></p>
+    </div>
+    <div class="policy__container">
+        <button class="h4-heading policy-btn" id="early-arrivals-btn">Early arrivals and late departures<partial name="Partials/Svgs/_CircleChevronDown" /></button>
+        <p class="text-serif policy" id="early-arrivals-policy"><span class="policy__text--hide" id="early-arrivals-span">If you expect to arrive early or depart late, we recommend lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vivamus at augue eget arcu. Ac feugiat sed lectus vestibulum. Purus in massa tempor nec feugiat. Enim sit amet venenatis urna cursus.</span></p>
+    </div>
+    <div class="policy__container">
+        <button class="h4-heading policy-btn" id="credit-cards-btn">Credit cards<partial name="Partials/Svgs/_CircleChevronDown" id="chevron-down-credit-cards" /></button>
+        <p class="text-serif policy" id="credit-cards-policy"><span class="policy__text--hide" id="credit-cards-span">American Express, Visa, MasterCard, Bitcoin</span></p>
+    </div>
+    <div class="policy__container">
+        <button class="h4-heading policy-btn" id="family-plan-btn">Family plan<partial name="Partials/Svgs/_CircleChevronDown" /></button>
+        <p class="text-serif policy" id="family-plan-policy"><span class="policy__text--hide" id="family-plan-span">White Sands Resort charges no additional fee for children under the age of 12 to be under the same reservation as their parent or guardian (space permitting). For more information or special requests, please contact us directly. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+    </div>
+</section>
+
+@section Scripts {
+    @*<script src="~/js/flickity.pkgd.min.js"></script>*@
+    <script src="~/js/AccomodationsIndex.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="~/js/checkRates.js" asp-append-version="true"></script>
+    <script src="~/js/dateRangePicker.js" asp-append-version="true"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+}  
+
+@section FlickityScript {
+    <script src="~/js/flickity.pkgd.min.js"></script>
+}

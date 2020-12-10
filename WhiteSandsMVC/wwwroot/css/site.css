@@ -1,7 +1,7 @@
 ﻿@import 'flickity.min.css';
 
-@import '_variables.css';
-
+@import 'base/_generics.css';
+@import 'base/_variables.css';
 @import 'base/_base.css';
 @import 'base/_animations.css';
 
@@ -12,8 +12,10 @@
 @import 'components/_bannerSlideshow.css';
 @import 'components/_carousel.css';
 @import 'components/_discount.css';
+@import 'components/_footer.css';
 @import 'components/accomodationsCarousel.css';
 @import 'components/mobileActivitiesCarousel.css';
-@import 'components/_footer.css';
+@import 'components/checkRatesDrawer.css';
 
 @import 'pages/home/index.css';
+@import 'pages/accomodations/index.css';

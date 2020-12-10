@@ -1,0 +1,99 @@
+﻿.check-rates-drawer {
+    width: 100%;
+    height: 0px;
+    background-color: var(--color-white);
+    z-index: 300;
+    position: fixed;
+    margin-top: 9rem;
+    transition: all 1s;
+    box-shadow: 0px 0px 30px 3px rgba(0,0,0,0.7);
+}
+
+.check-rates-drawer-open {
+    height: 11rem;
+}
+
+.check-rates__form {
+    display: flex;
+}
+
+.check-rates__content {
+    visibility: hidden;
+    opacity: 0;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    height: 100%;
+    width: 120rem;
+    margin: 0 auto;
+    transition: opacity 1s .2s;
+}
+
+.check-rates__content-open {
+    visibility: visible;
+    display: flex;
+    align-items: center;
+    opacity: 1;
+}
+
+.check-rates__form-control {
+    display: flex;
+    flex-direction: column;
+    margin-right: 3rem;
+}
+
+.check-rates__label {
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    margin-bottom: .7rem;
+}
+
+.check-rates__input {
+    border: 1px solid #ccc;
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    padding: .9rem;
+    font-style: italic;
+}
+
+.check-rates__input--dates {
+    width: 21rem;
+}
+
+.check-rates__input--adults {
+    width: 6.5rem;
+}
+
+.check-rates__input--children {
+    width: 6.5rem;
+}
+
+.check-rates__input--promo {
+    width: 10rem;
+}
+
+.check-rates__btn {
+    height: min-content;
+    align-self: flex-end;
+}
+
+.check-rates__btn:hover {
+    cursor: pointer;
+}
+
+.check-rates__hide-btn {
+    align-self: flex-start;
+    background: none;
+    border: none;
+    margin-top: 1rem;
+}
+
+.check-rates__hide-btn:hover {
+    cursor: pointer;
+}
+
+.check-rates__chevron-up {
+    width: 1.5rem;
+    padding-top: .6rem;
+}
