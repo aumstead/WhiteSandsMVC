@@ -1,0 +1,143 @@
+﻿.confirm-stay-grid {
+    display: grid;
+    grid-template-columns: 30rem 1fr;
+    width: 110rem;
+    margin: 0 auto;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    color: #565656;
+}
+
+.reservation-info {
+    grid-column: 1 / 2;
+    border-right: 2px solid #dcdcdc;
+    display: flex;
+    flex-direction: column;
+    padding-right: 2rem;
+    font-size: 1.5rem;
+}
+
+.confirm-stay-form-col {
+    grid-column: 2 / 3;
+    padding-left: 2rem;
+}
+
+.confirm-stay-heading {
+    font-size: 2.2rem;
+    font-weight: 300;
+    letter-spacing: .15rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+}
+
+.reservation-info__section-heading {
+    letter-spacing:.15rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.reservation-info__section {
+    margin-bottom: 2rem;
+}
+
+.reservation-info__text {
+    display: block;
+    margin-bottom: 2rem;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.reservation-info__section--cancellation {
+    border-top: 2px solid #dcdcdc;
+    padding-top: 2rem;
+}
+
+.confirm-stay-form__heading {
+    background-color: #616161;
+    color: var(--color-white);
+    font-weight: 300;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    text-align: center;
+    padding: .3rem;
+}
+
+.confirm-stay__form-control {
+    display: flex;
+    border: 1px solid #616161;
+    border-top: none;
+}
+
+.confirm-stay__form-control--terms {
+    flex-direction: column;
+    font-size: 1.5rem;
+    padding: 1.5rem;
+}
+
+.confirm-stay__label {
+    background-color: #ececec;
+    min-width: 25rem;
+    font-size: 1.6rem;
+    padding: 1rem;
+}
+
+.confirm-stay__input {
+    font-size: 1.6rem;
+    border: none;
+    padding: 1rem;
+    width: 100%;
+}
+
+.confirm-stay__select {
+    width: 50%;
+    border: none;
+    font-size: 1.6rem;
+    padding: 1rem;
+}
+
+.confirm-stay__select:not(:last-of-type) {
+    border-right: 1px solid #616161;
+}
+
+.confirm-stay__checkbox-form-control {
+    display: flex;
+}
+
+.confirm-stay__checkbox {
+    margin-right: 1rem;
+}
+
+.confirm-stay__submit-btn {
+    float: right;
+    transition: none;
+    margin-top: 1.5rem;
+    margin-bottom: 10rem;
+    width: 23rem;
+}
+
+.confirm-stay__error-form-control {
+    font-size: 1.4rem;
+}
+
+.confirm-stay__error-form-control--terms {
+    padding-left: 2.2rem;
+    font-size: 1.4rem;
+}
+
+.confirm-stay__error-form-control--border-bottom {
+    font-size: 1.4rem;
+    border-bottom: 1px solid #616161;
+}
+
+.terms__client-validation-error {
+    display: none;
+}
+
+.terms__client-validation-error--show {
+    display: inline;
+}

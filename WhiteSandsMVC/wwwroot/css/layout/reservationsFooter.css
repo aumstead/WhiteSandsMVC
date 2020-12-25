@@ -1,0 +1,50 @@
+﻿.reservations-footer {
+    height: 23rem;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    display: flex;
+    flex-direction: column;
+}
+
+.reservations-footer__links-box {
+    display: flex;
+    width: 110rem;
+    height: 100%;
+    padding-top: 3rem;
+    margin: 0 auto;
+}
+
+.reservations-footer__col {
+    margin-right: 10rem;
+}
+
+.reservations-footer__copyright-box {
+    color: gray;
+    border-top: 1px solid #bfbfbf;
+    height: 8rem;
+    width: 110rem;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    font-size: 1.6rem;
+}
+
+.reservations-footer__heading {
+    text-transform: uppercase;
+    font-size: 1.8rem;
+}
+
+.reservations-footer__ul {
+    list-style: none;
+    font-size: 1.5rem;
+}
+
+.reservations-footer__li {
+    margin-top: 1rem;
+    font-weight: 300;
+}
+
+.reservations-footer__link {
+    color: var(--color-white);
+    text-decoration: none;
+}

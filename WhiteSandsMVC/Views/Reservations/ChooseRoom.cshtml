@@ -1,0 +1,151 @@
+﻿@model WhiteSandsMVC.ViewModels.ChooseRoomViewModel
+
+<partial name="Partials/Reservations/_ReservationsHeader" />
+<partial name="Partials/Reservations/_SearchBar" model="Model" />
+
+
+<div class="reservations-content-container">
+    <div class="room-type-heading__container">
+        <hr class="room-type-heading__hr" />
+        <h2 class="room-type-heading">Room type heading</h2>
+        <hr class="room-type-heading__hr" />
+    </div>
+
+    @foreach (var roomType in ViewBag.testData)
+    {
+        @*<h1>@roomType.PhotoPath</h1>*@
+        <div class="avail-room-type">
+            <img class="room-type__image" src="@("/images/Reservations/Rooms/" + roomType.PhotoPath)" />
+            <div class="room-type__content-container">
+                <div class="room-type__content--title-box">
+                    <h2 class="room-type__name">@roomType.Name</h2>
+                    <div>
+                        <span class="room-type__price-text">from <span class="room-type__price">USD @Math.Floor(roomType.Price)</span></span><br />
+                        <span class="room-type__price-text">average per night</span>
+                    </div>
+                </div>
+                <div class="room-type__content--info-box">
+                    <div class="info-box__col">
+                        <div class="info-box__info-block">
+                            <span class="info-box__label">View</span>
+                            <span class="info-box__info">View??</span>
+                        </div>
+                        <div class="info-box__info-block">
+                            <span class="info-box__label">Bed options</span>
+                            <span class="info-box__info">@roomType.Beds</span>
+                        </div>
+                    </div>
+                    <div class="info-box__col">
+                        <div class="info-box__info-block">
+                            <span class="info-box__label">Room size</span>
+                            <span class="info-box__info">@roomType.RoomSize</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="room-type__content--btns-box">
+                    <button class="room-type__details-btn" id="view-details-@roomType.Id">View more details</button>
+                    @*hidden input field stores the current room type id. JS gets the Id and uses it to grab the buttons*@
+                    <input hidden class="hidden-view-details" value="@roomType.Id" />
+                    @{
+                        var parms = new Dictionary<string, string>
+                        {
+                            { "checkInDate", Model.CheckInDate.ToString("MM-dd-yyyy") },
+                            { "checkOutDate", Model.CheckOutDate.ToString("MM-dd-yyyy") },
+                            { "adults", Model.Adults },
+                            { "children", Model.Children },
+                            { "promo", Model.Promo },
+                            { "selectedRoomTypeId", roomType.Id.ToString() }
+                        };
+                    }
+                    <a class="large-btn" asp-controller="reservations" asp-action="ConfirmStay" asp-all-route-data="parms">Select Room</a>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="room-details" id="room-details-@roomType.Id">
+            <input hidden class="hidden-room-details" value="room-details-@roomType.Id" />
+            <div class="room-details__btns-box">
+                <button class="room-details__btn room-details__btn--details room-details__btn--active" id="details-btn-@roomType.Id">Room Details</button>
+                <button class="room-details__btn room-details__btn--services" id="services-btn-@roomType.Id">Services and Amenities</button>
+            </div>
+
+            <div class="details" id="details-@roomType.Id">
+                <p class="details__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <div class="details__col--1">
+                    <div class="info-box__info-block">
+                        <span class="info-box__label">Occupancy</span>
+                        <span class="info-box__info">@roomType.Occupancy</span>
+                    </div>
+                    <div class="info-box__info-block">
+                        <span class="info-box__label">Extra beds</span>
+                        <span class="info-box__info">@roomType.ExtraBeds</span>
+                    </div>
+                </div>
+                <div class="details__col--2">
+                    <div class="info-box__info-block">
+                        <span class="info-box__label">Location</span>
+                        <span class="info-box__info">@roomType.Location</span>
+                    </div>
+                    <div class="info-box__info-block">
+                        <span class="info-box__label">Bathroom</span>
+                        <span class="info-box__info">@roomType.Bathroom</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="services hide-element" id="services-@roomType.Id">
+                <div class="services-col">
+                    <h5 class="services__list-heading">Bed &amp; Bath</h5>
+                    <ul class="services__ul">
+                        <li>Hair dryer</li>
+                        <li>Down pillows</li>
+                        <li>Lorem</li>
+                        <li>Ipsum</li>
+                    </ul>
+                </div>
+                <div class="room-details__services-col">
+                    <h5 class="services__list-heading">Internet Access</h5>
+                    <ul class="services__ul">
+                        <li>High-speed Wi-Fi / 5G</li>
+                    </ul>
+                    <h5 class="services__list-heading">Room Features</h5>
+                    <ul class="services__ul">
+                        <li>Refrigerator</li>
+                        <li>Private bar</li>
+                        <li>Kettle</li>
+                    </ul>
+                </div>
+                <div class="room-details__services-col">
+                    <h5 class="services__list-heading">Services &amp; Amenities</h5>
+                    <ul class="services__ul">
+                        <li>Twice-daily housekeeping</li>
+                        <li>Daily newspaper</li>
+                        <li>Bottled water, refreshed daily</li>
+                        <li>Lorem ipsum</li>
+                    </ul>
+                </div>
+                <div class="room-details__services-col">
+                    <h5 class="services__list-heading">Entertainment</h5>
+                    <ul class="services__ul">
+                        <li>Satellite TV with 80+ international stations</li>
+                        <li>HBO</li>
+                        <li>Pay-per-view movie selection</li>
+                        <li>Lorem ipsum</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="info-row">
+        <a class="info-row__contact" href="#">Contact us</a>
+        <p class="info-row__disclaimer">All offers are subject to lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a ante et orci faucibus imperdiet. <span class="text-bold">Sed et convallis augue. Pellentesque felis velit, faucibus sed magna quis, gravida rhoncus enim.</span> Nulla facilisi. Fusce eu consectetur sem, in pellentesque dolor. Morbi tempus maximus mauris ut rutrum. Phasellus.</p>
+    </div>
+</div>
+
+<partial name="Partials/Reservations/_ReservationsFooter" />
+
+@section Scripts {
+    <script src="~/js/chooseRoom.js"></script>
+}

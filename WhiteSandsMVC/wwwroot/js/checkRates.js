@@ -36,3 +36,13 @@ checkRatesHideBtn.addEventListener('click', () => {
         n.classList.remove('visibility-hidden');
     })
 })
+
+// validate form
+function validateForm() {
+    const checkOutValue = document.getElementById("check-out-hidden").value;
+    if (checkOutValue === "") {
+        const errorText = document.getElementById("check-rates-client-validation-error")
+        errorText.classList.add('check-rates__client-validation-error--show')
+        return false
+    }
+}

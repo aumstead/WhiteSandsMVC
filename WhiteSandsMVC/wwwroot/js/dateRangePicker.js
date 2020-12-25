@@ -5,6 +5,6 @@
 
     let checkInHidden = document.getElementById('check-in-hidden');
     let checkOutHidden = document.getElementById('check-out-hidden');
-    checkInHidden.value = start;
-    checkOutHidden.value = end;
+    checkInHidden.value = start.format('YYYY-MM-DD');
+    checkOutHidden.value = end.format('YYYY-MM-DD');
 });

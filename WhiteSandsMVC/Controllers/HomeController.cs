@@ -11,21 +11,26 @@ namespace WhiteSandsMVC.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult Privacy()
+        [HttpPost]
+        public IActionResult Index(CheckRatesViewModel model)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("ChooseRoom", "Reservations", new 
+                {
+                    checkInDate = model.CheckInDate,
+                    checkOutDate = model.CheckOutDate,
+                    adults = model.Adults,
+                    children = model.Children,
+                    promo = model.Promo
+                });
+            }
+            return View(model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

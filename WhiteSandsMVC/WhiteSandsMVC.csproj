@@ -5,7 +5,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20201212083245_SeedRoomType.cs" />
+    <Compile Remove="Migrations\20201212083245_SeedRoomType.Designer.cs" />
+    <Compile Remove="Migrations\20201225011327_UpdatePhotoPathSeeds.cs" />
+    <Compile Remove="Migrations\20201225011327_UpdatePhotoPathSeeds.Designer.cs" />
+    <Compile Remove="Migrations\20201225045102_AddForeignKeysToBooking.cs" />
+    <Compile Remove="Migrations\20201225045102_AddForeignKeysToBooking.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\Reservations\" />
+    <Folder Include="wwwroot\images\Reservations\Rooms\" />
   </ItemGroup>
 
 </Project>

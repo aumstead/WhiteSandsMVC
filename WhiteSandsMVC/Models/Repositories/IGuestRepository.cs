@@ -5,12 +5,9 @@ using System.Threading.Tasks;
 
 namespace WhiteSandsMVC.Models
 {
-    public enum RoomTypes
+    public interface IGuestRepository
     {
-        None,
-        Single,
-        Double,
-        Family,
-        Bungalow
+        Guest GetGuest(int id);
+        Guest Create(Guest guest);
     }
 }

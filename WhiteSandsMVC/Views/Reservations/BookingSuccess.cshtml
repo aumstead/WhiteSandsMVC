@@ -1,0 +1,31 @@
+﻿@model WhiteSandsMVC.ViewModels.BookingSuccessViewModel
+
+<partial name="Partials/Reservations/_ReservationsHeader" />
+
+<div class="booking-success-grid">
+    <div class="booking-success-body-col">
+        <h1 class="h2-heading">We look forward to seeing you soon!</h1>
+        <h4 class="booking-success__section-heading pb-2">Payment successful!</h4>
+        <a href="#" class="large-btn">View Itinerary</a>
+        <ul>
+            <li>adults: @Model.Booking.Adults</li>
+            <li>children: @Model.Booking.Children</li>
+            <li>Check in: @Model.Booking.CheckInDate</li>
+            <li>total cost: @Model.Booking.TotalCost</li>
+            <li>guest first name: @Model.Booking.Guest.FirstName</li>
+            <li>guest last name: @Model.Booking.Guest.LastName</li>
+        </ul>
+    </div>
+
+    <div class="booking-success-room-col">
+        <img src="@("/images/Reservations/Rooms/" + (Model.Booking.RoomType.PhotoPath))" />
+    </div>
+</div>
+
+
+
+
+
+
+
+<partial name="Partials/Reservations/_ReservationsFooter" />

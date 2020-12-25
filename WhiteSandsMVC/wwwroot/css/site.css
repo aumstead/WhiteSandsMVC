@@ -1,12 +1,14 @@
 ﻿@import 'flickity.min.css';
 
-@import 'base/_generics.css';
+@import 'base/_utility.css';
 @import 'base/_variables.css';
 @import 'base/_base.css';
 @import 'base/_animations.css';
 
 @import 'layout/_navigation.css';
 @import 'layout/_mobileNavigation.css';
+@import 'layout/reservationsHeader.css';
+@import 'layout/reservationsFooter.css';
 
 @import 'components/_buttons.css';
 @import 'components/_bannerSlideshow.css';
@@ -16,6 +18,10 @@
 @import 'components/accomodationsCarousel.css';
 @import 'components/mobileActivitiesCarousel.css';
 @import 'components/checkRatesDrawer.css';
+@import 'components/searchBar.css';
 
 @import 'pages/home/index.css';
 @import 'pages/accomodations/index.css';
+@import 'pages/reservations/chooseRoom.css';
+@import 'pages/reservations/confirmStay.css';
+@import 'pages/reservations/bookingSuccess.css';

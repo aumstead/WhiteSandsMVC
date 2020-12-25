@@ -1,0 +1,39 @@
+﻿@{
+    int Adults;
+    int Children;
+    var adultsIsParsable = int.TryParse(Model.Adults, out Adults);
+    var childrenIsParsable = int.TryParse(Model.Children, out Children);
+}
+
+<div class="search-bar">
+    <div class="search-bar__container">
+        <div class="search-bar__info-container">
+            <span class="search-bar__search-parameter">@Model.CheckInDate.ToString("MMM dd") - @Model.CheckOutDate.ToString("MMM dd yyyy")</span>
+            <span class="search-bar__search-parameter">@(Adults > 1 ? Model.Adults + " adults" : Model.Adults + " adult")</span>
+            <span class="search-bar__search-parameter">@(Children > 1 ? Model.Children + " children" : Model.Children + " child")</span>
+
+            <a class="large-btn--inverse change-search-btn">Change search</a>
+        </div>
+        <div class="search-bar__options-container">
+            <div class="search-bar__form-group search-bar__form-group--accessible">
+                <input class="search-bar__checkbox" type="checkbox" name="accessible-filter" />
+                <label class="search-bar__form-group-label--accessible-filter" for="accessible-filter">Accessible rooms</label>
+            </div>
+
+            <div class="search-bar__form-group search-bar__form-group--col">
+                <label class="search-bar__form-group-label--caps" for="price-sort">Sort by rate</label>
+                <select class="search-bar__select-input" name="price-sort">
+                    <option>Low to High</option>
+                    <option>High to Low</option>
+                </select>
+            </div>
+            <div class="search-bar__form-group search-bar__form-group--col">
+                <label class="search-bar__form-group-label--caps" for="convert-currency">Convert currentcy</label>
+                <select class="search-bar__select-input" name="convert-currency">
+                    <option>Thai Bhat</option>
+                    <option>US Dollars</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>

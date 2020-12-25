@@ -10,7 +10,7 @@
 }
 
 .check-rates-drawer-open {
-    height: 11rem;
+    height: 12rem;
 }
 
 .check-rates__form {
@@ -52,13 +52,13 @@
 .check-rates__input {
     border: 1px solid #ccc;
     font-family: var(--font-serif);
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     padding: .9rem;
     font-style: italic;
 }
 
 .check-rates__input--dates {
-    width: 21rem;
+    width: 22rem;
 }
 
 .check-rates__input--adults {
@@ -96,4 +96,18 @@
 .check-rates__chevron-up {
     width: 1.5rem;
     padding-top: .6rem;
+}
+
+.check-rates__error-form-control {
+    font-size: 1.4rem;
+    position: absolute;
+    bottom: 1rem;
+}
+
+.check-rates__client-validation-error {
+    display: none;
+}
+
+.check-rates__client-validation-error--show {
+    display: inline;
 }

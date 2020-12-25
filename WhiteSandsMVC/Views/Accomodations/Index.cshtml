@@ -2,7 +2,11 @@
     ViewBag.Title = "Accomodations";
 }
 
-<partial name="Partials/_BlackNavbar" />
+<header>
+    <partial name="Partials/_BlackNavbar" />
+    <partial name="Partials/_MobileNavigation" />
+</header>
+
 <partial name="Partials/_CheckRatesDrawer" />
 
 <section class="featured-section">
@@ -163,7 +167,7 @@
                     </div>
                     <div class="room-text__item-container">
                         <img class="room-text__item-svg" src="~/images/svg/users.svg" />
-                        <span class="room-text__item text-sans">2 adults or 2 adults and 1 child</span>
+                        <span class="room-text__item text-sans">2 adults or 2 adults and 1 child (up to the age of 12)</span>
                     </div>
                 </div>
                 <div class="room__ctas">
@@ -187,7 +191,7 @@
                     </div>
                     <div class="room-text__item-container">
                         <img class="room-text__item-svg" src="~/images/svg/users.svg" />
-                        <span class="room-text__item text-sans">3 adults or 2 adults and 2 child</span>
+                        <span class="room-text__item text-sans">3 adults or 2 adults and 2 children (up to the age of 12)</span>
                     </div>
                 </div>
                 <div class="room__ctas">
@@ -334,6 +338,8 @@
         <p class="text-serif policy" id="family-plan-policy"><span class="policy__text--hide" id="family-plan-span">White Sands Resort charges no additional fee for children under the age of 12 to be under the same reservation as their parent or guardian (space permitting). For more information or special requests, please contact us directly. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
     </div>
 </section>
+
+<partial name="Partials/_Footer" />
 
 @section Scripts {
     @*<script src="~/js/flickity.pkgd.min.js"></script>*@

@@ -1,10 +1,15 @@
-﻿@{
+﻿@*@model CheckRatesViewModel*@
+
+@{
     ViewBag.Title = "Home";
 }
 
-<partial name="Partials/_FadeInNavbar" />
-<partial name="Partials/_CheckRatesDrawer" />
+<header>
+    <partial name="Partials/_FadeInNavbar" />
+    <partial name="Partials/_MobileNavigation" />
+</header>
 
+<partial name="Partials/_CheckRatesDrawer" />
 <partial name="Partials/_BannerSlideshow" />
 
 <div class="hero" id="intersection">
@@ -286,6 +291,8 @@
 <div class="activities-btn-container">
     <a href="#" class="large-btn activities-btn">More Experiences</a>
 </div>
+
+<partial name="Partials/_Footer" />
 
 @section Scripts {
     @*<script src="~/js/flickity.pkgd.min.js"></script>*@

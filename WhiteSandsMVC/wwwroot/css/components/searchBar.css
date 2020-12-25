@@ -1,0 +1,88 @@
+﻿.search-bar {
+    height: 15rem;
+    background-color: #f5f5f5;
+}
+
+.search-bar__container {
+    width: 110rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.search-bar__info-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+}
+
+.change-search-btn {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    padding: 1.1rem 2rem;
+    letter-spacing: .1rem;
+    border: 1px solid var(--color-black);
+    transition: background-color .7s;
+    margin-left: 1rem;
+}
+
+.search-bar__search-parameter {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    padding: 1.1rem 1.5rem;
+    letter-spacing: .1rem;
+    background-color: #cecece;
+    margin-left: 1rem;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+}
+
+.search-bar__options-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2.5rem;
+    color: #565656;
+}
+
+.search-bar__form-group {
+    margin-left: 6rem;
+}
+
+.search-bar__form-group--accessible {
+    align-self: flex-end;
+}
+
+.search-bar__form-group--col {
+    display: flex;
+    flex-direction: column;
+}
+
+.search-bar__select-input {
+    border: none;
+    background-color: inherit;
+    font-size: 1.6rem;
+    font-family: var(--font-sans);
+    color: #565656;
+    align-self: flex-end;
+}
+
+.search-bar__select-input:hover {
+    cursor: pointer;
+}
+
+.search-bar__checkbox:hover {
+    cursor: pointer;
+}
+
+.search-bar__form-group-label--accessible-filter {
+    font-size: 1.6rem;
+}
+
+.search-bar__form-group-label--caps {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    margin-bottom: .5rem;
+}

@@ -1,0 +1,171 @@
+﻿@model WhiteSandsMVC.ViewModels.ConfirmStayViewModel
+
+@{
+    var baseTotal = Model.RoomType.Price * Model.Nights;
+    decimal feePercent = .1m;
+    var serviceFee = Decimal.Multiply(baseTotal, feePercent);
+    var total = baseTotal + serviceFee;
+
+    // for credit card expiry year
+    int currentYear = DateTime.Today.Year;
+}
+
+<partial name="Partials/Reservations/_ReservationsHeader" />
+
+<div class="confirm-stay-grid">
+    <div class="reservation-info">
+        <h2 class="confirm-stay-heading">Your reservation</h2>
+        <div class="reservation-info__section">
+            <h4 class="reservation-info__section-heading">Dates</h4>
+            <p class="reservation-info__text">@Model.CheckInDate.ToString("MMM dd, yyyy") - @Model.CheckOutDate.ToString("MMM dd, yyyy")</p>
+            <p class="reservation-info__text">@(Model.Nights > 1 ? Model.Nights + " nights" : Model.Nights + " night")</p>
+            <p class="reservation-info__text">Check-in: After 2:00 PM</p>
+        </div>
+
+        <div class="reservation-info__section">
+            <h4 class="reservation-info__section-heading">Accomodation</h4>
+            <span class="reservation-info__text text-bold">@Model.RoomType.Name</span>
+            <p class="reservation-info__text">@Model.RoomType.Beds</p>
+            <p class="reservation-info__text">@Model.Adults @(Model.Adults > 1 ? "adults" : "adult")@(Model.Children == 1 ? ", 1 child" : Model.Children > 1 ? ", " + Model.Children + " children" : "")</p>
+
+        </div>
+
+        <div class="reservation-info__section">
+            <h4 class="reservation-info__section-heading">Price details</h4>
+            <div class="price-row">
+                <span>$@string.Format("{0:0.00}", Model.RoomType.Price) x @(Model.Nights > 1 ? Model.Nights + " nights" : Model.Nights + " night")</span>
+                <span>$@string.Format("{0:0.00}", baseTotal)</span>
+            </div>
+            <div class="price-row">
+                <a class="text-link" href="#">Service fee</a>
+                <span>$@string.Format("{0:0.00}", serviceFee)</span>
+            </div>
+            <div class="price-row">
+                <span class="reservation-info__text text-bold">Total (USD)</span>
+                <span class="text-bold">$@string.Format("{0:0.00}", total)</span>
+            </div>
+        </div>
+
+        <div class="reservation-info__section reservation-info__section--cancellation">
+            <h4 class="reservation-info__section-heading">Cancellation Policy</h4>
+            <p class="reservation-info__text text-bold">Free cancellation until 2:00 PM on @Model.CancellationDate.ToString("MMM dd").</p>
+            <p class="reservation-info__text">After that, cancel before 2:00 PM on @Model.CheckInDate.ToString("MMM dd") and get a full refund, minus the first night and service fee.</br><a class="text-link" href="#">Learn more</a></p>
+        </div>
+    </div>
+
+    <div class="confirm-stay-form-col">
+        <h2 class="confirm-stay-heading">Confirm your stay</h2>
+        <h3 class="confirm-stay-form__heading">Guest details</h3>
+        <form class="confirm-stay-form" method="post" asp-controller="reservations" asp-action="ConfirmStay" onsubmit="return validateTermsAndConditions()">
+            <div class="confirm-stay__form-control">
+                <label class="confirm-stay__label" asp-for="@Model.Guest.FirstName">First Name*</label>
+                <input class="confirm-stay__input" asp-for="@Model.Guest.FirstName" />
+            </div>
+            <div class="confirm-stay__error-form-control--border-bottom p-1">
+                <span asp-validation-for="@Model.Guest.FirstName" class="text-error"></span>
+            </div>
+            <div class="confirm-stay__form-control">
+                <label class="confirm-stay__label" asp-for="@Model.Guest.LastName">Last Name*</label>
+                <input class="confirm-stay__input" asp-for="@Model.Guest.LastName" />
+            </div>
+            <div class="confirm-stay__error-form-control--border-bottom p-1">
+                <span asp-validation-for="@Model.Guest.LastName" class="text-error"></span>
+            </div>
+            <div class="confirm-stay__form-control">
+                <label class="confirm-stay__label" asp-for="@Model.Guest.PhoneNumber">Mobile Phone Number*</label>
+                <input class="confirm-stay__input" asp-for="@Model.Guest.PhoneNumber" />
+            </div>
+            <div class="confirm-stay__error-form-control--border-bottom p-1">
+                <span asp-validation-for="@Model.Guest.PhoneNumber" class="text-error"></span>
+            </div>
+            <div class="confirm-stay__form-control">
+                <label class="confirm-stay__label" asp-for="@Model.Guest.Email">Email Address*</label>
+                <input class="confirm-stay__input" asp-for="@Model.Guest.Email" />
+            </div>
+            <div class="confirm-stay__error-form-control--border-bottom p-1">
+                <span asp-validation-for="@Model.Guest.Email" class="text-error"></span>
+            </div>
+            <div class="confirm-stay__form-control">
+                <label class="confirm-stay__label" asp-for="@Model.Guest.ConfirmEmail">Confirm Email Address*</label>
+                <input class="confirm-stay__input" asp-for="@Model.Guest.ConfirmEmail" />
+            </div>
+            <div class="confirm-stay__error-form-control--border-bottom p-1">
+                <span asp-validation-for="@Model.Guest.ConfirmEmail" class="text-error"></span>
+            </div>
+            <h3 class="confirm-stay-form__heading">Credit card details</h3>
+            <div class="confirm-stay__form-control">
+                <label class="confirm-stay__label" asp-for="@Model.Guest.NameOnCreditCard">Name On Card*</label>
+                <input class="confirm-stay__input" asp-for="@Model.Guest.NameOnCreditCard" />
+            </div>
+            <div class="confirm-stay__error-form-control--border-bottom p-1">
+                <span asp-validation-for="@Model.Guest.NameOnCreditCard" class="text-error"></span>
+            </div>
+            <div class="confirm-stay__form-control">
+                <label class="confirm-stay__label" asp-for="@Model.Guest.CreditCardNumber">Credit Card Number*</label>
+                <input class="confirm-stay__input" asp-for="@Model.Guest.CreditCardNumber" />
+            </div>
+            <div class="confirm-stay__error-form-control--border-bottom p-1">
+                <span asp-validation-for="@Model.Guest.CreditCardNumber" class="text-error"></span>
+            </div>
+            <div class="confirm-stay__form-control">
+                <label class="confirm-stay__label">Credit Card Expiry Date*</label>
+                <select class="confirm-stay__select" asp-for="@Model.Guest.CreditCardExpiryMonth">
+                    <option value="">Month</option>
+                    @for (var i = 0; i < 12; i++)
+                    {
+                        <option value="@((i+1).ToString())">@((i+1).ToString())</option>
+                    }
+                </select>
+                <select class="confirm-stay__select" asp-for="@Model.Guest.CreditCardExpiryYear">
+                    <option value="">Year</option>
+                    @for (var i = currentYear - 1; i < currentYear + 11; i++)
+                    {
+                        <option value="@((i+1).ToString())">@((i+1).ToString())</option>
+                    }
+                </select>
+            </div>
+            <div class="confirm-stay__error-form-control p-1">
+                <span asp-validation-for="@Model.Guest.CreditCardExpiryMonth" class="text-error"></span>
+            </div>
+            <div class="confirm-stay__error-form-control pb-1 pl-1 pr-1">
+                <span asp-validation-for="@Model.Guest.CreditCardExpiryYear" class="text-error"></span>
+            </div>
+            @*<div class="confirm-stay__form-control">
+                    <span>Accepted forms of payment</span>
+                </div>*@
+            <h3 class="confirm-stay-form__heading">Terms and Conditions</h3>
+            <div class="confirm-stay__form-control confirm-stay__form-control--terms">
+                <div class="confirm-stay__checkbox-form-control mb-1">
+                    <input class="confirm-stay__checkbox" asp-for="AcceptTermsAndConditions" type="checkbox" id="terms-and-conditions" value="false"/>
+                    <label asp-for="AcceptTermsAndConditions">I have read &amp; accepted the <span class="confirm-stay__show-modal-btn">Terms &amp; Conditions</span></label>
+                </div>
+                <div class="confirm-stay__error-form-control--terms pb-1 pr-1">
+                    <span asp-validation-for="AcceptTermsAndConditions" class="text-error"></span>
+                    <span class="text-error terms__client-validation-error" id="terms-client-validation-error">Accepting the terms and conditions is required.</span>
+                </div>
+
+                <div class="confirm-stay__checkbox-form-control">
+                    <input class="confirm-stay__checkbox" type="checkbox" asp-for="@Model.Guest.SubscribedToEmailList" />
+                    <label asp-for="@Model.Guest.SubscribedToEmailList">Send me special offers and lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mollis dolor velit, ac venenatis lectus viverra nec. Morbi at lorem mollis, varius est ac, lacinia est. Ut tristique nibh nunc, at efficitur odio lacinia non. Vestibulum aliquam turpis urna, vitae.</label>
+                </div>
+            </div>
+            <button type="submit" class="large-btn confirm-stay__submit-btn">Book</button>
+            <input type="hidden" asp-for="CheckInDate" value="@Model.CheckInDate" />
+            <input type="hidden" asp-for="CheckOutDate" value="@Model.CheckOutDate" />
+            <input type="hidden" asp-for="Adults" value="@Model.Adults" />
+            <input type="hidden" asp-for="Children" value="@Model.Children" />
+            <input type="hidden" asp-for="RoomId" value="@Model.RoomId" />
+            <input type="hidden" asp-for="RoomTypeId" value="@Model.RoomTypeId" />
+            <input type="hidden" asp-for="Nights" value="@Model.Nights" />
+            <input type="hidden" asp-for="CancellationDate" value="@Model.CancellationDate" />
+            <input type="hidden" asp-for="TotalCost" value="@total" />
+            <input type="hidden" asp-for="Promo" value="@Model.Promo" />
+        </form>
+    </div>
+</div>
+
+<partial name="Partials/Reservations/_ReservationsFooter" />
+
+@section Scripts {
+    <script src="~/js/confirmStay.js"></script>
+}
