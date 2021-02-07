@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,10 +29,23 @@ namespace WhiteSandsMVC
         {
             services.AddDbContextPool<AppDbContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("WhiteSandsDbConnection")));
+
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            {
+                options.Password.RequiredLength = 7;
+                options.Password.RequiredUniqueChars = 3;
+            }).AddEntityFrameworkStores<AppDbContext>();
+
             services.AddScoped<IBookingRepository, SQLBookingRepository>();
             services.AddScoped<IRoomRepository, SQLRoomRepository>();
             services.AddScoped<IRoomTypeRepository, SQLRoomTypeRepository>();
             services.AddScoped<IGuestRepository, SQLGuestRepository>();
+            services.AddScoped<ITravelInterestRepository, SQLTravelInterestRepository>();
+            services.AddScoped<IHealthInterestRepository, SQLHealthInterestRepository>();
+            services.AddScoped<IFoodInterestRepository, SQLFoodInterestRepository>();
+            services.AddScoped<IUserTravelInterestRepository, SQLUserTravelInterestRepository>();
+            services.AddScoped<IUserHealthInterestRepository, SQLUserHealthInterestRepository>();
+            services.AddScoped<IUserFoodInterestRepository, SQLUserFoodInterestRepository>();
             services.AddControllersWithViews();
         }
 
@@ -40,19 +54,23 @@ namespace WhiteSandsMVC
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                //app.UseDeveloperExceptionPage();
+                app.UseExceptionHandler("/Home/Error");
+                app.UseStatusCodePagesWithReExecute("/error/{0}");
             }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
+                //app.UseHsts();
+                app.UseStatusCodePagesWithReExecute("/error/{0}");
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

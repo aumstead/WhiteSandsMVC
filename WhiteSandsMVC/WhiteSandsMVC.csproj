@@ -5,15 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20201212083245_SeedRoomType.cs" />
-    <Compile Remove="Migrations\20201212083245_SeedRoomType.Designer.cs" />
-    <Compile Remove="Migrations\20201225011327_UpdatePhotoPathSeeds.cs" />
-    <Compile Remove="Migrations\20201225011327_UpdatePhotoPathSeeds.Designer.cs" />
-    <Compile Remove="Migrations\20201225045102_AddForeignKeysToBooking.cs" />
-    <Compile Remove="Migrations\20201225045102_AddForeignKeysToBooking.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.10">
       <PrivateAssets>all</PrivateAssets>

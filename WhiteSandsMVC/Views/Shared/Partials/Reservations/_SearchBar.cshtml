@@ -10,7 +10,7 @@
         <div class="search-bar__info-container">
             <span class="search-bar__search-parameter">@Model.CheckInDate.ToString("MMM dd") - @Model.CheckOutDate.ToString("MMM dd yyyy")</span>
             <span class="search-bar__search-parameter">@(Adults > 1 ? Model.Adults + " adults" : Model.Adults + " adult")</span>
-            <span class="search-bar__search-parameter">@(Children > 1 ? Model.Children + " children" : Model.Children + " child")</span>
+            <span class="search-bar__search-parameter">@(Children == 1 ? Model.Children + " child" : Model.Children + " children")</span>
 
             <a class="large-btn--inverse change-search-btn">Change search</a>
         </div>

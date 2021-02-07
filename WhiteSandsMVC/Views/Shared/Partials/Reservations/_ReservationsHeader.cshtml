@@ -19,10 +19,10 @@
 <div class="bottom-header">
     <div class="bottom-header__container">
         <div class="bottom-header__content">
-            <span class="bottom-header__heading">1. Plan your stay</span>
-            <span class="bottom-header__heading bottom-header__heading--active">2. Choose your room</span>
-            <span class="bottom-header__heading">3. Confirm your stay</span>
-            <span class="bottom-header__heading">4. Review your stay</span>
+            <span class="@(ViewBag.Title == "Search" ? "bottom-header__heading bottom-header__heading--active" : "bottom-header__heading")">1. Plan your stay</span>
+            <span class="@(ViewBag.Title == "Choose Room" ? "bottom-header__heading bottom-header__heading--active" : "bottom-header__heading")">2. Choose your room</span>
+            <span class="@(ViewBag.Title == "Confirm Booking" ? "bottom-header__heading bottom-header__heading--active" : "bottom-header__heading")">3. Confirm your stay</span>
+            <span class="@(ViewBag.Title == "Review Booking" ? "bottom-header__heading bottom-header__heading--active" : "bottom-header__heading")">4. Review your stay</span>
         </div>
     </div>
 </div>

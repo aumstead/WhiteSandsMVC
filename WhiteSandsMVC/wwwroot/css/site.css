@@ -10,6 +10,7 @@
 @import 'layout/reservationsHeader.css';
 @import 'layout/reservationsFooter.css';
 
+@import 'components/_checkbox.css';
 @import 'components/_buttons.css';
 @import 'components/_bannerSlideshow.css';
 @import 'components/_carousel.css';
@@ -25,3 +26,6 @@
 @import 'pages/reservations/chooseRoom.css';
 @import 'pages/reservations/confirmStay.css';
 @import 'pages/reservations/bookingSuccess.css';
+@import 'pages/account/account.css';
+@import 'pages/profile/profile.css';
+@import 'pages/error/NotFound.css';

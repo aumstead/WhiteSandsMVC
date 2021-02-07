@@ -1,0 +1,183 @@
+﻿@model ProfileViewModel
+
+@{
+    ViewBag.Title = "Your Profile";
+}
+
+<header>
+    <partial name="Partials/Account/_AccountNavbar" />
+    <partial name="Partials/_MobileNavigation" />
+</header>
+
+
+
+
+<div class="profile-hero">
+    <div class="profile-hero__left-col">
+        <h1 class="h1-heading profile-hero__title">@($"{Model.Title} {Model.FirstName} {Model.LastName}")</h1>
+        <a href="#" class="small-btn profile-hero__profile-cta">Complete your profile</a>
+    </div>
+    <div class="profile-hero__right-col">
+        <p class="profile-hero__text">You seem to not have any upcoming trips. Would you like to add one?</p>
+        <a asp-action="UnderConstruction" asp-controller="Error" class="large-btn large-btn--inverse profile-hero__right-col-ctas">Add existing reservation</a>
+        <a href="#" class="large-btn profile-hero__right-col-ctas">Book Now</a>
+    </div>
+</div>
+
+<div class="profile-black-background">
+    <div class="profile-exclusive">
+        <img class="profile-exclusive__gift" src="~/images/svg/profile/gift.svg" />
+        <div class="profile-exclusive__text-wrapper">
+            <h4 class="h3-heading profile-exclusive__title">You can now see exclusive offers</h4>
+            <p class="text-serif">Complimentary perks, best rate guaranteed, and personalized service when you book with us.</p>
+        </div>
+        <a href="#" class="large-btn profile-exclusive__cta">See offers</a>
+    </div>
+
+    <div class="profile-preferences">
+        <h2 class="h1-heading mb-1">Your preferences</h2>
+        <p class="text-serif">You may change these at any time.</p>
+        <div class="profile-preferences__pref-wrapper">
+            <img class="profile-preferences__svg" src="~/images/svg/profile/bed.svg" />
+            <div class="profile-preferences__text-wrapper">
+                <h3 class="h3-heading">Sleep</h3>
+                <div id="sleep-prefs" class="profile-preferences__edit-drawer">
+                    <form id="sleep-form" class="profile-preferences-form" method="post">
+                        <div class="profile-preferences__select-inputs-wrapper">
+                            <div class="form-group">
+                                <label class="profile-label" asp-for="@Model.MattressPreference"></label>
+                                <select class="profile-select" asp-for="@Model.MattressPreference">
+                                    <option value="Mattress - Signature pocket spring (medium firmness)">Mattress - Signature pocket spring (medium firmness)</option>
+                                    <option value="Mattress - Pillow top firm">Mattress - Pillow top firm</option>
+                                    <option value="Mattress - Pillow top soft">Mattress - Pillow top soft</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="profile-label" asp-for="@Model.PillowPreference"></label>
+                                <select class="profile-select" asp-for="@Model.PillowPreference">
+                                    <option value="Pillows - Feather">Pillows - Feather</option>
+                                    <option value="Pillows - Memory Foam">Pillows - Memory Foam</option>
+                                    <option value="Pillows - Buckwheat">Pillows - Buckwheat</option>
+                                    <option value="Pillows - Firm">Pillows - Firm</option>
+                                    <option value="Pillows - Extra Large">Pillows - Extra Large</option>
+                                </select>
+                            </div>
+                        </div>
+                                                
+                        <button class="large-btn profile-preferences__update-btn" type="submit">Save changes</button>
+                    </form>
+                </div>
+                <ul class="profile-preferences__ul text-serif">
+                    <li class="mb-2">@Model.MattressPreference</li>
+                    <li>@Model.PillowPreference</li>
+                </ul>
+            </div>
+            <button id="sleep-toggle-btn" class="large-btn profile-preferences__edit-btn" onclick="return toggleEditDrawer('sleep')">Edit</button>
+        </div>
+
+        <div class="profile-preferences__pref-wrapper">
+            <img class="profile-preferences__svg" src="~/images/svg/profile/nosmoking.svg" />
+            <div class="profile-preferences__text-wrapper">
+                <h3 class="h3-heading">Room</h3>
+                <div id="room-prefs" class="profile-preferences__edit-drawer">
+                    <form id="room-form" class="profile-preferences-form" method="post">
+                        <div class="profile-preferences__select-inputs-wrapper">
+                            <div class="form-group">
+                                <label class="profile-label" asp-for="@Model.SmokingPreference"></label>
+                                <select class="profile-select" asp-for="@Model.SmokingPreference">
+                                    <option value="Non-smoking room">Non smoking room</option>
+                                    <option value="Smoking room">Smoking room</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button class="large-btn profile-preferences__update-btn" type="submit">Save changes</button>
+                    </form>
+                </div>
+                <ul class="profile-preferences__ul text-serif">
+                    <li>@Model.SmokingPreference</li>
+                </ul>
+            </div>
+            <button id="room-toggle-btn" class="large-btn profile-preferences__edit-btn" onclick="return toggleEditDrawer('room')">Edit</button>
+        </div>
+    </div>
+</div>
+
+<div class="profile-dark-grey-background">
+    <div class="profile-interests">
+        <h2 class="h1-heading mb-1">Your interests</h2>
+        <p class="text-serif">We'll use your choices to make the content you see more personal.</p>
+        <div class="profile-interests__interest-wrapper">
+            <img class="profile-interests__svg" src="~/images/svg/profile/plane.svg" />
+            <div class="profile-interests__text-wrapper">
+                <h3 class="h3-heading">Travel &amp; Lifestyle</h3>
+                <div class="profile-interests__btns-wrapper">
+                    <div id="TravelAndLife-error" class="profile-interests__error">Error saving. Refresh the page to try again.</div>
+
+                    @for (var i = 0; i < Model.TravelInterests.Count(); i++)
+                    {
+                        if (Model.SubscribedUserTravelInterests.Contains(Model.TravelInterests[i]))
+                        {
+                            <button id="TravelAndLife-@Model.TravelInterests[i].Id" class="profile-interests__btn profile-interests__btn--subscribed" onclick="return handleClick('@Model.Id', @Model.TravelInterests[i].Id, 'TravelAndLife')">@Model.TravelInterests[i].Name</button>
+                        }
+                        else
+                        {
+                            <button id="TravelAndLife-@Model.TravelInterests[i].Id" class="profile-interests__btn" onclick="return handleClick('@Model.Id', @Model.TravelInterests[i].Id, 'TravelAndLife')">@Model.TravelInterests[i].Name</button>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-interests__interest-wrapper">
+            <img class="profile-interests__svg" src="~/images/svg/profile/heart-pulse.svg" />
+            <div class="profile-interests__text-wrapper">
+                <h3 class="h3-heading">Health &amp; Wellness</h3>
+                <div class="profile-interests__btns-wrapper">
+                    <div id="HealthAndWellness-error" class="profile-interests__error">Error saving. Refresh the page to try again.</div>
+
+                    @for (var i = 0; i < Model.HealthInterests.Count(); i++)
+                    {
+                        if (Model.SubscribedUserHealthInterests.Contains(Model.HealthInterests[i]))
+                        {
+                            <button id="HealthAndWellness-@Model.HealthInterests[i].Id" class="profile-interests__btn profile-interests__btn--subscribed" onclick="return handleClick('@Model.Id', @Model.HealthInterests[i].Id, 'HealthAndWellness')">@Model.HealthInterests[i].Name</button>
+                        }
+                        else
+                        {
+                            <button id="HealthAndWellness-@Model.HealthInterests[i].Id" class="profile-interests__btn" onclick="return handleClick('@Model.Id', @Model.HealthInterests[i].Id, 'HealthAndWellness')">@Model.HealthInterests[i].Name</button>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-interests__interest-wrapper">
+            <img class="profile-interests__svg profile-interests__svg--dinner" src="~/images/svg/profile/dinner.svg" />
+            <div class="profile-interests__text-wrapper">
+                <h3 class="h3-heading">Food &amp; Drink</h3>
+                <div class="profile-interests__btns-wrapper">
+                    <div id="FoodAndDrink-error" class="profile-interests__error">Error saving. Refresh the page to try again.</div>
+
+                    @for (var i = 0; i < Model.FoodInterests.Count(); i++)
+                    {
+                        if (Model.SubscribedUserFoodInterests.Contains(Model.FoodInterests[i]))
+                        {
+                            <button id="FoodAndDrink-@Model.FoodInterests[i].Id" class="profile-interests__btn profile-interests__btn--subscribed" onclick="return handleClick('@Model.Id', @Model.FoodInterests[i].Id, 'FoodAndDrink')">@Model.FoodInterests[i].Name</button>
+                        }
+                        else
+                        {
+                            <button id="FoodAndDrink-@Model.FoodInterests[i].Id" class="profile-interests__btn" onclick="return handleClick('@Model.Id', @Model.FoodInterests[i].Id, 'FoodAndDrink')">@Model.FoodInterests[i].Name</button>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="Partials/_Footer" />
+
+@section Scripts {
+    <script src="~/js/profile.js"></script>
+} 

@@ -1,0 +1,53 @@
+﻿@model LoginViewModel;
+
+@{
+    ViewBag.Title = "Sign In";
+}
+
+<header>
+    <partial name="Partials/Account/_AccountNavbar" />
+    <partial name="Partials/_MobileNavigation" />
+</header>
+
+<div class="account-layout">
+    <div class="account-layout__form-container">
+        <h1 class="h1-heading account__heading">Sign in</h1>
+        <p class="text-serif account__text">View and edit your White Sands account. Let us know your preferences!</p>
+        <form class="account__form" method="post">
+            <div asp-validation-summary="All" class="text-error account__error-summary"></div>
+            <div class="account__form-group">
+                <input class="account__input" asp-for="Email" placeholder="Email" onfocus="" onblur="this.placeholder = 'Email'" />
+                <label class="account__label" asp-for="Email"></label>
+                <span asp-validation-for="Email" class="text-error account__error-control"></span>
+            </div>
+
+            <div class="account__form-group">
+                <input class="account__input" asp-for="Password" placeholder="Password" onfocus="" onblur="this.placeholder = 'Password'" />
+                <label class="account__label" asp-for="Password"></label>
+                <span asp-validation-for="Password" class="text-error account__error-control"></span>
+            </div>
+
+            
+            <input class="styled-checkbox" type="checkbox" asp-for="RememberMe" />
+            <label class="text-serif" asp-for="RememberMe"></label>
+            
+
+            <div class="account__form-group--register">
+                <span class="text-serif">Need to create an account?</span>&nbsp;
+                <a class="text-serif account__register-link" asp-controller="account" asp-action="register">Register</a>
+            </div>
+            <button class="large-btn account__submit-btn" type="submit">Next</button>
+        </form>
+    </div>
+    <div class="account-layout__img-container">
+        <img class="account-img" src="~/images/Account/hammock.jpg" />
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="~/js/checkRates.js" asp-append-version="true"></script>
+    <script src="~/js/dateRangePicker.js" asp-append-version="true"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+}  

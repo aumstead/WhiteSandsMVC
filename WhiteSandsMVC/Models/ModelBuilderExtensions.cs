@@ -306,8 +306,169 @@ namespace WhiteSandsMVC.Models
                 }
             };
 
+            TravelInterest[] TravelInterests = new TravelInterest[]
+            {
+                new TravelInterest
+                {
+                    Id = 1,
+                    Name = "Couples Getaway"
+                },
+                new TravelInterest
+                {
+                    Id = 2,
+                    Name = "Family Getaway"
+                },
+                new TravelInterest
+                {
+                    Id = 3,
+                    Name = "Friends Getaway"
+                },
+                new TravelInterest
+                {
+                    Id = 4,
+                    Name = "Solo Travel"
+                },
+                new TravelInterest
+                {
+                    Id = 5,
+                    Name = "Beach Vacation"
+                },
+                new TravelInterest
+                {
+                    Id = 6,
+                    Name = "Vacation Rental"
+                },
+                new TravelInterest
+                {
+                    Id = 7,
+                    Name = "City Escape"
+                },
+                new TravelInterest
+                {
+                    Id = 8,
+                    Name = "Adventure Travel"
+                },
+                new TravelInterest
+                {
+                    Id = 9,
+                    Name = "Art and Culture"
+                },
+                new TravelInterest
+                {
+                    Id = 10,
+                    Name = "Shopping"
+                },
+                new TravelInterest
+                {
+                    Id = 11,
+                    Name = "Sporting Events"
+                },
+                new TravelInterest
+                {
+                    Id = 12,
+                    Name = "Culinary Travel"
+                }
+            };
+
+            HealthInterest[] HealthInterests = new HealthInterest[]
+            {
+                new HealthInterest
+                {
+                    Id = 1,
+                    Name = "Fitness"
+                },
+                new HealthInterest
+                {
+                    Id = 2,
+                    Name = "Spa"
+                },
+                new HealthInterest
+                {
+                    Id = 3,
+                    Name = "Yoga"
+                },
+                new HealthInterest
+                {
+                    Id = 4,
+                    Name = "Nature Excursions"
+                },
+                new HealthInterest
+                {
+                    Id = 5,
+                    Name = "Skiing"
+                },
+                new HealthInterest
+                {
+                    Id = 6,
+                    Name = "Golfing"
+                },
+                new HealthInterest
+                {
+                    Id = 7,
+                    Name = "Diving"
+                },
+                new HealthInterest
+                {
+                    Id = 8,
+                    Name = "Surfing"
+                },
+                new HealthInterest
+                {
+                    Id = 9,
+                    Name = "Other water sports"
+                },
+                new HealthInterest
+                {
+                    Id = 10,
+                    Name = "Horseback riding"
+                },
+                new HealthInterest
+                {
+                    Id = 11,
+                    Name = "Meditation"
+                }
+            };
+
+            FoodInterest[] FoodInterests = new FoodInterest[]
+            {
+                new FoodInterest
+                {
+                    Id = 1,
+                    Name = "Restaurants & Bars"
+                },
+                new FoodInterest
+                {
+                    Id = 2,
+                    Name = "Wine"
+                },
+                new FoodInterest
+                {
+                    Id = 3,
+                    Name = "Brunch"
+                },
+                new FoodInterest
+                {
+                    Id = 4,
+                    Name = "Cooking classes"
+                },
+                new FoodInterest
+                {
+                    Id = 5,
+                    Name = "Farm to table"
+                },
+                new FoodInterest
+                {
+                    Id = 6,
+                    Name = "Local specialties"
+                },
+            };
+
+
             modelBuilder.Entity<RoomType>().HasData(RoomTypes);
             modelBuilder.Entity<Room>().HasData(Rooms);
+            modelBuilder.Entity<TravelInterest>().HasData(TravelInterests);
+            modelBuilder.Entity<HealthInterest>().HasData(HealthInterests);
+            modelBuilder.Entity<FoodInterest>().HasData(FoodInterests);
         }
     }
 }

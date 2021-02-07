@@ -1,5 +1,7 @@
-﻿@model WhiteSandsMVC.ViewModels.ConfirmStayViewModel
-
+﻿@model ConfirmStayViewModel
+@{ 
+    ViewBag.Title = "Confirm Booking";
+}
 @{
     var baseTotal = Model.RoomType.Price * Model.Nights;
     decimal feePercent = .1m;

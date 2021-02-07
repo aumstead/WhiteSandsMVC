@@ -1,15 +1,11 @@
-﻿//////////////////////////////
-// section accomodations carousel
-//////////////////////////////
+﻿// section accomodations carousel
 
 let elem = document.querySelector('.accomodations-carousel');
 let flickity = new Flickity(elem, {
     wrapAround: true
 });
 
-//////////////////////////////
 // filter room types
-//////////////////////////////
 const overwaterBtn = document.getElementById('overwater-btn');
 const beachfrontBtn = document.getElementById('beachfront-btn');
 const villasBtn = document.getElementById('villas-btn');
@@ -39,9 +35,7 @@ villasBtn.addEventListener('click', () => {
     villas.classList.add('show-room-type');
 })
 
-//////////////////////////////
 // policies
-//////////////////////////////
 const checkInBtn = document.getElementById('check-in-btn');
 const earlyArrivalsBtn = document.getElementById('early-arrivals-btn');
 const creditCardsBtn = document.getElementById('credit-cards-btn');

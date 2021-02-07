@@ -1,24 +1,121 @@
-﻿@model WhiteSandsMVC.ViewModels.BookingSuccessViewModel
+﻿@model BookingSuccessViewModel
+@{ 
+    ViewBag.Title = "Review Booking";
+}
 
 <partial name="Partials/Reservations/_ReservationsHeader" />
 
 <div class="booking-success-grid">
     <div class="booking-success-body-col">
-        <h1 class="h2-heading">We look forward to seeing you soon!</h1>
-        <h4 class="booking-success__section-heading pb-2">Payment successful!</h4>
-        <a href="#" class="large-btn">View Itinerary</a>
-        <ul>
-            <li>adults: @Model.Booking.Adults</li>
-            <li>children: @Model.Booking.Children</li>
-            <li>Check in: @Model.Booking.CheckInDate</li>
-            <li>total cost: @Model.Booking.TotalCost</li>
-            <li>guest first name: @Model.Booking.Guest.FirstName</li>
-            <li>guest last name: @Model.Booking.Guest.LastName</li>
-        </ul>
+        <h1 class="booking-success__heading">Your reservation is confirmed</h1>
+        <p class="booking-success__sub-heading text-serif">We look forward to seeing you soon!</p>
+
+        <div class="booking-success__body-row">
+            <h4 class="booking-success__section-heading">Name</h4>
+            <p class="booking-success__row-info">@(Model.Guest.FirstName + " " + Model.Guest.LastName)</p>
+        </div>
+
+        <div class="booking-success__body-row">
+            <h4 class="booking-success__section-heading">Check in</h4>
+            <p class="booking-success__row-info">@Model.Booking.CheckInDate.ToLongDateString()</p>
+        </div>
+
+        <div class="booking-success__body-row">
+            <h4 class="booking-success__section-heading">Check out</h4>
+            <p class="booking-success__row-info">@Model.Booking.CheckOutDate.ToLongDateString()</p>
+        </div>
+
+        <div class="booking-success__body-row">
+            <h4 class="booking-success__section-heading">Address</h4>
+            <p class="booking-success__row-info">5 Maenam, Koh Samet, Suratthani, Thailand 84330</p>
+        </div>
+
+
+        <div class="booking-success__body-btns">
+            <a href="#" class="large-btn">View Itinerary</a>
+        </div>
     </div>
 
     <div class="booking-success-room-col">
-        <img src="@("/images/Reservations/Rooms/" + (Model.Booking.RoomType.PhotoPath))" />
+        <img class="booking-success-img" src="@("/images/Reservations/Rooms/" + (Model.Booking.RoomType.PhotoPath))" />
+
+        <div class="booking-success__room-row">
+            <h4 class="booking-success__section-heading">Accomodation</h4>
+            <p class="booking-success__room-row-info">@(Model.RoomType.Name)</p>
+        </div>
+
+        <div class="booking-success__room-row">
+            <h4 class="booking-success__section-heading">Guests</h4>
+            <p class="booking-success__room-row-info">@(Model.Booking.Adults > 1 ? Model.Booking.Adults + " adults" : Model.Booking.Adults + " adult"), @(Model.Booking.Children == 1 ? Model.Booking.Children + " child" : Model.Booking.Children + " children")</p>
+        </div>
+
+        <div class="booking-success__room-row">
+            <h4 class="booking-success__section-heading">Amount</h4>
+            <p class="booking-success__room-row-info">$@string.Format("{0:0.00}", Model.Booking.TotalCost)</p>
+        </div>
+    </div>
+
+    <div class="prepare-section">
+        @*<h2 class="h2-heading">Prepare your stay</h2>*@
+        <div class="prepare__cards-container">
+            <a href="#">
+                <div class="prepare__card">
+                    <img class="prepare__img" src="~/images/Reservations/BookingSuccess/snorkel.jpg" />
+                    <div class="prepare__card-top">
+                        <h5 class="prepare__heading">See Activities</h5>
+                        <ul class="prepare__ul">
+                            <li>- Diving expeditions</li>
+                            <li>- Snorkelling</li>
+                            <li>- Yoga lessons</li>
+                        </ul>
+                        <p class="prepare__btn" href="#">Read more</p>
+
+                    </div>
+                    <div class="prepare__overlay">
+
+                    </div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="prepare__card">
+                    <img class="prepare__img" src="~/images/Reservations/BookingSuccess/restaurant.jpg" />
+                    <div class="prepare__card-top">
+                        <h5 class="prepare__heading">Reserve a table</h5>
+                        <ul class="prepare__ul">
+                            <li>- Receive a 10% discount with a reservation</li>
+                            <li>- Thai and Western cuisine</li>
+                            <li>- Daily, fresh seafood</li>
+                        </ul>
+                        <p class="prepare__btn" href="#">Read more</p>
+
+                    </div>
+
+                    <div class="prepare__overlay">
+
+                    </div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="prepare__card">
+                    <img class="prepare__img" src="~/images/Reservations/BookingSuccess/boat.jpg" />
+                    <div class="prepare__card-top">
+                        <h5 class="prepare__heading">Arrange transportation</h5>
+                        <ul class="prepare__ul">
+                            <li>- Airport pickup/dropoff</li>
+                            <li>- Island cruises</li>
+                            <li>- Rental cars</li>
+                        </ul>
+                        <p class="prepare__btn">Read more</p>
+
+                    </div>
+                    <div class="prepare__overlay">
+
+                    </div>
+                </div>
+            </a>
+        </div>
     </div>
 </div>
 

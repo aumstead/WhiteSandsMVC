@@ -1,0 +1,80 @@
+﻿@model RegisterViewModel;
+
+@{
+    ViewBag.Title = "Create Account";
+}
+
+<header>
+    <partial name="Partials/Account/_AccountNavbar" />
+    <partial name="Partials/_MobileNavigation" />
+</header>
+
+<div class="account-layout">
+    <div class="account-layout__form-container">
+        <h1 class="h1-heading account__heading">Create Profile</h1>
+        <form class="account__form" method="post">
+            <div class="account__form-row">
+                <div class="account__form-group">
+                    <label class="account__label" asp-for="Title"></label>
+                    <select class="account__select" asp-for="Title">
+                        <option value="">Title</option>
+                        <option value="Mr.">Mr.</option>
+                        <option value="Mrs.">Mrs.</option>
+                        <option value="Ms.">Ms.</option>
+                        <option value="Dr.">Dr.</option>
+                    </select>
+                    <span asp-validation-for="Title" class="text-error account__error-control"></span>
+                </div>
+                <div class="account__form-group account__form-group--first-name">
+                    <input class="account__input" asp-for="FirstName" placeholder="First name" onfocus="" onblur="this.placeholder = 'First name'" />
+                    <label class="account__label" asp-for="FirstName"></label>
+                    <span asp-validation-for="FirstName" class="text-error account__error-control"></span>
+                </div>
+            </div>
+
+            <div class="account__form-group">
+                <input class="account__input" asp-for="LastName" placeholder="Last name" onfocus="" onblur="this.placeholder = 'Last name'" />
+                <label class="account__label" asp-for="LastName"></label>
+                <span asp-validation-for="LastName" class="text-error account__error-control"></span>
+            </div>
+
+            <div class="account__form-group">
+                <input class="account__input" asp-for="Email" placeholder="Email" onfocus="" onblur="this.placeholder = 'Email'" />
+                <label class="account__label" asp-for="Email"></label>
+                <span asp-validation-for="Email" class="text-error account__error-control"></span>
+            </div>
+
+            <div class="account__form-group">
+                <input class="account__input" asp-for="Password" placeholder="Password" onfocus="" onblur="this.placeholder = 'Password'" />
+                <label class="account__label" asp-for="Password"></label>
+                <span asp-validation-for="Password" class="text-error account__error-control"></span>
+            </div>
+
+            <div class="account__form-group">
+                <input class="account__input" asp-for="ConfirmPassword" placeholder="Confirm Password" onfocus="" onblur="this.placeholder = 'Confirm Password'" />
+                <label class="account__label" asp-for="ConfirmPassword"></label>
+                <span asp-validation-for="ConfirmPassword" class="text-error account__error-control"></span>
+            </div>
+                        
+            <input class="styled-checkbox styled-checkbox--multi-line" type="checkbox" asp-for="SubscribedToEmailList" />
+            <label class="text-serif" asp-for="SubscribedToEmailList">I would like to receive information for returning guests about special offers lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc venenatis massa eget purus egestas, sit.</label>
+            
+
+            <div class="account__btns-container">
+                <a asp-controller="account" asp-action="login" class="large-btn large-btn--inverse account__back-btn">Back</a>
+                <button class="large-btn account__submit-btn" type="submit">Next</button>
+            </div>
+        </form>
+    </div>
+    <div class="account-layout__img-container">
+        <img class="account-img" src="~/images/Account/hammock.jpg" />
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="~/js/checkRates.js" asp-append-version="true"></script>
+    <script src="~/js/dateRangePicker.js" asp-append-version="true"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+}  

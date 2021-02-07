@@ -1,0 +1,151 @@
+﻿.account-layout {
+    display: flex;
+    max-width: 130rem;
+    padding-top: 9rem;
+    justify-content: space-around;
+}
+
+.account-layout__form-container {
+    width: 55rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 12rem;
+    margin-bottom: 18rem;
+}
+
+.account-layout__img-container {
+    width: 40rem;
+}
+
+.account-img {
+    object-fit: cover;
+    width: 40rem;
+    position: fixed;
+    margin-top: 8rem;
+}
+
+.account__heading {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.account__text {
+    margin-bottom: 3rem;
+}
+
+.account__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.account__form-group {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.account__form-group--first-name {
+    width: 100%;
+    margin-left: 3rem;
+}
+
+.account__form-row {
+    display: flex;
+}
+
+.account__select {
+    border: none;
+    border-bottom: 1px solid var(--color-black);
+    padding: 1rem 0;
+    font-size: 1.8rem;
+    font-family: var(--font-text);
+    width: 9rem;
+}
+
+.account__input {
+    border: none;
+    border-bottom: 1px solid var(--color-black);
+    padding: 1rem 0;
+    font-size: 1.8rem;
+    font-family: var(--font-text);
+}
+
+.account__input::placeholder {
+    transition: opacity .5s;
+    color: var(--color-black);
+}
+
+.account__input:focus {
+    outline: none;
+}
+
+.account__input:focus::placeholder {
+    opacity: 0;
+}
+
+.account__input:focus + label {
+    opacity: 1;
+    transform: translateY(-1.5rem);
+}
+
+.account__label {
+    opacity: 0;
+    font-family: var(--font-sans);
+    font-size: 1.5rem;
+    position: absolute;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: gray;
+    transition: all .5s;
+}
+
+
+.account__register-link {
+    color: var(--color-black);
+    transition: color .5s;
+}
+
+.account__register-link:hover {
+    color: var(--color-grey);
+}
+
+.account__submit-btn {
+    width: 18rem;
+    margin-top: 4rem;
+    align-self: flex-end;
+}
+
+.account__back-btn {
+    width: 18rem;
+    margin-top: 4rem;
+    text-align: center;
+    margin-right: 2rem;
+}
+
+.account__btns-container {
+    display: flex;
+    justify-content: center;
+}
+
+.account__error-control {
+    margin-top: 1rem;
+    display: block;
+    font-size: 1.4rem;
+}
+
+.account__check-rates-btn {
+    text-align: center;
+    font-weight: 400;
+}
+
+.account__error-summary ul {
+    list-style: none;
+    font-size: 1.4rem;
+    margin-bottom: 3rem;
+}
+
+.account__form-group--register {
+    margin-top: 5rem;
+}
