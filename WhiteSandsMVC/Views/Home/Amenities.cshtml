@@ -1,0 +1,208 @@
+﻿@{
+    ViewBag.Title = "Amenities";
+}
+
+<header>
+    <partial name="Partials/_BlackNavbar" />
+    <partial name="Partials/_MobileNavigation" />
+</header>
+
+<partial name="Partials/_CheckRatesDrawer" />
+
+<div class="activities-page-hero">
+    <div class="activities-hero__headings">
+        <h1 class="section-heading activities-hero__title">Services & Amenities</h1>
+    </div>
+    <nav class="activities-hero__nav">
+        <ul class="activities-hero__ul">
+            <li class="activities-hero__nav-li"><a class="activities-hero__nav-a" href="#id-amenities-amenities">Resort Amenities</a></li>
+            <li class="activities-hero__nav-li"><a class="activities-hero__nav-a" href="#id-amenities-services">Our Services</a></li>
+            <li class="activities-hero__nav-li"><a class="activities-hero__nav-a" href="#id-amenities-family">Fun for the whole family</a></li>
+            <li class="activities-hero__nav-li"><a class="activities-hero__nav-a" href="#id-amenities-complimentary">Complimentary services</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div class="activities-hero__photo"></div>
+
+<div id="id-amenities-amenities" class="pt-8 mt-minus-8"></div>
+<h2 class="section-heading activities-hero__subheading">Resort Amenities</h2>
+
+<div class="activities-carousel">
+    <div class="carousel-cell">
+        <img src="~/images/ActivitiesIndex/activities-plane.jpg"
+             alt="Floating airplane"
+             asp-append-version="true"
+             class="amenities__carousel-img" />
+        <div class="accomodations__details-container">
+            <h4 class="h4-heading accomodations__details-heading">
+                Private charters
+            </h4>
+            <p class="text-serif accomodations__details-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Id, ratione! Aspernatur at fugiat rem velit
+                accusantium nihil tempora expedita, ad quod
+                provident nisi culpa voluptate quidem assumenda
+                animi recusandae doloremque?
+            </p>
+            <a asp-controller="Error" asp-action="UnderConstruction" target="_blank" class="small-btn small-btn--inverse accomodations__small-btn--accomodations-controller">Details</a>
+        </div>
+    </div>
+    <div class="carousel-cell">
+        <img src="~/images/ActivitiesIndex/diving-lessons.jpg"
+             alt="scuba diving lesson"
+             asp-append-version="true"
+             class="amenities__carousel-img" />
+        <div class="accomodations__details-container">
+            <h4 class="h4-heading accomodations__details-heading">Diving Lessons</h4>
+            <p class="text-serif accomodations__details-text">
+                Lorem ipsum dolor sit amet consectetur
+                elit. Consequuntur possimus vero placeat expedita
+                optio, incidunt ex ducimus, vel
+                reiciendis veniam illum dolor ratione eos velit.
+                Quas quibusdam maiores cupiditate ullam
+                voluptatibus ducimus.
+            </p>
+            <a asp-controller="Error" asp-action="UnderConstruction" target="_blank" class="small-btn small-btn--inverse accomodations__small-btn--accomodations-controller">Details</a>
+        </div>
+    </div>
+    <div class="carousel-cell">
+        <img src="~/images/ActivitiesIndex/activities-spa.jpg"
+             alt="woman at the spa"
+             class="amenities__carousel-img object-fit-cover" />
+        <div class="accomodations__details-container">
+            <h4 class="h4-heading accomodations__details-heading">Full-Service Spa</h4>
+            <p class="text-serif accomodations__details-text">
+                Lorem ipsum dolor sit, amet adipisicing
+                elit. Reprehenderit vero beatae
+                quibusdam. Corporis a, totam, temporibus
+                labore velit tempore aspernatur maxime
+                necessitatibus!
+            </p>
+            <a asp-controller="Error" asp-action="UnderConstruction" target="_blank" class="small-btn small-btn--inverse accomodations__small-btn--accomodations-controller">Details</a>
+        </div>
+    </div>
+</div>
+
+<div class="activities-more-section activities-more-section--black pb-8 pt-10">
+    <h3 class="h3-heading text-center">More Amenities</h3>
+    <hr class="activities-more-hr activities-more-hr--white" />
+    <div class="activities-more__content">
+        <ul class="activities-more__ul">
+            <li>3 Restaurants</li>
+            <li>On-site boutiques</li>
+            <li>Fitness center</li>
+        </ul>
+        <ul class="activities-more__ul">
+            <li>2 lounges</li>
+            <li>White Sands Explorer (Island cruise)</li>
+            <li>Full-size swimming pool</li>
+        </ul>
+    </div>
+</div>
+
+<div class="activities-quote pb-2">
+    <blockquote>
+        <p class="activities-quote-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras facilisis neque sit amet.</p>
+    </blockquote>
+    <cite class="activities-quote__attribution"><strong>Dwight Schrute</strong><span class="activities-quote__attribution-role">Assistant to the regional manager</span></cite>
+</div>
+
+<div class="mt-minus-12 pt-12" id="id-amenities-services"></div>
+<div class="activities-more-section">
+    <h3 class="h3-heading text-center">Our Services</h3>
+    <hr class="activities-more-hr" />
+    <div class="activities-more__content">
+        <ul class="activities-more__ul">
+            <li>Multilingual managers and reception</li>
+            <li>Guided group recreation activities</li>
+            <li>Full-service Yacht and seaplane</li>
+        </ul>
+        <ul class="activities-more__ul">
+            <li>24-hour Room service</li>
+            <li>Boat and kayak rentals</li>
+        </ul>
+    </div>
+</div>
+
+<div class="pt-8 mt-minus-8" id="id-amenities-family"></div>
+<h2 class="section-heading activities-family-heading">Fun for the whole family</h2>
+
+<section class="activities-kids">
+    <img class="activities-kids-photo" src="/images/ActivitiesIndex/activities-kid.jpg" alt="Girl playing on beach" asp-append-version="true"/>
+    <div class="amenities-kids-text">
+        <h4 class="h4-heading activities__heading">Kids for all seasons</h4>
+        <p class="text-serif amenities-text">Explore the dozens of limestone islands dotting Koh Samet's skyline. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam temporibus ea soluta quidem maiores. Animi.</p>
+        <a asp-controller="Error" asp-action="UnderConstruction" target="_blank" class="small-btn">Details</a>
+    </div>
+</section>
+
+<div class="activities-more-section pt-8">
+    <h3 class="h3-heading text-center">More for kids</h3>
+    <hr class="activities-more-hr" />
+    <div class="activities-more__content">
+        <ul class="activities-more__ul">
+            <li>Dolphin cruise</li>
+            <li>Surfing lessons</li>
+            <li>Children's menus with free meals for kids under 6</li>
+        </ul>
+        <ul class="activities-more__ul">
+            <li>Welcome package for children</li>
+            <li>Strollers and playpens</li>
+            <li>Diapers, swim diapers and wipes</li>
+        </ul>
+    </div>
+</div>
+
+<div class="special-arrangements">
+    <span class="text-serif">We can arrange virtually anything.</span>
+    <div class="special-arrangements__bottom-wrapper">
+    <a asp-controller="error" asp-action="UnderConstruction" target="_blank" class="small-btn small-btn--inverse">+(66) 077 984477</a>                                     
+    <a asp-controller="error" asp-action="UnderConstruction" target="_blank" class="special-arrangements__contact-btn">Contact</a>
+
+    </div>
+</div>
+
+<div class="pt-12 mt-minus-12" id="id-amenities-complimentary"></div>
+<div class="activities-more-section mb-8">
+    <h3 class="h3-heading text-center">Complimentary services</h3>
+    <hr class="activities-more-hr" />
+    <div class="activities-more__content">
+        <ul class="activities-more__ul">
+            <li>High-speed wi-fi</li>
+            <li>Beach essentials for kids</li>
+            <li>High-end toiletries</li>
+        </ul>
+        <ul class="activities-more__ul">
+            <li>Fresh fruit daily, bottled water, tea and coffee</li>
+            <li>Snorkelling, kayaking, and windsurfing</li>
+            <li>Bicycles</li>
+        </ul>
+    </div>
+</div>
+
+<div class="activities-page-meetings">
+    <div class="activities-page-meetings__text-container">
+        <h3 class="h3-heading mb-3">Unforgettable meetings and events</h3>
+        <p class="text-serif">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis consequat vehicula. Integer volutpat, dui in aliquet lobortis, nulla nunc dictum ligula, sit amet bibendum nibh nunc vitae justo.</p>
+    </div>
+    <div class="activities-page-meetings__link-container">
+        <a asp-controller="error" asp-action="UnderConstruction" target="_blank" class="text-sans activities-page-meetings__link">Meetings & events <partial name="Partials/Svgs/_ArrowRight" /></a>
+        <a asp-controller="error" asp-action="UnderConstruction" target="_blank" class="text-sans activities-page-meetings__link">Weddings <partial name="Partials/Svgs/_ArrowRight"/></a>
+    </div>
+</div>
+
+<partial name="Partials/_Footer" />
+
+@section Scripts {
+    <script src="~/js/AmenitiesIndex.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="~/js/checkRates.js" asp-append-version="true"></script>
+    <script src="~/js/dateRangePicker.js" asp-append-version="true"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+}
+
+@section FlickityScript {
+    <script src="~/js/flickity.pkgd.min.js"></script>
+}

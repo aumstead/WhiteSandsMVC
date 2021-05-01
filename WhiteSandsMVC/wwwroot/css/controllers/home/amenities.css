@@ -1,0 +1,369 @@
+﻿.activities-page-hero {
+    padding-top: 9rem;
+    background: var(--color-black);
+    color: var(--color-white);
+}
+
+.amenities__carousel-img {
+    height: 50rem;
+    width: 100%;
+}
+
+.activities-hero__title {
+    font-size: var(--page-heading);
+    margin: 0 auto;
+    text-align: center;
+    margin-top: var(--margin-medium);
+}
+
+.activities-hero__nav {
+    width: 65rem;
+    margin: 0 auto;
+}
+
+.activities-hero__ul {
+    list-style: none;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    margin-top: 3.5rem;
+    padding-bottom: 2rem;
+}
+
+.activities-hero__nav-li {
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    margin-right: 3rem;
+    margin-bottom: 2rem;
+}
+
+.activities-hero__nav-a {
+    color: var(--color-white);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+    .activities-hero__nav-a:hover {
+        color: var(--color-grey);
+    }
+
+.activities-hero__photo {
+    height: 80vh;
+    background-position: bottom;
+    background-size: cover;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0.9) 90%, rgba(0, 0, 0, 1) ), url(/images/ActivitiesIndex/activities-steam.jpg);
+}
+
+.activities-hero__subheading {
+    font-size: var(--section-heading);
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    background: var(--color-black);
+    color: var(--color-white);
+}
+
+.activities-carousel {
+    background: var(--color-black);
+    color: var(--color-white);
+}
+
+.activities-more-section {
+}
+
+.activities-more-section--black {
+    background-color: var(--color-black);
+    color: var(--color-white);
+}
+
+.activities-more-hr {
+    width: 4rem;
+    height: 2px;
+    background-color: var(--color-black);
+    z-index: 10;
+    margin: 2rem auto;
+    margin-bottom: 5rem;
+    border: none;
+}
+
+.activities-more-hr--white {
+    background-color: var(--color-white);
+}
+
+.activities-more__content {
+    display: flex;
+    width: 75rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.activities-more__ul {
+    list-style: none;
+    width: 50%;
+    padding: 0 2rem;
+}
+
+    .activities-more__ul li {
+        margin-bottom: 2rem;
+        font-size: 1.6rem;
+        text-transform: uppercase;
+        font-family: var(--font-sans);
+    }
+
+.activities-quote {
+    margin: 0 auto;
+    margin-top: 7rem;
+    margin-bottom: 6rem;
+    width: 70rem;
+}
+
+.activities-quote-text {
+    font-size: 4rem;
+    font-style: italic;
+    font-family: var(--font-text);
+    text-align: center;
+    line-height: 7rem;
+}
+
+    .activities-quote-text:before {
+        content: url(../../../images/svg/quotes-left.svg);
+        display: block;
+    }
+
+    .activities-quote-text:after {
+        content: url(../../../images/svg/quotes-right.svg);
+        display: block;
+    }
+
+.activities-quote__attribution {
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    display: block;
+    margin: 0 auto;
+    margin-top: 1rem;
+    font-style: unset;
+    text-align: center;
+}
+
+.activities-quote__attribution-role {
+    margin-left: 2rem;
+}
+
+.activities-family-heading {
+    font-size: var(--section-heading);
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+    padding-top: 8rem;
+    padding-bottom: 5rem;
+}
+
+.activities-kids {
+    width: 90rem;
+    margin: 0 auto;
+}
+
+.activities-kids-photo {
+    width: 100%;
+    height: auto;
+}
+
+.amenities-kids-text {
+    margin-top: 2.5rem;
+}
+
+.amenities-text {
+    margin-bottom: 3rem;
+    width: 60%;
+}
+
+.special-arrangements {
+    width: 80rem;
+    background: var(--color-black);
+    margin: 8rem auto;
+    color: var(--color-white);
+    display: flex;
+    height: 8rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+    .special-arrangements span {
+        /*    font-style: italic;
+    font-family: var(--font-text);
+    font-size: 1.8rem;*/
+        margin-left: 3rem;
+        font-style: italic;
+    }
+
+    .special-arrangements a {
+        margin-right: 3rem;
+    }
+
+.special-arrangements__contact-btn {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.4rem;
+    color: var(--color-black);
+    text-decoration: none;
+    background-color: var(--color-white);
+    text-transform: uppercase;
+    padding: 1rem 2.5rem;
+    letter-spacing: .1rem;
+    border: 1px solid var(--color-white);
+    transition: background-color .7s;
+}
+
+    .special-arrangements__contact-btn:hover {
+        background-color: var(--color-black);
+        color: var(--color-white);
+        cursor: pointer;
+    }
+
+.activities-page-meetings {
+    width: 90rem;
+    margin: 0 auto;
+    padding: 6rem 7rem;
+    color: var(--color-white);
+    background: var(--color-black);
+    display: flex;
+    margin-bottom: 8rem;
+}
+
+.activities-page-meetings__text-container {
+    width: 50%;
+    padding-right: 7rem;
+    border-right: 1px solid #fff;
+}
+
+.activities-page-meetings__link-container {
+    padding-left: 7rem;
+    width: 50%;
+}
+
+.activities-page-meetings__link {
+    color: #fff;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 800;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+}
+
+    .activities-page-meetings__link:hover {
+        color: var(--color-grey);
+    }
+
+@media only screen and (max-width: 800px) {
+    .activities-kids {
+        width: 80%;
+    }
+
+    .activities-page-meetings {
+        width: 100%;
+    }
+
+    .special-arrangements {
+        width: 80%;
+        flex-direction: column;
+        height: 15rem;
+        justify-content: space-around;
+    }
+
+        .special-arrangements span {
+            margin-left: unset;
+        }
+
+        .special-arrangements a {
+            margin-left: 3rem;
+        }
+}
+
+
+@media only screen and (max-width: 500px) {
+    .activities-hero__nav {
+        width: 100%;
+    }
+
+    .activities-hero__nav-li {
+        margin-right: unset;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .amenities__carousel-img {
+        height: 20rem;
+    }
+
+    .activities-more__content {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .activities-more__ul {
+        width: 100%;
+    }
+
+    .activities-quote {
+        width: 100%;
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+
+    .activities-quote__attribution-role {
+        margin-top: 2rem;
+        display: block;
+    }
+
+    .amenities-text {
+        width: 100%;
+    }
+
+    .special-arrangements {
+        width: 100%;
+    }
+
+    .special-arrangements__bottom-wrapper {
+        display: flex;
+        width: 100%;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .activities-page-meetings {
+        padding: 4rem;
+        flex-direction: column;
+    }
+
+    .activities-page-meetings__text-container {
+        width: 100%;
+        border-right: unset;
+        padding-right: 0rem;
+    }
+
+    .activities-page-meetings__link-container {
+        width: 100%;
+        padding-left: 0rem;
+        margin-top: 3rem;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .activities-quote-text {
+        font-size: 3rem;
+    }
+
+    .activities-family-heading {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .special-arrangements a {
+        font-size: 1.2rem;
+    }
+}

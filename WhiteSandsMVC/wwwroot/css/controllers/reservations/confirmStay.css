@@ -108,10 +108,6 @@
     display: flex;
 }
 
-.confirm-stay__checkbox {
-    margin-right: 1rem;
-}
-
 .confirm-stay__submit-btn {
     float: right;
     transition: none;
@@ -125,7 +121,8 @@
 }
 
 .confirm-stay__error-form-control--terms {
-    padding-left: 2.2rem;
+    padding-left: 3.2rem;
+    margin-top: .8rem;
     font-size: 1.4rem;
 }
 
@@ -139,5 +136,82 @@
 }
 
 .terms__client-validation-error--show {
-    display: inline;
+    display: block;
+    margin-left: 1rem;
+    padding-top: .5rem;
 }
+
+.confirm-stay--styled-checkbox-label{
+    line-height: 2.5rem;
+    font-size: 1.8rem;
+}
+.confirm-stay__styled-checkbox-label-text {
+    font-size: 1.6rem;
+}
+
+.confirm-stay--styled-checkbox-multi-line + label:before {
+    width: 62px;
+}
+
+.confirm-stay--styled-checkbox-terms + label:before {
+    width: 20px;
+}
+
+/*/////////////////////////////*/
+/* media queries */
+/*/////////////////////////////*/
+
+@media only screen and (max-width: 1100px) {
+    .confirm-stay-grid {
+        display: unset;
+        width: 100%;
+    }
+
+    .reservation-info {
+        width: 50rem;
+        margin: 3rem auto;
+        border-right: none;
+    }
+
+    .confirm-stay-form-col {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+
+    .confirm-stay__submit-btn {
+        float: unset;
+    }
+
+    .confirm-stay--styled-checkbox-multi-line + label:before {
+        width: 48px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .confirm-stay--styled-checkbox-multi-line + label:before {
+        width: 64px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .reservation-info {
+        width: 100%;
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+
+    .confirm-stay__form-control {
+        flex-direction: column;
+    }
+
+    .confirm-stay--styled-checkbox-terms + label:before {
+        width: 25px;
+    }
+
+    .confirm-stay--styled-checkbox-multi-line + label:before {
+        width: 146px;
+    }
+
+    .confirm-stay__select {
+        width: 100%;
+    }

@@ -23,34 +23,26 @@ namespace WhiteSandsMVC.Controllers
             this.bookingRepository = bookingRepository;
             this.guestRepository = guestRepository;
         }
+
         
-        public IActionResult ChooseRoom(string checkInDate, string checkOutDate, string adults, string children, string promo)
+        public IActionResult SelectDates(CheckRatesViewModel model)
         {
-            DateTime checkIn;
-            DateTime checkOut;
+            return View(model);
+        }
 
-            var isValidCheckInDate = DateTime.TryParse(checkInDate, out checkIn);
-            var isValidCheckOutDate = DateTime.TryParse(checkOutDate, out checkOut);
-
-            var model = new ChooseRoomViewModel
-            {
-                CheckInDate = checkIn,
-                CheckOutDate = checkOut,
-                Adults = adults,
-                Children = children,
-                Promo = promo
-            };
-            
+        public IActionResult ChooseRoom(ChooseRoomViewModel model)
+        {
             // get available rooms according to search criteria from db and attach to VM, if I can. Try to not use the viewbag.
-            var testData = roomTypeRepository.GetRoomTypes();
-            ViewBag.testData = testData;
+            IEnumerable<RoomType> roomTypes = roomTypeRepository.GetRoomTypes();
+            ViewBag.roomTypes = roomTypes;
 
             return View(model);
         }
 
+        [HttpGet]
         public IActionResult ConfirmStay(string checkInDate, string checkOutDate, string adults, string children, string selectedRoomTypeId, string promo)
         {
-            
+
             DateTime checkIn;
             DateTime checkOut;
             DateTime cancellationDate;
@@ -67,6 +59,10 @@ namespace WhiteSandsMVC.Controllers
             cancellationDate = checkIn.AddDays(-1);
 
             var room = roomRepository.GetRoomByRoomTypeId(roomTypeId);
+            if (room == null)
+            {
+                return RedirectToAction("HttpStatusCodeHandler", "Error", new { statusCode = 404 });
+            }
             var roomType = roomTypeRepository.GetRoomTypeById(room.RoomTypeId);
 
             ConfirmStayViewModel model = new ConfirmStayViewModel
@@ -130,6 +126,8 @@ namespace WhiteSandsMVC.Controllers
                 });
 
             }
+            var roomTypeForError = roomTypeRepository.GetRoomTypeById(model.RoomTypeId);
+            model.RoomType = roomTypeForError;
             return View(model);
         }
 

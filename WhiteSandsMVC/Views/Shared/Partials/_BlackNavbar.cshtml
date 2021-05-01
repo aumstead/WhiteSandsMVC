@@ -9,14 +9,18 @@
         </div>
         <ul class="nav__ul">
             <li><a asp-controller="home" asp-action="index" class="nav__link">Resort Overview</a></li>
-            <li><a asp-controller="accomodations" asp-action="index" class=@(ViewBag.Title == "Accomodations" ? "nav__link nav__link--active" : "nav__link") >Accomodations</a></li>
-            <li><a href="#" class="nav__link">Photos & Videos</a></li>
-            <li><a href="#" class="nav__link">Activities</a></li>
+            <li><a asp-controller="home" asp-action="accomodations" class=@(ViewBag.Title == "Accomodations" ? "nav__link nav__link--active" : "nav__link")>Accomodations</a></li>
+            <li><a asp-controller="home" asp-action="media" class=@(ViewBag.Title == "Media" ? "nav__link nav__link--active" : "nav__link")>Photo Gallery</a></li>
+            <li><a asp-controller="home" asp-action="amenities" class=@(ViewBag.Title == "Amenities" ? "nav__link nav__link--active" : "nav__link")>Activities</a></li>
         </ul>
     </div>
 
-    <div class="nav__right-flex-container">
-        <a asp-controller="profile" asp-action="index" class="nav__link nav__link--profile">My Profile</a>
-        <button class="large-btn large-btn--inverse large-btn--check-rates" id="check-rates-open-btn">Check rates</button>
-    </div>
+    @if (ViewBag.Title != "Sign In")
+    {
+        <div class="nav__right-flex-container">
+            <a asp-controller="profile" asp-action="index" class="nav__link nav__link--profile">My Profile</a>
+            <button class="large-btn large-btn--inverse large-btn--check-rates" id="check-rates-open-btn">Check rates</button>
+        </div>
+
+    }
 </nav>

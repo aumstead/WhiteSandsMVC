@@ -39,7 +39,7 @@
                 <span>$@string.Format("{0:0.00}", baseTotal)</span>
             </div>
             <div class="price-row">
-                <a class="text-link" href="#">Service fee</a>
+                <a class="text-link" asp-controller="error" asp-action="underconstruction" target="_blank">Service fee</a>
                 <span>$@string.Format("{0:0.00}", serviceFee)</span>
             </div>
             <div class="price-row">
@@ -51,7 +51,7 @@
         <div class="reservation-info__section reservation-info__section--cancellation">
             <h4 class="reservation-info__section-heading">Cancellation Policy</h4>
             <p class="reservation-info__text text-bold">Free cancellation until 2:00 PM on @Model.CancellationDate.ToString("MMM dd").</p>
-            <p class="reservation-info__text">After that, cancel before 2:00 PM on @Model.CheckInDate.ToString("MMM dd") and get a full refund, minus the first night and service fee.</br><a class="text-link" href="#">Learn more</a></p>
+            <p class="reservation-info__text">After that, cancel before 2:00 PM on @Model.CheckInDate.ToString("MMM dd") and get a full refund, minus the first night and service fee.</br><a class="text-link" asp-controller="error" asp-action="underconstruction" target="_blank">Learn more</a></p>
         </div>
     </div>
 
@@ -137,19 +137,25 @@
                 </div>*@
             <h3 class="confirm-stay-form__heading">Terms and Conditions</h3>
             <div class="confirm-stay__form-control confirm-stay__form-control--terms">
-                <div class="confirm-stay__checkbox-form-control mb-1">
-                    <input class="confirm-stay__checkbox" asp-for="AcceptTermsAndConditions" type="checkbox" id="terms-and-conditions" value="false"/>
-                    <label asp-for="AcceptTermsAndConditions">I have read &amp; accepted the <span class="confirm-stay__show-modal-btn">Terms &amp; Conditions</span></label>
-                </div>
+                @*<input type="checkbox" class="styled-checkbox" asp-for="@Model.AcceptTermsAndConditions" id="terms-and-conditions"/>
+        <label class="confirm-stay--styled-checkbox-label" asp-for="@Model.AcceptTermsAndConditions"><span class="confirm-stay__styled-checkbox-label-text">I have read &amp; accepted the&nbsp;Terms &amp; Conditions</span></label>
+        <div class="confirm-stay__error-form-control--terms pb-1 pr-1">
+            <span asp-validation-for="@Model.AcceptTermsAndConditions" class="text-error"></span>
+            <span class="text-error terms__client-validation-error" id="terms-client-validation-error">Accepting the terms and conditions is required.</span>
+        </div>*@
+
+                <input class="styled-checkbox confirm-stay--styled-checkbox-terms" type="checkbox" asp-for="@Model.AcceptTermsAndConditions" />
+                <label style="font-size: 1.8rem; line-height: 2.5rem;" asp-for="@Model.AcceptTermsAndConditions"><span style="font-size: 1.6rem;">I have read &amp; accepted the&nbsp;Terms &amp; Conditions</span></label>
                 <div class="confirm-stay__error-form-control--terms pb-1 pr-1">
-                    <span asp-validation-for="AcceptTermsAndConditions" class="text-error"></span>
+                    <span asp-validation-for="@Model.AcceptTermsAndConditions" class="text-error"></span>
                     <span class="text-error terms__client-validation-error" id="terms-client-validation-error">Accepting the terms and conditions is required.</span>
                 </div>
 
-                <div class="confirm-stay__checkbox-form-control">
-                    <input class="confirm-stay__checkbox" type="checkbox" asp-for="@Model.Guest.SubscribedToEmailList" />
-                    <label asp-for="@Model.Guest.SubscribedToEmailList">Send me special offers and lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mollis dolor velit, ac venenatis lectus viverra nec. Morbi at lorem mollis, varius est ac, lacinia est. Ut tristique nibh nunc, at efficitur odio lacinia non. Vestibulum aliquam turpis urna, vitae.</label>
-                </div>
+                <input class="styled-checkbox confirm-stay--styled-checkbox-multi-line" type="checkbox" asp-for="@Model.Guest.SubscribedToEmailList" />
+                <label style="font-size: 1.8rem; line-height: 2.5rem;" asp-for="@Model.Guest.SubscribedToEmailList"><span style="font-size: 1.6rem;">Send me special offers and lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mollis dolor velit, ac venenatis lectus viverra nec. Morbi at lorem mollis, varius est ac, lacinia est. Ut tristique nibh nunc, at efficitur odio lacinia non. Vestibulum aliquam turpis urna, vitae.</span></label>
+
+
+
             </div>
             <button type="submit" class="large-btn confirm-stay__submit-btn">Book</button>
             <input type="hidden" asp-for="CheckInDate" value="@Model.CheckInDate" />
@@ -158,6 +164,7 @@
             <input type="hidden" asp-for="Children" value="@Model.Children" />
             <input type="hidden" asp-for="RoomId" value="@Model.RoomId" />
             <input type="hidden" asp-for="RoomTypeId" value="@Model.RoomTypeId" />
+            <input type="hidden" asp-for="RoomType" value="@Model.RoomType" />
             <input type="hidden" asp-for="Nights" value="@Model.Nights" />
             <input type="hidden" asp-for="CancellationDate" value="@Model.CancellationDate" />
             <input type="hidden" asp-for="TotalCost" value="@total" />

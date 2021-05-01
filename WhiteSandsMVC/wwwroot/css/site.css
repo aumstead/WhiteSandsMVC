@@ -21,11 +21,15 @@
 @import 'components/checkRatesDrawer.css';
 @import 'components/searchBar.css';
 
-@import 'pages/home/index.css';
-@import 'pages/accomodations/index.css';
-@import 'pages/reservations/chooseRoom.css';
-@import 'pages/reservations/confirmStay.css';
-@import 'pages/reservations/bookingSuccess.css';
-@import 'pages/account/account.css';
-@import 'pages/profile/profile.css';
-@import 'pages/error/NotFound.css';
+@import 'controllers/profile/profile.css';
+@import 'controllers/error/NotFound.css';
+@import 'controllers/error/construction.css';
+@import 'controllers/account/account.css';
+@import 'controllers/home/index.css';
+@import 'controllers/home/media.css';
+@import 'controllers/home/accomodations.css';
+@import 'controllers/home/amenities.css';
+@import 'controllers/reservations/chooseRoom.css';
+@import 'controllers/reservations/confirmStay.css';
+@import 'controllers/reservations/bookingSuccess.css';
+@import 'controllers/reservations/selectDates.css';

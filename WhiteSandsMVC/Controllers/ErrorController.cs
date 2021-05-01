@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WhiteSandsMVC.Models;
 
 namespace WhiteSandsMVC.Controllers
 {
@@ -33,9 +34,12 @@ namespace WhiteSandsMVC.Controllers
             return View("Error");
         }
 
+        [Route("/error/construction")]
         public IActionResult UnderConstruction()
         {
             return View("UnderConstruction");
         }
+
+       
     }
 }

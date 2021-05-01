@@ -1,6 +1,6 @@
 ﻿<nav class="mobile-nav">
     <div class="mobile-nav__logo">
-        <a href="#"><div class="mobile-nav__svg"></div></a>
+        <a asp-controller="home" asp-action="index"><div class="mobile-nav__svg"></div></a>
     </div>
     <div class="mobile-nav__btn-container">
         <div class="mobile-nav__open" id="open-btn">
@@ -17,26 +17,35 @@
             <span class="x-close"></span>
         </div>
         <div class="side-drawer__header-container">
-            <a href="#" class="side-drawer__profile-link">My Profile</a>
-            <div class="side-drawer__svg"></div>
-            <a href="#" class="side-drawer__hotel-link">White Sands Resort<br>on Koh Samet, Suratthani, Thailand</a>
+            <a asp-controller="profile" asp-action="index" class="side-drawer__profile-link">My Profile</a>
+            <a asp-controller="home" asp-action="index"><div class="side-drawer__svg"></div></a>
+            <a asp-controller="home" asp-action="index" class="side-drawer__hotel-link">White Sands Resort<br>on Koh Samet, Suratthani, Thailand</a>
+            @{
+                var parms = new Dictionary<string, string>
+                {
+                { "checkInDate", DateTime.Now.ToString("MM-dd-yyyy") },
+                { "checkOutDate", DateTime.Now.AddDays(1).ToString("MM-dd-yyyy") },
+                {"adults", "1" }
+            };
+            }
+            <a asp-controller="reservations" asp-action="selectdates" asp-all-route-data="parms" class="large-btn side-drawer__check-rates-btn" id="check-rates-open-btn">Check rates</a>
         </div>
         <hr class="side-drawer__hr" />
         <ul class="side-drawer__nav">
-            <li class="side-drawer__nav-item"><a href="#" class="side-drawer__nav-link side-drawer__nav-link--active">Resort Overview</a></li>
-            <li class="side-drawer__nav-item"><a asp-controller="accomodations" asp-action="index" class="side-drawer__nav-link">Accomodations</a></li>
-            <li class="side-drawer__nav-item"><a href="#" class="side-drawer__nav-link">Photos & Videos</a></li>
-            <li class="side-drawer__nav-item"><a href="#" class="side-drawer__nav-link">Activities</a></li>
+            <li class="side-drawer__nav-item"><a asp-controller="home" asp-action="index" class=@(ViewBag.Title == "Home" ? "side-drawer__nav-link side-drawer__nav-link--active" : "side-drawer__nav-link")>Resort Overview</a></li>
+            <li class="side-drawer__nav-item"><a asp-controller="accomodations" asp-action="index" class=@(ViewBag.Title == "Accomodations" ? "side-drawer__nav-link side-drawer__nav-link--active" : "side-drawer__nav-link")>Accomodations</a></li>
+            <li class="side-drawer__nav-item"><a asp-controller="home" asp-action="media" class=@(ViewBag.Title == "Media" ? "side-drawer__nav-link side-drawer__nav-link--active" : "side-drawer__nav-link")>Photos & Videos</a></li>
+            <li class="side-drawer__nav-item"><a asp-controller="home" asp-action="amenities" class=@(ViewBag.Title == "Amenities" ? "side-drawer__nav-link side-drawer__nav-link--active" : "side-drawer__nav-link")>Activities</a></li>
         </ul>
         <hr class="side-drawer__hr" />
         <h5 class="side-drawer__sub-title">More from White Sands Resort on Koh Samet</h5>
         <ul class="side-drawer__nav side-drawer__nav--secondary">
-            <li class="side-drawer__nav-item--secondary"><a href="#" class="side-drawer__nav-link">Services &amp; Amenities</a></li>
-            <li class="side-drawer__nav-item--secondary"><a href="#" class="side-drawer__nav-link">Dining</a></li>
-            <li class="side-drawer__nav-item--secondary"><a href="#" class="side-drawer__nav-link">Spa</a></li>
-            <li class="side-drawer__nav-item--secondary"><a href="#" class="side-drawer__nav-link">Weddings &amp; Events</a></li>
-            <li class="side-drawer__nav-item--secondary"><a href="#" class="side-drawer__nav-link">Location</a></li>
-            <li class="side-drawer__nav-item--secondary"><a href="#" class="side-drawer__nav-link">Contact Us</a></li>
+            <li class="side-drawer__nav-item--secondary"><a asp-controller="error" asp-action="construction" class="side-drawer__nav-link">Services &amp; Amenities</a></li>
+            <li class="side-drawer__nav-item--secondary"><a asp-controller="error" asp-action="construction" class="side-drawer__nav-link">Dining</a></li>
+            <li class="side-drawer__nav-item--secondary"><a asp-controller="error" asp-action="construction" class="side-drawer__nav-link">Spa</a></li>
+            <li class="side-drawer__nav-item--secondary"><a asp-controller="error" asp-action="construction" class="side-drawer__nav-link">Weddings &amp; Events</a></li>
+            <li class="side-drawer__nav-item--secondary"><a asp-controller="error" asp-action="construction" class="side-drawer__nav-link">Location</a></li>
+            <li class="side-drawer__nav-item--secondary"><a asp-controller="error" asp-action="construction" class="side-drawer__nav-link">Contact Us</a></li>
         </ul>
     </div>
 </div>

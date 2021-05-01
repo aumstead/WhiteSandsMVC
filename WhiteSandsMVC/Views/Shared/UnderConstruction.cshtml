@@ -9,13 +9,38 @@
 
 <partial name="Partials/_CheckRatesDrawer" />
 
-<div class="not-found-body">
-    <h1>Under construction</h1>
+<div class="construction-body">
+    <div class="construction__info-side">
+        <h1 class="section-heading h1-heading construction__h1">We're sorry...</h1>
+        <p class="text-serif construction__text mb-2">This area is under construction. Try booking a room, logging in as an admin, or clicking one of the other links below.</p>
+        <h4 class="h4-heading">Pages</h4>
+        <ul class="construction__ul">
+            <li class="construction__li"><a class="text-link small-btn" asp-controller="home" asp-action="index">Home</a></li>
+            <li class="construction__li"><a class="text-link small-btn" asp-controller="home" asp-action="accomodations">Accomodations</a></li>
+            <li class="construction__li"><a class="text-link small-btn" asp-controller="home" asp-action="media">Photo Gallery</a></li>
+            <li class="construction__li"><a class="text-link small-btn" asp-controller="home" asp-action="amenities">Activities</a></li>
+        </ul>
+
+        <h4 class="h4-heading">Functionality</h4>
+        <ul class="construction__ul">
+            <li class="construction__li"><a class="text-link small-btn cursor-pointer" onclick="fromConstructionOpenCheckRates()">Book a room</a></li>
+            <li class="construction__li"><a class="text-link small-btn" asp-controller="account" asp-action="login">Auto login as a member and edit settings</a></li>
+            <li class="construction__li"><a class="text-link small-btn" asp-controller="account" asp-action="register">Member registration and login</a></li>
+
+        </ul>
+
+
+    </div>
+    <div class="image-side">
+        <img class="construction-img" src="~/images/construction.png" alt="stacking rocks on beach" asp-append-version="true" />
+        <span class="construction__attribution">Illustration by <a href="https://icons8.com/illustrations/author/5c3c1a17569980000ee8cf05">Aleksey Chizhikov</a> from <a href="https://icons8.com/illustrations">Ouch!</a></span>
+    </div>
 </div>
 
 <partial name="Partials/_Footer" />
 
 @section Scripts {
+    <script src="~/js/construction.js" asp-append-version="true"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script src="~/js/checkRates.js" asp-append-version="true"></script>

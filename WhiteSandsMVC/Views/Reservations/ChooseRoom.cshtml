@@ -9,20 +9,19 @@
 <div class="reservations-content-container">
     <div class="room-type-heading__container">
         <hr class="room-type-heading__hr" />
-        <h2 class="room-type-heading">Room type heading</h2>
+        <h2 class="room-type-heading">Room Types</h2>
         <hr class="room-type-heading__hr" />
     </div>
 
-    @foreach (var roomType in ViewBag.testData)
+    @foreach (var roomType in ViewBag.roomTypes)
     {
-        @*<h1>@roomType.PhotoPath</h1>*@
         <div class="avail-room-type">
-            <img class="room-type__image" src="@("/images/Reservations/Rooms/" + roomType.PhotoPath)" />
+            <img class="room-type__image" alt="@roomType.Name" asp-append-version="true" src="@("/images/Reservations/Rooms/" + roomType.PhotoPath)" />
             <div class="room-type__content-container">
                 <div class="room-type__content--title-box">
                     <h2 class="room-type__name">@roomType.Name</h2>
-                    <div>
-                        <span class="room-type__price-text">from <span class="room-type__price">USD @Math.Floor(roomType.Price)</span></span><br />
+                    <div class="room-type__price-wrapper">
+                        <span class="room-type__price-text">from <span class="room-type__price">USD @Math.Floor(roomType.Price)</span></span><br class="price-br" />
                         <span class="room-type__price-text">average per night</span>
                     </div>
                 </div>
@@ -59,7 +58,7 @@
                             { "selectedRoomTypeId", roomType.Id.ToString() }
                         };
                     }
-                    <a class="large-btn" asp-controller="reservations" asp-action="ConfirmStay" asp-all-route-data="parms">Select Room</a>
+                    <a class="large-btn choose-room__select-room-btn" asp-controller="reservations" asp-action="ConfirmStay" asp-all-route-data="parms">Select Room</a>
 
                 </div>
             </div>
@@ -141,7 +140,7 @@
     }
 
     <div class="info-row">
-        <a class="info-row__contact" href="#">Contact us</a>
+        <a class="info-row__contact" asp-controller="error" asp-action="underconstruction">Contact us</a>
         <p class="info-row__disclaimer">All offers are subject to lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a ante et orci faucibus imperdiet. <span class="text-bold">Sed et convallis augue. Pellentesque felis velit, faucibus sed magna quis, gravida rhoncus enim.</span> Nulla facilisi. Fusce eu consectetur sem, in pellentesque dolor. Morbi tempus maximus mauris ut rutrum. Phasellus.</p>
     </div>
 </div>

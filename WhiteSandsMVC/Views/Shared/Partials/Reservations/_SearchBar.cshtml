@@ -11,10 +11,19 @@
             <span class="search-bar__search-parameter">@Model.CheckInDate.ToString("MMM dd") - @Model.CheckOutDate.ToString("MMM dd yyyy")</span>
             <span class="search-bar__search-parameter">@(Adults > 1 ? Model.Adults + " adults" : Model.Adults + " adult")</span>
             <span class="search-bar__search-parameter">@(Children == 1 ? Model.Children + " child" : Model.Children + " children")</span>
-
-            <a class="large-btn--inverse change-search-btn">Change search</a>
+            @{
+                var parms = new Dictionary<string, string>
+                            {
+                            { "checkInDate", Model.CheckInDate.ToString("MM-dd-yyyy") },
+                            { "checkOutDate", Model.CheckOutDate.ToString("MM-dd-yyyy") },
+                            { "adults", Model.Adults },
+                            { "children", Model.Children },
+                            { "promo", Model.Promo }
+                        };
+            }
+            <a asp-controller="reservations" asp-action="selectdates" asp-all-route-data="parms" class="large-btn--inverse change-search-btn" style="text-decoration: none;">Change search</a>
         </div>
-        <div class="search-bar__options-container">
+        @*<div class="search-bar__options-container">
             <div class="search-bar__form-group search-bar__form-group--accessible">
                 <input class="search-bar__checkbox" type="checkbox" name="accessible-filter" />
                 <label class="search-bar__form-group-label--accessible-filter" for="accessible-filter">Accessible rooms</label>
@@ -34,6 +43,6 @@
                     <option>US Dollars</option>
                 </select>
             </div>
-        </div>
+        </div>*@
     </div>
 </div>

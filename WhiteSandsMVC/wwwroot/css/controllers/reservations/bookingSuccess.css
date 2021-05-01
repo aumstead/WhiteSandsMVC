@@ -156,3 +156,91 @@
     transition: all .5s;
     letter-spacing: .1rem;
 }
+
+.prepare__btn:hover {
+    color: var(--color-grey);
+}
+
+/*/////////////////////////////*/
+/* media queries */
+/*/////////////////////////////*/
+
+@media only screen and (max-width: 1100px) {
+    .booking-success-grid {
+        width: 100%;
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+
+    .prepare__ul {
+        opacity: 1;
+    }
+
+    .prepare__btn {
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .booking-success-grid {
+        display: unset;
+    }
+
+    .booking-success-body-col {
+        padding-left: 3rem;
+        padding-right: 3rem;
+        margin-top: 2rem;
+    }
+
+    .booking-success-room-col {
+        padding-left: 3rem;
+        padding-right: 3rem;
+        margin-top: 4rem;
+        margin-bottom: 5rem;
+    }
+
+    .booking-success-img {
+        width: 30rem;
+    }
+
+    .prepare-section {
+        width: fit-content;
+        margin: 0 auto;
+    }
+
+    .prepare__card {
+        height: 27rem;
+        width: 22rem;
+        margin-right: unset;
+    }
+    .prepare__cards-container {
+        justify-content: center;
+    }
+    .prepare__img {
+        height: 25rem;
+    }
+
+    .prepare__heading {
+        font-size: 1.6rem;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .prepare__cards-container {
+        flex-direction: column;
+    }
+
+    .prepare__card {
+        height: 20rem;
+        width: 100%;
+    }
+
+    .prepare__img {
+        height: 20rem;
+        object-position: unset;
+    }
+
+    .prepare__heading {
+        font-size: 2.2rem;
+    }
+}

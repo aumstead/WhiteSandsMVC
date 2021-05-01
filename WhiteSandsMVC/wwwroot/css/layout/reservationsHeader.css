@@ -88,3 +88,56 @@
     font-weight: 800;
     color: var(--color-white);
 }
+
+/*@media only screen and (max-width: 1050px) {
+    .top-header__content--right {
+        margin-right: 3rem;
+    }
+
+    .select-dates-search-container {
+        width: 100%;
+        margin-left: 5rem;
+    }
+
+    .reservations-footer__links-box {
+        margin-left: 5rem;
+    }
+
+    .bottom-header__container {
+        width: 100%;
+    }
+}*/
+
+@media only screen and (max-width: 1100px) {
+    .top-header {
+        display: none;
+    }
+    .bottom-header {
+        padding-top: 90px;
+        height: unset;
+    }
+
+    .bottom-header__container {
+        width: 100%;
+    }
+
+    .bottom-header__content {
+        margin-left: 3rem;
+        margin-bottom: 2.5rem;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .bottom-header {
+        padding-top: 80px;
+    }
+
+    .bottom-header__content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bottom-header__content span {
+        margin-bottom: 2rem;
+    }
+}

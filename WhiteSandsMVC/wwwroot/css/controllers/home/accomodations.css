@@ -1,4 +1,9 @@
-﻿.featured-section {
+﻿.accomodations__carousel-img {
+    height: 50rem;
+    width: 100%;
+}
+
+.featured-section {
     background-color: var(--color-black);
     padding-top: 9rem;
     color: var(--color-white);
@@ -70,8 +75,7 @@
 }
 
 .room__img {
-    width: 51rem;
-    height: 28rem;
+    width: 41rem;
     object-fit: cover;
 }
 
@@ -79,7 +83,7 @@
     padding-left: 5rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .room-text {
@@ -194,6 +198,10 @@
     font-size: 2rem;
 }
 
+.policy-btn--close {
+    display: none;
+}
+
 .policy {
     display: flex;
     align-items: flex-end;
@@ -230,4 +238,135 @@
 
 .hide-chevron-down {
     display: none;
+}
+
+/*/////////////////////////////*/
+/* media queries */
+/*/////////////////////////////*/
+
+@media only screen and (max-width: 1000px) {
+    .accomodations__carousel-img {
+        height: 40rem;
+    }
+}
+
+@media only screen and (max-width: 950px) {
+    .filter {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .filter__option {
+        width: 100%;
+        padding-top: 1.2rem;
+        padding-bottom: 1.2rem;
+    }
+
+    .room {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .room-types {
+        max-width: 100%;
+    }
+
+    .room__info-container {
+        width: 41rem;
+        padding-left: unset;
+        margin-top: 2rem;
+    }
+
+    .room__heading {
+        margin-bottom: 2rem;
+    }
+
+    .amenities {
+        max-width: 100%;
+    }
+
+    .discount__hr {
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 800px) {
+    .accomodations__carousel-img {
+        height: 30rem;
+    }
+
+    .accomodations__details-heading {
+        width: 100%;
+    }
+
+    .accomodations__details-text {
+        width: 100%;
+    }
+    .featured-section {
+        height: unset;
+        padding-bottom: 16rem;
+    }
+
+    .amenities__heading {
+        margin-left: unset;
+        text-align: center;
+    }
+    .amenity {
+        margin-bottom: 3rem;
+    }
+
+    .amenities__icons-container {
+        width: 38.5rem;
+        flex-wrap: wrap;
+        margin: 0 auto;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .policies {
+        width: 100%;
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+
+    
+}
+
+@media only screen and (max-width: 500px) {
+    .accomodations__carousel-img {
+        height: 20rem;
+    }
+
+    .policy--early-arrivals {
+        height: 19.5rem;
+    }
+
+    .policy--family-plan {
+        height: 23.5rem;
+    }
+
+    .room__img {
+        width: 30rem;
+    }
+
+    .room__info-container {
+        width: 30rem;
+    }
+
+    .policy-btn {
+        text-align: left;
+    }
+
+    .amenities__icons-container {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .policy--early-arrivals {
+        height: 25.5rem;
+    }
+
+    .policy--family-plan {
+        height: 28rem;
+    }
 }

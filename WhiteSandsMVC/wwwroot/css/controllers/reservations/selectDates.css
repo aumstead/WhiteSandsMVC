@@ -1,0 +1,45 @@
+﻿.select-dates-page {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: min-content 1fr min-content;
+}
+
+.select-dates-search-container {
+    width: 110rem;
+    margin: 0 auto;
+    margin-top: 4rem;
+}
+
+/*.select-dates-check-rates__btn {
+    height: min-content;
+    align-self: flex-end;
+}*/
+
+.select-dates-check-rates__form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+.select-dates__error-form-control {
+
+}
+
+.select-dates__button-wrapper {
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+@media only screen and (max-width: 800px) {
+    .select-dates-search-container {
+        width: 100%;
+        margin-bottom: 10rem;
+    }
+
+    .select-dates-check-rates__btn {
+        margin-top: 3rem;
+    }
+}

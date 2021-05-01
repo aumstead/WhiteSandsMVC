@@ -225,6 +225,14 @@
     margin-top: 3.5rem;
 }
 
+.side-drawer__check-rates-btn {
+    text-align: center;
+    font-weight: 400;
+    margin: 0 auto;
+    text-transform: uppercase;
+    margin-bottom: 3.5rem;
+    width: 100%;
+}
 /*//////////////////////////*/
 /* close side drawer button */
 /*//////////////////////////*/
@@ -264,7 +272,7 @@
 /*//////////////////////////*/
 /* media queries */
 /*//////////////////////////*/
-@media only screen and (max-width: 999px) {
+@media only screen and (max-width: 1100px) {
     .mobile-nav {
         display: flex;
         justify-content: space-between;

@@ -2,9 +2,9 @@
 
 <div class="check-rates-drawer" id="check-rates-drawer">
     <div class="check-rates__content" id="check-rates-content">
-        <form class="check-rates__form" method="post" asp-action="Index" onsubmit="return validateForm()">
-            <input type="hidden" asp-for="CheckInDate" id="check-in-hidden" />
-            <input type="hidden" asp-for="CheckOutDate" id="check-out-hidden" />
+        <form class="check-rates__form" method="post" asp-controller="home" asp-action="Index" onsubmit="return validateForm()">
+            <input type="hidden" asp-for="CheckInDate" id="check-in-hidden" value="@DateTime.Now"/>
+            <input type="hidden" asp-for="CheckOutDate" id="check-out-hidden" value="@DateTime.Now.AddDays(1)" />
 
             <div class="check-rates__form-control">
                 <label class="check-rates__label" for="date-input">Check In &mdash; Check Out</label>

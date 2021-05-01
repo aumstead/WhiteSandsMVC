@@ -1,0 +1,64 @@
+﻿.media-carousel {
+    background: #000;
+    color: #fff;
+}
+
+.media__amenities-carousel-img {
+    height: 50rem;
+    width: 100%;
+}
+
+.media__accomodations-carousel-img {
+    height: 50rem;
+    width: 100%;
+}
+
+@media only screen and (max-width: 1050px) {
+    .accomodations__details-heading {
+        width: 100%;
+    }
+
+    .accomodations__details-text {
+        width: 100%;
+    }
+
+    .media__amenities-carousel-img {
+        height: 45rem;
+    }
+
+    .media__accomodations-carousel-img {
+        height: 45rem;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .media__amenities-carousel-img {
+        height: 35rem;
+    }
+
+    .media__accomodations-carousel-img {
+        height: 35rem;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .activities-hero__subheading {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+
+    .media__amenities-carousel-img {
+        height: 20rem;
+    }
+
+    .media__accomodations-carousel-img {
+        height: 20rem;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .activities-hero__title {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+}

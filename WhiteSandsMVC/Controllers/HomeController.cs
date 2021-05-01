@@ -16,6 +16,24 @@ namespace WhiteSandsMVC.Controllers
             return View();
         }
 
+        [Route("/accomodations")]
+        public IActionResult Accomodations()
+        {
+            return View();
+        }
+
+        [Route("/media")]
+        public IActionResult Media()
+        {
+            return View();
+        }
+
+        [Route("/amenities")]
+        public IActionResult Amenities()
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult Index(CheckRatesViewModel model)
         {

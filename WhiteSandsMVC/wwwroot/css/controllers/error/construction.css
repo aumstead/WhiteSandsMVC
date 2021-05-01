@@ -1,0 +1,45 @@
+﻿.construction-body {
+    padding-top: 9rem;
+    display: flex;
+    width: 110rem;
+    margin: 0 auto;
+}
+
+.construction__info-side {
+    width: 55rem;
+    padding-right: 4rem;
+}
+
+.construction__h1 {
+    margin-top: 10rem;
+    margin-bottom: 1.5rem;
+}
+
+.construction__text {
+    font-size: 2rem;
+    font-family: var(--font-text);
+}
+
+.image-side {
+    width: 55rem;
+}
+
+.construction-img {
+    height: 45rem;
+    width: auto;
+    margin-top: 10rem;
+}
+
+.construction__ul {
+    margin-bottom: 3rem;
+    margin-top: 1rem;
+}
+
+.construction__li {
+    margin-bottom: 1rem;
+}
+
+.construction__attribution {
+    margin-bottom: 10rem;
+    float: right;
+}

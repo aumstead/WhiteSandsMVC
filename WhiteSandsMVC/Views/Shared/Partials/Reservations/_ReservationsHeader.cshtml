@@ -1,17 +1,19 @@
-﻿<div class="top-header">
+﻿<partial name="Partials/_MobileNavigation" />
+
+<div class="top-header">
     <div class="top-header__container">
         <div class="reservations-logo">
             <a asp-controller="home" asp-action="index"><div class="reservations-logo__svg"></div></a>
         </div>
         <div class="top-header__content">
             <div class="top-header__content--left">
-                <img class="top-header__checkmark-svg" src="~/images/svg/lnr-checkmark-circle.svg" alt="Checkmark in circle"/>
+                <img class="top-header__checkmark-svg" src="~/images/svg/checkmark-circle.svg" alt="Checkmark in circle" asp-append-version="true"/>
                 <span class="top-header__text top-header__text--best-rate">Best rate guaranteed</span><br/>
                 <span class="top-header__text">Book directly with us for the best rates and easiest access to our premium services.</span>
             </div>
             <div class="top-header__content--right">
                 <span class="top-header__text">How can we help you?</span><br/>
-                <a href="#" class="top-header__text top-header__text--link">Contact us</a>
+                <a asp-controller="error" asp-action="underconstruction" target="_blank" class="top-header__text top-header__text--link">Contact us</a>
             </div>
         </div>
     </div>
@@ -19,7 +21,7 @@
 <div class="bottom-header">
     <div class="bottom-header__container">
         <div class="bottom-header__content">
-            <span class="@(ViewBag.Title == "Search" ? "bottom-header__heading bottom-header__heading--active" : "bottom-header__heading")">1. Plan your stay</span>
+            <span class="@(ViewBag.Title == "Select Dates" ? "bottom-header__heading bottom-header__heading--active" : "bottom-header__heading")">1. Plan your stay</span>
             <span class="@(ViewBag.Title == "Choose Room" ? "bottom-header__heading bottom-header__heading--active" : "bottom-header__heading")">2. Choose your room</span>
             <span class="@(ViewBag.Title == "Confirm Booking" ? "bottom-header__heading bottom-header__heading--active" : "bottom-header__heading")">3. Confirm your stay</span>
             <span class="@(ViewBag.Title == "Review Booking" ? "bottom-header__heading bottom-header__heading--active" : "bottom-header__heading")">4. Review your stay</span>

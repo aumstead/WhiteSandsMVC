@@ -37,9 +37,13 @@ villasBtn.addEventListener('click', () => {
 
 // policies
 const checkInBtn = document.getElementById('check-in-btn');
+const closeCheckInBtn = document.getElementById('close-check-in-btn');
 const earlyArrivalsBtn = document.getElementById('early-arrivals-btn');
+const closeEarlyArrivalsBtn = document.getElementById('close-early-arrivals-btn');
 const creditCardsBtn = document.getElementById('credit-cards-btn');
+const closeCreditCardsBtn = document.getElementById('close-credit-cards-btn');
 const familyPlanBtn = document.getElementById('family-plan-btn');
+const closeFamilyPlanBtn = document.getElementById('close-family-plan-btn');
 
 const checkInPolicy = document.getElementById('check-in-policy');
 const earlyArrivalsPolicy = document.getElementById('early-arrivals-policy');
@@ -63,10 +67,18 @@ checkInBtn.addEventListener('click', () => {
         showingCheckIn = true;
         checkInPolicy.classList.add('policy--check-in');
         checkInSpan.classList.add('policy__text--show');
-    } else {
+        checkInBtn.classList.add('hide-element');
+        closeCheckInBtn.classList.remove('hide-element')
+    }
+})
+
+closeCheckInBtn.addEventListener('click', () => {
+    if (showingCheckIn) {
         showingCheckIn = false;
         checkInPolicy.classList.remove('policy--check-in');
         checkInSpan.classList.remove('policy__text--show');
+        checkInBtn.classList.remove('hide-element');
+        closeCheckInBtn.classList.add('hide-element');
     }
 })
 
@@ -75,10 +87,18 @@ earlyArrivalsBtn.addEventListener('click', () => {
         showingEarlyArrivals = true;
         earlyArrivalsPolicy.classList.add('policy--early-arrivals');
         earlyArrivalsSpan.classList.add('policy__text--show');
-    } else {
+        earlyArrivalsBtn.classList.add('hide-element');
+        closeEarlyArrivalsBtn.classList.remove('hide-element');
+    }
+})
+
+closeEarlyArrivalsBtn.addEventListener('click', () => {
+    if (showingEarlyArrivals) {
         showingEarlyArrivals = false;
         earlyArrivalsPolicy.classList.remove('policy--early-arrivals');
         earlyArrivalsSpan.classList.remove('policy__text--show');
+        earlyArrivalsBtn.classList.remove('hide-element');
+        closeEarlyArrivalsBtn.classList.add('hide-element');
     }
 })
 
@@ -87,11 +107,18 @@ creditCardsBtn.addEventListener('click', () => {
         showingCreditCards = true;
         creditCardsPolicy.classList.add('policy--credit-cards');
         creditCardsSpan.classList.add('policy__text--show');
-        chevronDownCreditCards.classList.add('hide-chevron-down');
-    } else {
+        creditCardsBtn.classList.add('hide-element');
+        closeCreditCardsBtn.classList.remove('hide-element');
+    }
+})
+
+closeCreditCardsBtn.addEventListener('click', () => {
+    if (showingCreditCards) {
         showingCreditCards = false;
         creditCardsPolicy.classList.remove('policy--credit-cards');
         creditCardsSpan.classList.remove('policy__text--show');
+        creditCardsBtn.classList.remove('hide-element');
+        closeCreditCardsBtn.classList.add('hide-element');
     }
 })
 
@@ -100,9 +127,17 @@ familyPlanBtn.addEventListener('click', () => {
         showingFamilyPlan = true;
         familyPlanPolicy.classList.add('policy--family-plan');
         familyPlanSpan.classList.add('policy__text--show');
-    } else {
+        familyPlanBtn.classList.add('hide-element');
+        closeFamilyPlanBtn.classList.remove('hide-element');
+    }
+})
+
+closeFamilyPlanBtn.addEventListener('click', () => {
+    if (showingFamilyPlan) {
         showingFamilyPlan = false;
         familyPlanPolicy.classList.remove('policy--family-plan');
         familyPlanSpan.classList.remove('policy__text--show');
+        familyPlanBtn.classList.remove('hide-element');
+        closeFamilyPlanBtn.classList.add('hide-element');
     }
 })

@@ -32,12 +32,12 @@
 
 
         <div class="booking-success__body-btns">
-            <a href="#" class="large-btn">View Itinerary</a>
+            <a asp-controller="error" asp-action="underconstruction" target="_blank" class="large-btn">View Itinerary</a>
         </div>
     </div>
 
     <div class="booking-success-room-col">
-        <img class="booking-success-img" src="@("/images/Reservations/Rooms/" + (Model.Booking.RoomType.PhotoPath))" />
+        <img class="booking-success-img" alt="booked room" src="@("/images/Reservations/Rooms/" + (Model.Booking.RoomType.PhotoPath))" />
 
         <div class="booking-success__room-row">
             <h4 class="booking-success__section-heading">Accomodation</h4>
@@ -58,9 +58,9 @@
     <div class="prepare-section">
         @*<h2 class="h2-heading">Prepare your stay</h2>*@
         <div class="prepare__cards-container">
-            <a href="#">
+            <a asp-controller="home" asp-action="amenities">
                 <div class="prepare__card">
-                    <img class="prepare__img" src="~/images/Reservations/BookingSuccess/snorkel.jpg" />
+                    <img class="prepare__img" alt="snorkler" asp-append-version="true" src="~/images/Reservations/BookingSuccess/snorkel.jpg" />
                     <div class="prepare__card-top">
                         <h5 class="prepare__heading">See Activities</h5>
                         <ul class="prepare__ul">
@@ -77,9 +77,9 @@
                 </div>
             </a>
 
-            <a href="#">
+            <a asp-controller="error" asp-action="underconstruction" target="_blank">
                 <div class="prepare__card">
-                    <img class="prepare__img" src="~/images/Reservations/BookingSuccess/restaurant.jpg" />
+                    <img class="prepare__img" alt="hotel restaurant" asp-append-version="true" src="~/images/Reservations/BookingSuccess/restaurant.jpg" />
                     <div class="prepare__card-top">
                         <h5 class="prepare__heading">Reserve a table</h5>
                         <ul class="prepare__ul">
@@ -97,9 +97,9 @@
                 </div>
             </a>
 
-            <a href="#">
+            <a asp-controller="error" asp-action="underconstruction" target="_blank">
                 <div class="prepare__card">
-                    <img class="prepare__img" src="~/images/Reservations/BookingSuccess/boat.jpg" />
+                    <img class="prepare__img" alt="Hotel transportation ship" asp-append-version="true" src="~/images/Reservations/BookingSuccess/boat.jpg" />
                     <div class="prepare__card-top">
                         <h5 class="prepare__heading">Arrange transportation</h5>
                         <ul class="prepare__ul">
@@ -118,11 +118,5 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
 
 <partial name="Partials/Reservations/_ReservationsFooter" />

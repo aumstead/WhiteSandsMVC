@@ -1,0 +1,96 @@
+﻿@model CheckRatesViewModel
+@{
+    ViewBag.Title = "Select Dates";
+    string[] adults = { "1", "2", "3", "4", "5", "6" };
+    ViewBag.Adults = new List<string>(adults);
+    string[] children = { "0", "1", "2", "3", "4", "5", "6" };
+    ViewBag.Children = new List<string>(children);
+}
+<div class="select-dates-page">
+    <div>
+        <partial name="Partials/Reservations/_ReservationsHeader" />
+
+    </div>
+
+    <div class="select-dates-search-container">
+        <form class="select-dates-check-rates__form" method="post" asp-controller="home" asp-action="Index" onsubmit="return validateForm()">
+            <input type="hidden" asp-for="CheckInDate" id="check-in-hidden" value="@Model.CheckInDate" />
+            <input type="hidden" asp-for="CheckOutDate" id="check-out-hidden" value="@Model.CheckOutDate" />
+
+            <div class="check-rates__form-control">
+                <label class="check-rates__label" for="date-input">Check In &mdash; Check Out</label>
+                <input class="check-rates__input check-rates__input--dates" type="text" name="dateinput" id="date-input" />
+                <div class="select-dates__error-form-control">
+                    <span asp-validation-for="CheckInDate" class="text-error"></span>&nbsp;
+                    <span asp-validation-for="CheckOutDate" class="text-error"></span>
+                    <span class="text-error check-rates__client-validation-error" id="check-rates-client-validation-error">Check in and check out dates are required.</span>
+                </div>
+            </div>
+
+            <div class="check-rates__form-control">
+                <label class="check-rates__label" asp-for="Adults"></label>
+                <select class="check-rates__input check-rates__input--adults" srcset asp-for="Adults">
+                    @foreach (var item in ViewBag.Adults)
+                    {
+                        if (Model.Adults == item)
+                        {
+                            <option selected value="@item">@item</option>
+                        }
+                        else
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    }
+                </select>
+                <div class="select-dates__error-form-control">
+                    <span asp-validation-for="Adults" class="text-error"></span>
+                </div>
+            </div>
+
+            <div class="check-rates__form-control">
+                <label class="check-rates__label" asp-for="Children"></label>
+                <select class="check-rates__input check-rates__input--children" asp-for="Children">
+                    @foreach (var item in ViewBag.Children)
+                    {
+                        if (Model.Children == item)
+                        {
+                            <option selected value="@item">@item</option>
+                        }
+                        else
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    }
+                </select>
+                <div class="check-rates__error-form-control">
+                    <span asp-validation-for="Children" class="text-error"></span>
+                </div>
+            </div>
+
+            <div class="check-rates__form-control">
+                <label class="check-rates__label" asp-for="Promo"></label>
+                <input class="check-rates__input check-rates__input--promo" asp-for="Promo" />
+                <div class="check-rates__error-form-control">
+                    <span asp-validation-for="Promo" class="text-error"></span>
+                </div>
+            </div>
+
+            <div class="select-dates__button-wrapper">
+                <button type="submit" class="large-btn select-dates-check-rates__btn">Check rates</button>
+
+            </div>
+        </form>
+    </div>
+
+
+
+    <partial name="Partials/Reservations/_ReservationsFooter" />
+</div>
+
+@section Scripts {
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="~/js/checkRates.js" asp-append-version="true"></script>
+    <script src="~/js/dateRangePickerSelectDates.js" asp-append-version="true"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+}  

@@ -12,6 +12,7 @@
 <div class="account-layout">
     <div class="account-layout__form-container">
         <h1 class="h1-heading account__heading">Create Profile</h1>
+        <div asp-validation-summary="All" class="text-error"></div>
         <form class="account__form" method="post">
             <div class="account__form-row">
                 <div class="account__form-group">
@@ -67,7 +68,7 @@
         </form>
     </div>
     <div class="account-layout__img-container">
-        <img class="account-img" src="~/images/Account/hammock.jpg" />
+        <img class="account-img" alt="beach hammock" src="~/images/Account/hammock.jpg" asp-append-version="true" />
     </div>
 </div>
 

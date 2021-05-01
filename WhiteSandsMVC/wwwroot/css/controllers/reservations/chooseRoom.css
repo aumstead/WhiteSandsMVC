@@ -36,7 +36,6 @@
 
 .room-type__image {
     width: 40rem;
-    height: 100%;
     object-fit: cover;
 }
 
@@ -232,4 +231,101 @@
 
 .info-row__disclaimer {
     font-size: 1.6rem;
+}
+
+/*/////////////////////////////*/
+/* media queries */
+/*/////////////////////////////*/
+
+@media only screen and (max-width: 1100px) {
+    .reservations-content-container {
+        width: 100%;
+        margin-top: 4rem;
+    }
+
+    .avail-room-type {
+        height: unset;
+        flex-direction: column;
+        align-items: center;
+        width: 40rem;
+        margin: 0 auto;
+        margin-top: 5rem;
+        border: none;
+    }
+
+    .room-type__content--title-box {
+        flex-direction: column;
+    }
+
+    .room-type__price-text {
+        float: none;
+    }
+
+    .room-type__price-wrapper {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .price-br {
+        display: none;
+    }
+
+    .room-type-heading {
+        width: 100%
+    }
+
+    .room-details__btn {
+        height: 5rem;
+    }
+
+    .details {
+        display: flex;
+        flex-direction: column;
+    }
+    .details__col--1 {
+        align-self: unset;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    .details__col--2 {
+        align-self: unset;
+    }
+
+    .services {
+        flex-direction: column;
+    }
+
+    .room-details {
+        width: 40rem;
+        margin: 0 auto;
+        height: unset;
+    }
+
+    .info-row {
+        margin-top: 5rem;
+        padding: 1.5rem 3rem;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .avail-room-type {
+        width: 100%;
+        padding: 0 3rem;
+    }
+
+    .room-type__image {
+        width: 100%;
+    }
+
+    .choose-room__select-room-btn {
+        margin-left: 1.5rem;
+        text-align: center;
+    }
+
+    .room-details {
+        width: 100%;
+        padding: 0 3rem;
+    }
+
+    
 }

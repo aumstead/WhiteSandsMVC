@@ -111,3 +111,41 @@
 .check-rates__client-validation-error--show {
     display: inline;
 }
+
+@media only screen and (max-width: 1250px) {
+    .check-rates__content {
+        padding-left: 3rem;
+        padding-right: 3rem;
+        width: 100%;
+    }
+
+    .check-rates-drawer {
+        margin-top: 60px;
+        box-shadow: 0 4px 30px -10px grey;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .check-rates__form {
+        width: 50rem;
+        flex-wrap: wrap;
+    }
+
+    .check-rates-drawer-open {
+        height: 18rem;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .check-rates-drawer-open {
+        height: 30rem;
+    }
+    .check-rates__content-open {
+        height: unset;
+    }
+    .check-rates__form-control {
+        margin-top: 2rem;
+    }
+
+    
+}

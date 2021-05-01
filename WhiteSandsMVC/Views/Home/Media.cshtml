@@ -1,0 +1,186 @@
+﻿@{
+    ViewBag.Title = "Media";
+}
+
+<header>
+    <partial name="Partials/_BlackNavbar" />
+    <partial name="Partials/_MobileNavigation" />
+</header>
+
+<partial name="Partials/_CheckRatesDrawer" />
+
+<div class="activities-page-hero">
+    <div class="activities-hero__headings">
+        <h1 class="section-heading activities-hero__title">Photos Gallery</h1>
+    </div>
+</div>
+
+<h2 class="section-heading activities-hero__subheading">Services and Amenities</h2>
+
+<div class="activities-carousel">
+    <div class="carousel-cell">
+        <img src="~/images/ActivitiesIndex/activities-plane.jpg"
+             alt="Floating airplane"
+             asp-append-version="true"
+             class="media__amenities-carousel-img" />
+        <div class="accomodations__details-container">
+            <h4 class="h4-heading accomodations__details-heading">
+                Private charters
+            </h4>
+            <p class="text-serif accomodations__details-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Id, ratione! Aspernatur at fugiat rem velit
+                accusantium nihil tempora expedita, ad quod
+                provident nisi culpa voluptate quidem assumenda
+                animi recusandae doloremque?
+            </p>
+            <a asp-controller="error" asp-action="UnderConstruction" target="_blank" class="small-btn small-btn--inverse accomodations__small-btn--accomodations-controller">Details</a>
+        </div>
+    </div>
+    <div class="carousel-cell">
+        <img src="~/images/ActivitiesIndex/diving-lessons.jpg"
+             alt="scuba diving lesson"
+             asp-append-version="true"
+             class="media__amenities-carousel-img" />
+        <div class="accomodations__details-container">
+            <h4 class="h4-heading accomodations__details-heading">Diving Lessons</h4>
+            <p class="text-serif accomodations__details-text">
+                Lorem ipsum dolor sit amet consectetur
+                elit. Consequuntur possimus vero placeat expedita
+                optio, incidunt ex ducimus, vel
+                reiciendis veniam illum dolor ratione eos velit.
+                Quas quibusdam maiores cupiditate ullam
+                voluptatibus ducimus.
+            </p>
+            <a asp-controller="error" asp-action="UnderConstruction" target="_blank" class="small-btn small-btn--inverse accomodations__small-btn--accomodations-controller">Details</a>
+        </div>
+    </div>
+    <div class="carousel-cell">
+        <img src="~/images/ActivitiesIndex/activities-spa.jpg"
+             alt="woman at the spa"
+             asp-append-version="true"
+             class="media__amenities-carousel-img object-fit-cover" />
+        <div class="accomodations__details-container">
+            <h4 class="h4-heading accomodations__details-heading">Full-Service Spa</h4>
+            <p class="text-serif accomodations__details-text">
+                Lorem ipsum dolor sit, amet adipisicing
+                elit. Reprehenderit vero beatae
+                quibusdam. Corporis a, totam, temporibus
+                labore velit tempore aspernatur maxime
+                necessitatibus!
+            </p>
+            <a asp-controller="error" asp-action="UnderConstruction" target="_blank" class="small-btn small-btn--inverse accomodations__small-btn--accomodations-controller">Details</a>
+        </div>
+    </div>
+</div>
+
+<h2 class="section-heading activities-hero__subheading" style="padding-top: 10rem;">Accomodations</h2>
+
+<div class="accomodations-carousel media-carousel">
+    <div class="carousel-cell">
+        <img src="/images/AccomodationsIndex/carousel1.jpg"
+             alt="One-bedroom overwater bungalow"
+             asp-append-version="true"
+             class="media__accomodations-carousel-img" />
+        <div class="accomodations__details-container">
+            <h4 class="h4-heading accomodations__details-heading">
+                One-bedroom Overwater Bungalow
+            </h4>
+            <p class="text-serif accomodations__details-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Id, ratione! Aspernatur at fugiat rem velit
+                accusantium nihil tempora expedita, ad quod
+                provident nisi culpa voluptate quidem assumenda
+                animi recusandae doloremque?
+            </p>
+            <a asp-controller="error" asp-action="UnderConstruction" target="_blank" class="small-btn small-btn--inverse accomodations__small-btn--accomodations-controller">Details</a>
+        </div>
+    </div>
+    <div class="carousel-cell">
+        <img src="/images/AccomodationsIndex/carousel2.jpg"
+             alt="Two-bedroom overwater bungalow"
+             asp-append-version="true"
+             class="media__accomodations-carousel-img" />
+        <div class="accomodations__details-container">
+            <h4 class="h4-heading accomodations__details-heading">Two-bedroom Overwater bungalow</h4>
+            <p class="text-serif accomodations__details-text">
+                Lorem ipsum dolor sit amet consectetur
+                elit. Consequuntur possimus vero placeat expedita
+                optio, incidunt ex ducimus, vel
+                reiciendis veniam illum dolor ratione eos velit.
+                Quas quibusdam maiores cupiditate ullam
+                voluptatibus ducimus.
+            </p>
+            <a asp-controller="error" asp-action="UnderConstruction" target="_blank" class="small-btn small-btn--inverse accomodations__small-btn--accomodations-controller">Details</a>
+        </div>
+    </div>
+    <div class="carousel-cell">
+        <img src="/images/AccomodationsIndex/carousel3.jpg"
+             alt="Family overwater bungalow"
+             asp-append-version="true"
+             class="media__accomodations-carousel-img" />
+        <div class="accomodations__details-container">
+            <h4 class="h4-heading accomodations__details-heading">Up to 6 adults or 6 person family overwater suite with plunge pool</h4>
+            <p class="text-serif accomodations__details-text">
+                Lorem ipsum dolor sit, amet adipisicing
+                elit. Reprehenderit vero beatae
+                quibusdam. Corporis a, totam, temporibus
+                labore velit tempore aspernatur maxime
+                necessitatibus!
+            </p>
+            <a asp-controller="error" asp-action="UnderConstruction" target="_blank" class="small-btn small-btn--inverse accomodations__small-btn--accomodations-controller">Details</a>
+        </div>
+    </div>
+</div>
+
+<h2 class="section-heading activities-hero__subheading" style="padding-top: 10rem;">Dining</h2>
+
+<div class="dining-carousel media-carousel">
+    <div class="carousel-cell">
+        <img src="~/images/Media/dining2.jpg"
+             alt="Vesper Lounge"
+             asp-append-version="true"
+             class="carousel-img" />
+        <div class="accomodations__details-container">
+            <h4 class="h4-heading accomodations__details-heading">
+                Vesper Lounge
+            </h4>
+        </div>
+    </div>
+    <div class="carousel-cell">
+        <img src="~/images/Media/dining1.jpg"
+             alt="Luka Cafe"
+             asp-append-version="true"
+             class="carousel-img" />
+        <div class="accomodations__details-container">
+            <h4 class="h4-heading accomodations__details-heading">Luka Cafe</h4>
+            
+        </div>
+    </div>
+    <div class="carousel-cell">
+        <img src="~/images/Media/dining3.jpg"
+             alt="Gaia Restaurant"
+             asp-append-version="true"
+             class="carousel-img" />
+        <div class="accomodations__details-container">
+            <h4 class="h4-heading accomodations__details-heading">Gaia Restaurant</h4>
+        </div>
+    </div>
+</div>
+
+
+
+<partial name="Partials/_Footer" />
+
+@section Scripts {
+    <script src="~/js/MediaIndex.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="~/js/checkRates.js" asp-append-version="true"></script>
+    <script src="~/js/dateRangePicker.js" asp-append-version="true"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+}
+
+@section FlickityScript {
+    <script src="~/js/flickity.pkgd.min.js"></script>
+}

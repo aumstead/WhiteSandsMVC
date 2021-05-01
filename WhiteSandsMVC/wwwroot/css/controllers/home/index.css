@@ -1,4 +1,9 @@
-﻿.hero {
+﻿@font-face {
+    font-family: "Tangerine";
+    src: url("../../../Tangerine-Regular.ttf");
+}
+
+.hero {
     height: 90vh;
     position: relative;
     display: flex;
@@ -161,6 +166,8 @@
 
 .photos__flex-container {
     display: flex;
+    margin-top: 10rem;
+    margin-bottom: 6rem;
 }
 
 .photos__column {
@@ -171,13 +178,18 @@
 }
 
 .photos__column--1 {
-    margin-top: var(--margin-large);
-    margin-left: var(--margin-large);
-    margin-bottom: var(--margin-medium);
+/*    margin-top: var(--margin-large);*/
+    align-items: center;
+/*    margin-bottom: var(--margin-medium);*/
 }
 
 .photos__column--2 {
     justify-content: center;
+}
+
+.photo-figure {
+    display: flex;
+    flex-direction: column;
 }
 
 .photos__photo {
