@@ -33,3 +33,8 @@
 @import 'controllers/reservations/confirmStay.css';
 @import 'controllers/reservations/bookingSuccess.css';
 @import 'controllers/reservations/selectDates.css';
+@import 'controllers/admin/index.css';
+@import 'controllers/admin/bookings.css';
+@import 'controllers/admin/bookingDetails.css';
+@import 'controllers/admin/bookingEdit.css';
+@import 'controllers/admin/_adminSidebar.css';

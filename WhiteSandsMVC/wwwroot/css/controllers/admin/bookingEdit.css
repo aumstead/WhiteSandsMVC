@@ -1,0 +1,31 @@
+﻿.booking-edit__form {
+    width: 40rem;
+}
+
+.booking-edit__form-control {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+.booking-edit__label {
+    color: gray;
+    font-size: 1.4rem;
+    margin-bottom: .8rem;
+}
+
+.booking-edit__input {
+    border: 1px solid #000;
+    font-size: 1.6rem;
+    padding: 1rem;
+}
+
+.booking-edit__validation-summary {
+    font-size: 1.4rem;
+    margin-bottom: 3rem;
+}
+
+.booking-edit__validation-input {
+    font-size: 1.4rem;
+    margin-top: .7rem;
+}

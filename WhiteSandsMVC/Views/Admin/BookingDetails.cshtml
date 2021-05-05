@@ -1,0 +1,120 @@
+﻿@model Booking 
+@{
+    ViewBag.Title = "Admin - Booking Details";
+}
+
+<header>
+    <partial name="Partials/Admin/_AdminNavbar" />
+    <partial name="Partials/_MobileNavigation" />
+</header>
+
+<partial name="Partials/Admin/_AdminSidebar" />
+
+<div class="admin">
+    <div class="admin-wrapper">
+        <div class="admin-heading">
+            <h1 class="h1-heading">Booking Details</h1>
+        </div>
+
+        <div class="booking-details-wrapper">
+            <div class="booking-details-guest-info">
+                <div class="booking-details-heading-wrapper">
+                    <h3 class="h2-heading">Guest Info</h3>
+                    <a asp-page="/admin/booking/edit/guest" asp-route-id="@Model.GuestId" class="booking-details-edit-entry">Edit Entry</a>
+                </div>
+                <div class="booking-details-row">
+                    <h4 class="booking-details-heading">Name</h4>
+                    <p class="booking-details-row-info">@(Model.Guest.FirstName + " " + Model.Guest.LastName)</p>
+                </div>
+
+                <div class="booking-details-row">
+                    <h4 class="booking-details-heading">Phone Number</h4>
+                    <p class="booking-details-row-info">@Model.Guest.PhoneNumber</p>
+                </div>
+
+                <div class="booking-details-row">
+                    <h4 class="booking-details-heading">Email</h4>
+                    <p class="booking-details-row-info">@Model.Guest.Email</p>
+                </div>
+
+                <div class="booking-details-row">
+                    <h4 class="booking-details-heading">Country of Nationality</h4>
+                    <p class="booking-details-row-info">@Model.Guest.Country</p>
+                </div>
+
+                <div class="booking-details-heading-wrapper mt-5">
+                    <h3 class="h2-heading">Payment Info</h3>
+                    <a asp-controller="admin" asp-action="EditPaymentDetails" asp-route-id="@Model.GuestId" class="booking-details-edit-entry">Edit Entry</a>
+                </div>
+
+                <div class="booking-details-row">
+                    <h4 class="booking-details-heading">Credit Card Name</h4>
+                    <p class="booking-details-row-info">@Model.Guest.NameOnCreditCard</p>
+                </div>
+
+                <div class="booking-details-row">
+                    <h4 class="booking-details-heading">Credit Card Number</h4>
+                    <p class="booking-details-row-info">@Model.Guest.CreditCardNumber</p>
+                </div>
+
+                <div class="booking-details-row--credit-card">
+                    <div>
+                        <h4 class="booking-details-heading">Expiry Month</h4>
+                        <p class="booking-details-row-info">@Model.Guest.CreditCardExpiryMonth</p>
+
+                    </div>
+                    <div>
+                        <h4 class="booking-details-heading">Expiry Year</h4>
+                        <p class="booking-details-row-info">@Model.Guest.CreditCardExpiryYear</p>
+                    </div>
+                </div>
+
+                @*<div class="booking-details-row">
+                    <h4 class="booking-details-heading">Total Cost</h4>
+                    <p class="booking-details-row-info">$@string.Format("{0:0.00}", Model.TotalCost)</p>
+                </div>*@
+
+
+
+            </div>
+
+            <div class="booking-details-basic-info">
+                <div class="booking-details-heading-wrapper">
+                    <h3 class="h2-heading">Room Info</h3>
+                    <a asp-controller="admin" asp-action="EditGuestDetails" asp-route-id="@Model.GuestId" class="booking-details-edit-entry">Edit Entry</a>
+                </div>
+
+
+                <div class="booking-details-row">
+                    <h4 class="booking-details-heading">Check in</h4>
+                    <p class="booking-details-row-info">@Model.CheckInDate.ToLongDateString()</p>
+                </div>
+
+                <div class="booking-details-row">
+                    <h4 class="booking-details-heading">Check out</h4>
+                    <p class="booking-details-row-info">@Model.CheckOutDate.ToLongDateString()</p>
+                </div>
+
+                <div class="booking-details-row">
+                    <h4 class="booking-details-heading">Room Number</h4>
+                    <p class="booking-details-row-info">@Model.Room.RoomNumber</p>
+                </div>
+
+                <div class="booking-details-row">
+                    <h4 class="booking-details-heading">Room</h4>
+                    <p class="booking-details-row-info">@Model.RoomType.Name</p>
+                </div>
+
+                <div class="booking-details-row">
+                    <h4 class="booking-details-heading">Status</h4>
+                    <p class="booking-details-row-info">@Model.Status</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="admin-footer">
+        <span class="admin-copyright">&copy;Lorem, ipsum dolor.</span>
+    </div>
+</div>

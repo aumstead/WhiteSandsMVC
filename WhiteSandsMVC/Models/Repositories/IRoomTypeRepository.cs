@@ -5,9 +5,7 @@ using System.Threading.Tasks;
 
 namespace WhiteSandsMVC.Models.Repositories
 {
-    public interface IRoomTypeRepository
+    public interface IRoomTypeRepository : IGenericRepository<RoomType>
     {
-        IEnumerable<RoomType> GetRoomTypes();
-        RoomType GetRoomTypeById(int id);
     }
 }

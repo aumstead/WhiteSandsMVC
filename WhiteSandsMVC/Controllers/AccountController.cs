@@ -13,11 +13,13 @@ namespace WhiteSandsMVC.Controllers
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
+            _roleManager = roleManager;
         }
 
         [HttpGet]
@@ -44,6 +46,7 @@ namespace WhiteSandsMVC.Controllers
 
                 if (result.Succeeded)
                 {
+                    await userManager.AddToRoleAsync(user, "Member");
                     await signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Profile");
                 }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WhiteSandsMVC.Models;
 using WhiteSandsMVC.Models.Repositories;
+using WhiteSandsMVC.Utility;
 using WhiteSandsMVC.ViewModels;
 
 namespace WhiteSandsMVC.Controllers
@@ -13,15 +14,13 @@ namespace WhiteSandsMVC.Controllers
     {
         private readonly IRoomRepository roomRepository;
         private readonly IRoomTypeRepository roomTypeRepository;
-        private readonly IBookingRepository bookingRepository;
-        private readonly IGuestRepository guestRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public ReservationsController(IRoomRepository roomRepository, IRoomTypeRepository roomTypeRepository, IBookingRepository bookingRepository, IGuestRepository guestRepository)
+        public ReservationsController(IRoomRepository roomRepository, IRoomTypeRepository roomTypeRepository, IUnitOfWork unitOfWork)
         {
             this.roomRepository = roomRepository;
             this.roomTypeRepository = roomTypeRepository;
-            this.bookingRepository = bookingRepository;
-            this.guestRepository = guestRepository;
+            _unitOfWork = unitOfWork;
         }
 
         
@@ -30,17 +29,17 @@ namespace WhiteSandsMVC.Controllers
             return View(model);
         }
 
-        public IActionResult ChooseRoom(ChooseRoomViewModel model)
+        public async Task<IActionResult> ChooseRoom(ChooseRoomViewModel model)
         {
             // get available rooms according to search criteria from db and attach to VM, if I can. Try to not use the viewbag.
-            IEnumerable<RoomType> roomTypes = roomTypeRepository.GetRoomTypes();
+            IEnumerable<RoomType> roomTypes = await _unitOfWork.RoomType.GetAll();
             ViewBag.roomTypes = roomTypes;
 
             return View(model);
         }
 
         [HttpGet]
-        public IActionResult ConfirmStay(string checkInDate, string checkOutDate, string adults, string children, string selectedRoomTypeId, string promo)
+        public async Task<IActionResult> ConfirmStay(string checkInDate, string checkOutDate, string adults, string children, string selectedRoomTypeId, string promo)
         {
 
             DateTime checkIn;
@@ -58,12 +57,12 @@ namespace WhiteSandsMVC.Controllers
             TimeSpan nights = checkOut.Subtract(checkIn);
             cancellationDate = checkIn.AddDays(-1);
 
-            var room = roomRepository.GetRoomByRoomTypeId(roomTypeId);
+            var room = await _unitOfWork.Room.GetFirstOrDefault(room => room.RoomTypeId == roomTypeId);
             if (room == null)
             {
                 return RedirectToAction("HttpStatusCodeHandler", "Error", new { statusCode = 404 });
             }
-            var roomType = roomTypeRepository.GetRoomTypeById(room.RoomTypeId);
+            var roomType = await _unitOfWork.RoomType.Get(room.RoomTypeId);
 
             ConfirmStayViewModel model = new ConfirmStayViewModel
             {
@@ -83,73 +82,99 @@ namespace WhiteSandsMVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult ConfirmStay(ConfirmStayViewModel model)
+        public async Task<IActionResult> ConfirmStay(ConfirmStayViewModel model)
         {
             if (ModelState.IsValid)
             {
                 // this guest is strangely initialized in the confirm stay view model
                 Guest guest = model.Guest;
-                guestRepository.Create(guest);
+                await _unitOfWork.Guest.Add(guest);
+                _unitOfWork.Save();
 
                 // double check total cost by making a calculation on backend too
-                RoomType roomType = roomTypeRepository.GetRoomTypeById(model.RoomTypeId);
+                RoomType roomType = await _unitOfWork.RoomType.Get(model.RoomTypeId);
                 var baseTotal = roomType.Price * model.Nights;
-                decimal feePercent = .1m;
-                var serviceFee = Decimal.Multiply(baseTotal, feePercent);
-                var total = baseTotal + serviceFee;
-
-                if (total != model.TotalCost)
-                {
-                    new Exception("Error calculating total cost");
-                }
 
                 Booking booking = new Booking
                 {
                     GuestId = guest.Id,
                     RoomId = model.RoomId,
                     RoomTypeId = model.RoomTypeId,
-                    TotalCost = model.TotalCost,
                     CheckInDate = model.CheckInDate,
                     CheckOutDate = model.CheckOutDate,
                     Adults = model.Adults,
                     Children = model.Children,
-                    Promo = model.Promo
+                    Promo = model.Promo,
+                    Status = Status.Paid
                 };
 
-                bookingRepository.Create(booking);
+                await _unitOfWork.Booking.Add(booking);
+                _unitOfWork.Save();
+
+                //BillOfSale bill = new BillOfSale
+                //{
+                //    BookingId = booking.Id
+                //};
+
+                //await _unitOfWork.BillOfSale.Add(bill);
+                //_unitOfWork.Save();
+
+                //LineItemCharge roomCharge = new LineItemCharge
+                //{
+                //    Name = $"{roomType.Price} x {model.Nights} nights",
+                //    Amount = baseTotal,
+                //    BillOfSaleId = bill.Id
+                //};
+
+                //await _unitOfWork.LineItemCharge.Add(roomCharge);
+                //_unitOfWork.Save();
+
+                decimal feePercent = .1m;
+                var serviceFee = Decimal.Multiply(baseTotal, feePercent);
+
+                //LineItemCharge serviceCharge = new LineItemCharge
+                //{
+                //    Name = "Service Fee",
+                //    Amount = serviceFee,
+                //    BillOfSaleId = bill.Id
+                //};
+
+                //await _unitOfWork.LineItemCharge.Add(serviceCharge);
+                //_unitOfWork.Save();
 
                 return RedirectToAction("BookingSuccess", "Reservations", new 
                 { 
                     bookingId = booking.Id,
                     guestId = guest.Id,
                     roomTypeId = model.RoomTypeId,
+                    //billOfSaleId = bill.Id
                 });
 
             }
-            var roomTypeForError = roomTypeRepository.GetRoomTypeById(model.RoomTypeId);
+            var roomTypeForError = await _unitOfWork.RoomType.Get(model.RoomTypeId);
             model.RoomType = roomTypeForError;
             return View(model);
         }
 
-        public IActionResult BookingSuccess(string bookingId, string guestId, string roomTypeId)
+        public async Task<IActionResult> BookingSuccess(int bookingId, int guestId, int roomTypeId, int billOfSaleId)
         {
-            int bookingIdParsed;
-            int guestIdParsed;
-            int roomTypeIdParsed;
+            var booking = await _unitOfWork.Booking.Get(bookingId);
+            var guest = await _unitOfWork.Guest.Get(guestId);
+            var roomType = await _unitOfWork.RoomType.Get(roomTypeId);
+            var listOfCharges = await _unitOfWork.LineItemCharge.GetAll(charge => charge.BillOfSaleId == billOfSaleId);
+            decimal totalCost = 0;
 
-            var isValidBookingId = Int32.TryParse(bookingId, out bookingIdParsed);
-            var isValidGuestId = Int32.TryParse(guestId, out guestIdParsed);
-            var isValidRoomTypeId = Int32.TryParse(roomTypeId, out roomTypeIdParsed);
-
-            var booking = bookingRepository.GetBooking(bookingIdParsed);
-            var guest = guestRepository.GetGuest(guestIdParsed);
-            var roomType = roomTypeRepository.GetRoomTypeById(roomTypeIdParsed);
+            foreach (var charge in listOfCharges)
+            {
+                totalCost += charge.Amount;
+            }
 
             BookingSuccessViewModel model = new BookingSuccessViewModel()
             {
                 Booking = booking,
                 RoomType = roomType,
-                Guest = guest
+                Guest = guest,
+                TotalCost = totalCost
             };
 
             return View(model);

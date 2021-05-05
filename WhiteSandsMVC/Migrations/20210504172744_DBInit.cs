@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WhiteSandsMVC.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class DBInit : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -60,6 +60,19 @@ namespace WhiteSandsMVC.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "FoodInterests",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(maxLength: 100, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FoodInterests", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Guests",
                 columns: table => new
                 {
@@ -80,6 +93,19 @@ namespace WhiteSandsMVC.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Guests", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HealthInterests",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(maxLength: 100, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HealthInterests", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -240,6 +266,58 @@ namespace WhiteSandsMVC.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "UserFoodInterests",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(nullable: false),
+                    FoodInterestId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserFoodInterests", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UserFoodInterests_FoodInterests_FoodInterestId",
+                        column: x => x.FoodInterestId,
+                        principalTable: "FoodInterests",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_UserFoodInterests_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserHealthInterests",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(nullable: false),
+                    HealthInterestId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserHealthInterests", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UserHealthInterests_HealthInterests_HealthInterestId",
+                        column: x => x.HealthInterestId,
+                        principalTable: "HealthInterests",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_UserHealthInterests_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Bookings",
                 columns: table => new
                 {
@@ -248,11 +326,12 @@ namespace WhiteSandsMVC.Migrations
                     GuestId = table.Column<int>(nullable: false),
                     RoomId = table.Column<int>(nullable: false),
                     RoomTypeId = table.Column<int>(nullable: false),
-                    TotalCost = table.Column<decimal>(type: "money", nullable: false),
                     CheckInDate = table.Column<DateTime>(nullable: false),
                     CheckOutDate = table.Column<DateTime>(nullable: false),
                     Adults = table.Column<byte>(nullable: false),
                     Children = table.Column<byte>(nullable: false),
+                    Status = table.Column<string>(nullable: true),
+                    Notes = table.Column<string>(nullable: true),
                     Promo = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -304,19 +383,90 @@ namespace WhiteSandsMVC.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "BillsOfSale",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BookingId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BillsOfSale", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_BillsOfSale_Bookings_BookingId",
+                        column: x => x.BookingId,
+                        principalTable: "Bookings",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "LineItemCharges",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: true),
+                    Amount = table.Column<decimal>(type: "money", nullable: false),
+                    BillOfSaleId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LineItemCharges", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_LineItemCharges_BillsOfSale_BillOfSaleId",
+                        column: x => x.BillOfSaleId,
+                        principalTable: "BillsOfSale",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "FoodInterests",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Restaurants & Bars" },
+                    { 2, "Wine" },
+                    { 3, "Brunch" },
+                    { 4, "Cooking classes" },
+                    { 5, "Farm to table" },
+                    { 6, "Local specialties" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "HealthInterests",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 11, "Meditation" },
+                    { 9, "Other water sports" },
+                    { 8, "Surfing" },
+                    { 7, "Diving" },
+                    { 6, "Golfing" },
+                    { 10, "Horseback riding" },
+                    { 4, "Nature Excursions" },
+                    { 3, "Yoga" },
+                    { 2, "Spa" },
+                    { 1, "Fitness" },
+                    { 5, "Skiing" }
+                });
+
             migrationBuilder.InsertData(
                 table: "RoomTypes",
                 columns: new[] { "Id", "Bathroom", "Beds", "Category", "ExtraBeds", "Location", "MaxAdultCapacity", "MaxChildCapacity", "Name", "Occupancy", "PhotoPath", "Price", "RoomSize" },
                 values: new object[,]
                 {
-                    { 8, "One full bathroom and one-half bathroom", "One king bed. One full sofa bed", 3, "One full sofa bed", "Beachfront, with pedestrian access to main building", (byte)3, (byte)2, "One-bedroom beachfront villa estate", "3 adults or 2 adults and 2 children (up to the age of 12)", "villa3.jpg", 600m, "253 m2 (2,722 sq.ft.)" },
-                    { 7, "Two full bathrooms", "One king and two queen beds. One full sofa bed", 3, "One full sofa bed", "Beachfront, with pedestrian access to main building", (byte)5, (byte)3, "Two-bedroom beachfront villa estate", "5 adults or 2 adults and 3 children (up to the age of 12)", "villa2.jpg", 900m, "300 m2 (3,228 sq.ft.)" },
-                    { 6, "Two full bathrooms and one-half bathroom", "Two king and two queen beds", 3, "One rollaway", "Secluded, with pedestrian access to beach and main building", (byte)6, (byte)4, "Three-bedroom villa estate with plunge pool", "6 adults or 2 adults and 4 children (up to the age of 12)", "villa1.jpg", 1200m, "500 m2 (5,380 sq.ft.)" },
-                    { 5, "Two full bathrooms", "One king bed. One full sofa bed", 2, "One full sofa bed", "Floors 1, 5-6", (byte)3, (byte)2, "Beachfront one-bedroom suite", "3 adults or 2 adults and 2 children (up to the age of 12)", "beachfront2.jpg", 450m, "130 m2 (1,400 sq.ft.)" },
-                    { 4, "One full bathroom", "One king bed. One rollaway", 1, "One rollaway", "Floors 1-4", (byte)2, (byte)1, "Deluxe beachfront room", "2 adults or 2 adults and 1 child (up to the age of 12)", "beachfront1.jpg", 300m, "59 m2 (640 sq.ft.)" },
-                    { 3, "Two full bathrooms", "One king bed and two queen beds. Two full sofa beds", 0, "Two full sofa beds", "Overwater bungalow", (byte)6, (byte)4, "Two-bedroom overwater bungalow suite with plunge pool", "6 adults or 2 adults and 4 children (up to the age of 12)", "bungalow3.jpg", 600m, "207 m2 (2,228 sq.ft.)" },
+                    { 1, "One full bathroom", "One king bed. One full sofa bed", 0, "One full sofa bed", "Overwater bungalow", (byte)3, (byte)2, "One-bedroom beach-view overwater bungalow", "3 adults or 2 adults and 2 children (up to the age of 12)", "bungalow1.jpg", 300m, "100 m2 (1,080 sq.ft.)" },
                     { 2, "Two full bathrooms", "Two king beds. Two full sofa beds", 0, "Two full sofa beds", "Overwater bungalow", (byte)6, (byte)4, "Two-bedroom overwater bungalow suite", "6 adults or 2 adults and 4 children (up to the age of 12)", "bungalow2.jpg", 500m, "207 m2 (2,228 sq.ft.)" },
-                    { 1, "One full bathroom", "One king bed. One full sofa bed", 0, "One full sofa bed", "Overwater bungalow", (byte)3, (byte)2, "One-bedroom beach-view overwater bungalow", "3 adults or 2 adults and 2 children (up to the age of 12)", "bungalow1.jpg", 300m, "100 m2 (1,080 sq.ft.)" }
+                    { 3, "Two full bathrooms", "One king bed and two queen beds. Two full sofa beds", 0, "Two full sofa beds", "Overwater bungalow", (byte)6, (byte)4, "Two-bedroom overwater bungalow suite with plunge pool", "6 adults or 2 adults and 4 children (up to the age of 12)", "bungalow3.jpg", 600m, "207 m2 (2,228 sq.ft.)" },
+                    { 4, "One full bathroom", "One king bed. One rollaway", 1, "One rollaway", "Floors 1-4", (byte)2, (byte)1, "Deluxe beachfront room", "2 adults or 2 adults and 1 child (up to the age of 12)", "beachfront1.jpg", 300m, "59 m2 (640 sq.ft.)" },
+                    { 6, "Two full bathrooms and one-half bathroom", "Two king and two queen beds", 3, "One rollaway", "Secluded, with pedestrian access to beach and main building", (byte)6, (byte)4, "Three-bedroom villa estate with plunge pool", "6 adults or 2 adults and 4 children (up to the age of 12)", "villa1.jpg", 1200m, "500 m2 (5,380 sq.ft.)" },
+                    { 7, "Two full bathrooms", "One king and two queen beds. One full sofa bed", 3, "One full sofa bed", "Beachfront, with pedestrian access to main building", (byte)5, (byte)3, "Two-bedroom beachfront villa estate", "5 adults or 2 adults and 3 children (up to the age of 12)", "villa2.jpg", 900m, "300 m2 (3,228 sq.ft.)" },
+                    { 8, "One full bathroom and one-half bathroom", "One king bed. One full sofa bed", 3, "One full sofa bed", "Beachfront, with pedestrian access to main building", (byte)3, (byte)2, "One-bedroom beachfront villa estate", "3 adults or 2 adults and 2 children (up to the age of 12)", "villa3.jpg", 600m, "253 m2 (2,722 sq.ft.)" },
+                    { 5, "Two full bathrooms", "One king bed. One full sofa bed", 2, "One full sofa bed", "Floors 1, 5-6", (byte)3, (byte)2, "Beachfront one-bedroom suite", "3 adults or 2 adults and 2 children (up to the age of 12)", "beachfront2.jpg", 450m, "130 m2 (1,400 sq.ft.)" }
                 });
 
             migrationBuilder.InsertData(
@@ -324,29 +474,29 @@ namespace WhiteSandsMVC.Migrations
                 columns: new[] { "Id", "RoomNumber", "RoomTypeId", "View" },
                 values: new object[,]
                 {
-                    { 1, "1", 1, "Lagoon" },
+                    { 18, "New York", 8, "Mt.Suthep" },
                     { 23, "Cairo", 6, "Beach" },
+                    { 22, "Amsterdam", 6, "Beach" },
                     { 21, "Rome", 6, "Beach" },
                     { 20, "London", 7, "Beach" },
                     { 19, "Tokyo", 7, "Beach" },
-                    { 18, "New York", 8, "Mt.Suthep" },
                     { 17, "Paris", 8, "Mt. Suthep" },
-                    { 22, "Amsterdam", 6, "Beach" },
+                    { 13, "102", 5, "Beach" },
                     { 15, "501", 5, "Garden" },
-                    { 2, "2", 1, "Lagoon" },
+                    { 1, "1", 1, "Lagoon" },
                     { 16, "600", 5, "Garden" },
+                    { 3, "3", 1, "Mt. Suthep" },
                     { 4, "4", 1, "Mt. Suthep" },
                     { 5, "5", 2, "Lagoon" },
                     { 6, "6", 2, "Mt. Suthep" },
                     { 7, "7", 3, "Lagoon" },
-                    { 8, "8", 3, "Mt. Suthep" },
-                    { 3, "3", 1, "Mt. Suthep" },
+                    { 2, "2", 1, "Lagoon" },
+                    { 9, "100", 4, "Beach" },
                     { 10, "201", 4, "Beach" },
                     { 11, "302", 4, "Garden" },
                     { 12, "402", 4, "Garden" },
-                    { 13, "102", 5, "Beach" },
                     { 14, "500", 5, "Beach" },
-                    { 9, "100", 4, "Beach" }
+                    { 8, "8", 3, "Mt. Suthep" }
                 });
 
             migrationBuilder.InsertData(
@@ -408,6 +558,12 @@ namespace WhiteSandsMVC.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_BillsOfSale_BookingId",
+                table: "BillsOfSale",
+                column: "BookingId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Bookings_GuestId",
                 table: "Bookings",
                 column: "GuestId");
@@ -421,6 +577,31 @@ namespace WhiteSandsMVC.Migrations
                 name: "IX_Bookings_RoomTypeId",
                 table: "Bookings",
                 column: "RoomTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LineItemCharges_BillOfSaleId",
+                table: "LineItemCharges",
+                column: "BillOfSaleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserFoodInterests_FoodInterestId",
+                table: "UserFoodInterests",
+                column: "FoodInterestId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserFoodInterests_UserId",
+                table: "UserFoodInterests",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserHealthInterests_HealthInterestId",
+                table: "UserHealthInterests",
+                column: "HealthInterestId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserHealthInterests_UserId",
+                table: "UserHealthInterests",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserTravelInterests_TravelInterestId",
@@ -451,13 +632,37 @@ namespace WhiteSandsMVC.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Bookings");
+                name: "LineItemCharges");
+
+            migrationBuilder.DropTable(
+                name: "UserFoodInterests");
+
+            migrationBuilder.DropTable(
+                name: "UserHealthInterests");
 
             migrationBuilder.DropTable(
                 name: "UserTravelInterests");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "BillsOfSale");
+
+            migrationBuilder.DropTable(
+                name: "FoodInterests");
+
+            migrationBuilder.DropTable(
+                name: "HealthInterests");
+
+            migrationBuilder.DropTable(
+                name: "TravelInterests");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Bookings");
 
             migrationBuilder.DropTable(
                 name: "Guests");
@@ -467,12 +672,6 @@ namespace WhiteSandsMVC.Migrations
 
             migrationBuilder.DropTable(
                 name: "RoomTypes");
-
-            migrationBuilder.DropTable(
-                name: "TravelInterests");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUsers");
         }
     }
 }

@@ -1,0 +1,27 @@
+﻿@model Guest
+@{
+    ViewBag.Title = "Admin - Edit Payment Info";
+}
+
+<header>
+    <partial name="Partials/Admin/_AdminNavbar" />
+    <partial name="Partials/_MobileNavigation" />
+</header>
+
+<partial name="Partials/Admin/_AdminSidebar" />
+
+<div class="admin">
+    <div class="admin-wrapper">
+        <div class="admin-heading">
+            <h1 class="h1-heading">Edit Payment Info</h1>
+            <a class="large-btn">Cancel</a>
+        </div>
+
+        <h3>@Model.FirstName</h3>
+        <h3>@Model.LastName</h3>
+
+    </div>
+    <div class="admin-footer">
+        <span class="admin-copyright">&copy;Lorem, ipsum dolor.</span>
+    </div>
+</div>

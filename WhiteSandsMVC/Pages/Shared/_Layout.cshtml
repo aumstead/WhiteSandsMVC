@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    @RenderSection("FlickityScript", required: false)
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Josefin+Slab|Tangerine|Work+Sans:200,300,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+
+    @*favicon*@
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    @*<link rel="manifest" href="/site.webmanifest">*@
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+
+</head>
+<body>
+    <main role="main">
+        <header>
+            <partial name="Partials/Admin/_AdminNavbar" />
+            <partial name="Partials/_MobileNavigation" />
+        </header>
+
+        <partial name="Partials/Admin/_AdminSidebar" />
+        <div class="admin">
+            <div class="admin-wrapper">
+                @RenderBody()
+            </div>
+            <div class="admin-footer">
+                <span class="admin-copyright">&copy;Lorem, ipsum dolor.</span>
+            </div>
+        </div>
+    </main>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

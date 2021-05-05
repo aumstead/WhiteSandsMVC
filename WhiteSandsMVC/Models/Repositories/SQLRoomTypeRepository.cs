@@ -5,24 +5,24 @@ using System.Threading.Tasks;
 
 namespace WhiteSandsMVC.Models.Repositories
 {
-    public class SQLRoomTypeRepository : IRoomTypeRepository
+    public class SQLRoomTypeRepository : GenericRepository<RoomType>, IRoomTypeRepository
     {
-        private readonly AppDbContext context;
+        private readonly AppDbContext _context;
 
-        public SQLRoomTypeRepository(AppDbContext context)
+        public SQLRoomTypeRepository(AppDbContext context) : base(context)
         {
-            this.context = context;
+            _context = context;
         }
 
-        public RoomType GetRoomTypeById(int id)
-        {
-            return context.RoomTypes.Find(id);
-        }
+        //public RoomType GetRoomTypeById(int id)
+        //{
+        //    return context.RoomTypes.Find(id);
+        //}
 
-        public IEnumerable<RoomType> GetRoomTypes()
-        {
-            var roomTypes = context.RoomTypes.Where(roomType => roomType.Id > 1);
-            return roomTypes;
-        }
+        //public IEnumerable<RoomType> GetRoomTypes()
+        //{
+        //    var roomTypes = context.RoomTypes.Where(roomType => roomType.Id > 1);
+        //    return roomTypes;
+        //}
     }
 }

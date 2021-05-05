@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -36,9 +37,15 @@ namespace WhiteSandsMVC
                 options.Password.RequiredLength = 6;
                 options.Password.RequiredUniqueChars = 3;
                 options.Password.RequireNonAlphanumeric = false;
-            }).AddEntityFrameworkStores<AppDbContext>();
+            })
+                .AddRoles<IdentityRole>()
+                .AddRoleManager<RoleManager<IdentityRole>>()
+                .AddSignInManager<SignInManager<ApplicationUser>>()
+                .AddRoleValidator<RoleValidator<IdentityRole>>()
+                .AddEntityFrameworkStores<AppDbContext>();
 
-            services.AddScoped<IBookingRepository, SQLBookingRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            //services.AddScoped<IBookingRepository, SQLBookingRepository>();
             services.AddScoped<IRoomRepository, SQLRoomRepository>();
             services.AddScoped<IRoomTypeRepository, SQLRoomTypeRepository>();
             services.AddScoped<IGuestRepository, SQLGuestRepository>();
@@ -49,6 +56,7 @@ namespace WhiteSandsMVC
             services.AddScoped<IUserHealthInterestRepository, SQLUserHealthInterestRepository>();
             services.AddScoped<IUserFoodInterestRepository, SQLUserFoodInterestRepository>();
             services.AddControllersWithViews();
+            services.AddRazorPages();
             services.Configure<RouteOptions>(options =>
             {
                 options.LowercaseUrls = true;
@@ -82,6 +90,7 @@ namespace WhiteSandsMVC
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapRazorPages();
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

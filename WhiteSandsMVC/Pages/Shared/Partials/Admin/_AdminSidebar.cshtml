@@ -1,0 +1,12 @@
+﻿<div class="admin-sb">
+    <nav class="admin-sb-nav">
+        <h5 class="admin-sb-title">Admin Menu</h5>
+        <ul class="admin-sb-ul">
+            <li class=@(ViewBag.Title == "Admin - Home" ? "admin-sb-li--active" : "admin-sb-li")><a class="admin-sb-a" asp-controller="Admin" asp-action="Index">Home</a></li>
+            <li class=@(ViewBag.Title == "Admin - Bookings" ? "admin-sb-li--active" : "admin-sb-li")><a class="admin-sb-a" asp-controller="Admin" asp-action="Bookings">Bookings</a></li>
+            <li class=@(ViewBag.Title == "Admin - Guests" ? "admin-sb-li--active" : "admin-sb-li")><a class="admin-sb-a" asp-controller="Admin" asp-action="Guests">Guests</a></li>
+            <li class=@(ViewBag.Title == "Admin - Rooms" ? "admin-sb-li--active" : "admin-sb-li")><a class="admin-sb-a" asp-controller="Admin" asp-action="Rooms">Rooms</a></li>
+            <li class=@(ViewBag.Title == "Admin - Room Categories" ? "admin-sb-li--active" : "admin-sb-li")><a class="admin-sb-a" asp-controller="Admin" asp-action="RoomTypes">Room Categories</a></li>
+        </ul>
+    </nav>
+</div>

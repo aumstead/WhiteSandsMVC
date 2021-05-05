@@ -97,6 +97,15 @@
 .mt-minus-8 {
     margin-top: -8rem;
 }
+.mt-2 {
+    margin-top: 2rem;
+}
+.mt-3 {
+    margin-top: 3rem;
+}
+.mt-5 {
+    margin-top: 5rem;
+}
 .mt-8 {
     margin-top: 8rem;
 }
@@ -111,6 +120,9 @@
 }
 .mb-8 {
     margin-bottom: 8rem;
+}
+.mr-2{
+    margin-right: 2rem;
 }
 
 

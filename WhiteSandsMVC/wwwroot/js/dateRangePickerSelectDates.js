@@ -9,8 +9,6 @@ var end = date;
 //$('#check-out-hidden').data('daterangepicker').setEndDate(end);
 const checkInEl = document.getElementById('check-in-hidden');
 const checkOutEl = document.getElementById('check-out-hidden');
-console.log(checkInEl)
-console.log(checkOutEl)
 start = checkInEl.value;
 end = checkOutEl.value;
 

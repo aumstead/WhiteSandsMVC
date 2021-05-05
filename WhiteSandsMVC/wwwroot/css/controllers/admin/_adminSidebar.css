@@ -1,0 +1,46 @@
+﻿.admin-sb {
+    height: 100vh;
+    width: 23rem;
+    background-color: #ececec;
+    position: fixed;
+}
+
+.admin-sb-nav {
+    margin-top: 9rem;
+    width: 100%;
+}
+.admin-sb-title {
+    padding-top: 5.8rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    padding-left: 5rem;
+}
+.admin-sb-ul {
+    list-style: none;
+    font-size: 1.4rem;
+}
+
+.admin-sb-li {
+    height: 4rem;
+    width: 100%;
+}
+
+.admin-sb-li:hover{
+    background-color: #ddd;
+}
+
+.admin-sb-li--active {
+    height: 4rem;
+    width: 100%;
+    background-color: #ddd;
+}
+
+.admin-sb-a {
+    padding-left: 5rem;
+    width: 100%;
+    height: 100%;
+    color: #000;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}

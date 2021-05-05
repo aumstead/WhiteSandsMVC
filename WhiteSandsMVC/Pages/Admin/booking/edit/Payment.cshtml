@@ -1,0 +1,53 @@
+﻿@page
+@model WhiteSandsMVC.Pages.Admin.booking.edit.PaymentModel
+@{
+    ViewBag.Title = "Admin - Edit Payment Info";
+
+    // for credit card expiry year
+    int currentYear = DateTime.Today.Year;
+}
+
+<div class="admin-heading">
+    <h1 class="h1-heading">Edit Payment Details</h1>
+</div>
+
+<form class="booking-edit__form" method="post">
+    <div asp-validation-summary="All" class="text-error booking-edit__validation-summary"></div>
+    <div class="booking-edit__form-control">
+        <label class="booking-edit__label" asp-for="@Model.Input.NameOnCreditCard">Name on Credit Card</label>
+        <input class="booking-edit__input" asp-for="@Model.Input.NameOnCreditCard" />
+        <span asp-validation-for="@Model.Input.NameOnCreditCard" class="text-error booking-edit__validation-input"></span>
+    </div>
+    <div class="booking-edit__form-control">
+        <label class="booking-edit__label" asp-for="@Model.Input.CreditCardNumber">Credit Card Number</label>
+        <input class="booking-edit__input" asp-for="@Model.Input.CreditCardNumber" />
+        <span asp-validation-for="@Model.Input.CreditCardNumber" class="text-error booking-edit__validation-input"></span>
+    </div>
+    <div class="booking-edit__form-control">
+        <label class="booking-edit__label" asp-for="@Model.Input.CreditCardExpiryMonth">Expiry Month</label>
+        <select class="booking-edit__input" asp-for="@Model.Input.CreditCardExpiryMonth">
+            <option value="">Month</option>
+            @for (var i = 0; i < 12; i++)
+            {
+                <option value="@((i+1).ToString())">@((i+1).ToString())</option>
+            }
+        </select>
+        <span asp-validation-for="@Model.Input.CreditCardExpiryMonth" class="text-error booking-edit__validation-input"></span>
+    </div>
+    <div class="booking-edit__form-control">
+        <label class="booking-edit__label" asp-for="@Model.Input.CreditCardExpiryYear">Expiry Year</label>
+        <select class="booking-edit__input" asp-for="@Model.Input.CreditCardExpiryYear">
+            <option value="">Year</option>
+            @for (var i = currentYear - 1; i < currentYear + 11; i++)
+            {
+                <option value="@((i+1).ToString())">@((i+1).ToString())</option>
+            }
+        </select>
+        <span asp-validation-for="@Model.Input.CreditCardExpiryYear" class="text-error booking-edit__validation-input"></span>
+    </div>
+
+    <input type="hidden" asp-for="@Model.Input.GuestId" />
+    <input type="hidden" asp-for="@Model.Input.BookingId" />
+    <button type="submit" class="large-btn booking-edit__submit-btn mr-2 mt-2">Submit Changes</button>
+    <a asp-page="/admin/booking/details" asp-route-id="@Model.Input.BookingId" class="large-btn large-btn--inverse">Cancel</a>
+</form>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,6 +18,9 @@ namespace WhiteSandsMVC.Models
         [Required, MaxLength(50, ErrorMessage = "Cannot exceed 50 characters.")]
         [Display(Name = "last name")]
         public string LastName { get; set; }
+    
+        [NotMapped]
+        public string FullName { get { return FirstName + ' ' + LastName; } }
 
         [Required, MaxLength(50, ErrorMessage = "Please enter a valid phone number.")]
         [Display(Name = "mobile number")]

@@ -21,8 +21,9 @@ namespace WhiteSandsMVC.Controllers
         private readonly IUserHealthInterestRepository userHealthInterestRepository;
         private readonly IFoodInterestRepository foodInterestRepository;
         private readonly IUserFoodInterestRepository userFoodInterestRepository;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public ProfileController(UserManager<ApplicationUser> userManager, ITravelInterestRepository travelInterestRepository, IUserTravelInterestRepository userTravelInterestRepository, IHealthInterestRepository healthInterestRepository, IUserHealthInterestRepository userHealthInterestRepository, IFoodInterestRepository foodInterestRepository, IUserFoodInterestRepository userFoodInterestRepository)
+        public ProfileController(UserManager<ApplicationUser> userManager, ITravelInterestRepository travelInterestRepository, IUserTravelInterestRepository userTravelInterestRepository, IHealthInterestRepository healthInterestRepository, IUserHealthInterestRepository userHealthInterestRepository, IFoodInterestRepository foodInterestRepository, IUserFoodInterestRepository userFoodInterestRepository, RoleManager<IdentityRole> roleManager)
         {
             this.userManager = userManager;
             this.travelInterestRepository = travelInterestRepository;
@@ -31,12 +32,18 @@ namespace WhiteSandsMVC.Controllers
             this.userHealthInterestRepository = userHealthInterestRepository;
             this.foodInterestRepository = foodInterestRepository;
             this.userFoodInterestRepository = userFoodInterestRepository;
+            _roleManager = roleManager;
         }
 
         [HttpGet]
         public async Task<IActionResult> Index()
         {
             var user = await userManager.GetUserAsync(HttpContext.User);
+            var isAdmin = await userManager.IsInRoleAsync(user, "Admin");
+            if (isAdmin)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
 
             if (user == null)
             {

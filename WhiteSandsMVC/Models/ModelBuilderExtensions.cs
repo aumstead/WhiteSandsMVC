@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -463,12 +464,30 @@ namespace WhiteSandsMVC.Models
                 },
             };
 
+            //ApplicationUser[] Users = new ApplicationUser[]
+            //{
+            //    new ApplicationUser
+            //    {
+            //        Id = Guid.NewGuid().ToString(),
+            //        UserName = "test1@gmail.com",
+            //        Email = "test1@gmail.com",
+            //        FirstName = "testFirstName"
+            //    },
+            //    new ApplicationUser
+            //    {
+            //        Id = Guid.NewGuid().ToString(),
+            //        UserName = "test2@gmail.com",
+            //        Email = "test2@gmail.com",
+            //        FirstName = "testFirstName"
+            //    },
+            //};
 
             modelBuilder.Entity<RoomType>().HasData(RoomTypes);
             modelBuilder.Entity<Room>().HasData(Rooms);
             modelBuilder.Entity<TravelInterest>().HasData(TravelInterests);
             modelBuilder.Entity<HealthInterest>().HasData(HealthInterests);
             modelBuilder.Entity<FoodInterest>().HasData(FoodInterests);
+            //modelBuilder.Entity<ApplicationUser>().HasData(Users);
         }
     }
 }

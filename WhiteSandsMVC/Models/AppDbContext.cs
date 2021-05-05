@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace WhiteSandsMVC.Models
         public AppDbContext(DbContextOptions<AppDbContext> options)
             :base(options)
         {
-
+            
         }
 
         public DbSet<Booking> Bookings { get; set; }
@@ -25,6 +26,8 @@ namespace WhiteSandsMVC.Models
         public DbSet<TravelInterest> TravelInterests { get; set; }
         public DbSet<HealthInterest> HealthInterests { get; set; }
         public DbSet<FoodInterest> FoodInterests { get; set; }
+        public DbSet<LineItemCharge> LineItemCharges { get; set; }
+        public DbSet<BillOfSale> BillsOfSale { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

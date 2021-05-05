@@ -118,6 +118,7 @@
     transition: all .5s;
     z-index: 102;
     overflow: scroll;
+    display: none;
 }
 
 .side-drawer__content-container {
@@ -276,6 +277,10 @@
     .mobile-nav {
         display: flex;
         justify-content: space-between;
+    }
+
+    .side-drawer {
+        display: unset;
     }
 }
 

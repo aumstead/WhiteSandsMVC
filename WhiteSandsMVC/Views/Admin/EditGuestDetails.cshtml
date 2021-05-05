@@ -1,0 +1,49 @@
+﻿@model Guest
+@{
+    ViewBag.Title = "Admin - Edit Guest";
+}
+
+<header>
+    <partial name="Partials/Admin/_AdminNavbar" />
+    <partial name="Partials/_MobileNavigation" />
+</header>
+
+<partial name="Partials/Admin/_AdminSidebar" />
+
+<div class="admin">
+    <div class="admin-wrapper">
+        <div class="admin-heading">
+            <h1 class="h1-heading">Edit Guest Details</h1>
+        </div>
+
+        <form class="booking-edit__form" method="post">
+            <div class="booking-edit__form-control">
+                <label class="booking-edit__label" asp-for="@Model.FirstName">First Name</label>
+                <input class="booking-edit__input" asp-for="@Model.FirstName" />
+            </div>
+            <div class="booking-edit__form-control">
+                <label class="booking-edit__label" asp-for="@Model.LastName">Last Name</label>
+                <input class="booking-edit__input" asp-for="@Model.LastName" />
+            </div>
+            <div class="booking-edit__form-control">
+                <label class="booking-edit__label" asp-for="@Model.PhoneNumber">Phone</label>
+                <input class="booking-edit__input" asp-for="@Model.PhoneNumber" />
+            </div>
+            <div class="booking-edit__form-control">
+                <label class="booking-edit__label" asp-for="@Model.Email">Email</label>
+                <input class="booking-edit__input" asp-for="@Model.Email" />
+            </div>
+            <div class="booking-edit__form-control">
+                <label class="booking-edit__label" asp-for="@Model.Country">Country of Nationality</label>
+                <input class="booking-edit__input" asp-for="@Model.Country" />
+            </div>
+            <button type="submit" class="large-btn booking-edit__submit-btn mr-2">Submit Changes</button>
+            <a href="javascript:void(0);" onclick="history.go(-1);" class="large-btn large-btn--inverse">Cancel</a>
+        </form>
+
+
+    </div>
+    <div class="admin-footer">
+        <span class="admin-copyright">&copy;Lorem, ipsum dolor.</span>
+    </div>
+</div>

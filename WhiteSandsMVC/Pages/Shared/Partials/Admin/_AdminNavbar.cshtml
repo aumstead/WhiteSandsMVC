@@ -1,0 +1,35 @@
+﻿@inject SignInManager<ApplicationUser> signInManager;
+
+<nav class="nav nav--black">
+    <div class="nav__left-flex-container">
+        <div class="logo">
+            <a asp-controller="home" asp-action="index"><div class="logo__svg"></div></a>
+        </div>
+        <ul class="nav__ul">
+            <li><a asp-controller="home" asp-action="index" class="nav__link">Resort Overview</a></li>
+            <li><a asp-controller="home" asp-action="accomodations" class="nav__link" )>Accomodations</a></li>
+            <li><a asp-controller="home" asp-action="media" class="nav__link">Photos & Videos</a></li>
+            <li><a asp-controller="home" asp-action="amenities" class="nav__link">Activities</a></li>
+        </ul>
+    </div>
+
+    <ul class="nav__right-flex-container nav__right-ul">
+        <li class="profile-menu-li">
+            <form method="post" asp-controller="account" asp-action="logout">
+                <button type="submit" class="profile-logout-btn--admin">Sign out</button>
+            </form>
+        </li>
+         
+        @{
+            var parms = new Dictionary<string, string>
+            {
+                { "checkInDate", DateTime.Now.ToString("MM-dd-yyyy") },
+                { "checkOutDate", DateTime.Now.AddDays(1).ToString("MM-dd-yyyy") },
+                {"adults", "1" }
+            };
+        }
+        <li class="profile-menu-li">
+            <a asp-controller="reservations" asp-action="selectdates" asp-all-route-data="parms" class="large-btn large-btn--inverse large-btn--check-rates account__check-rates-btn" id="check-rates-open-btn">Check rates</a>
+        </li>
+    </ul>
+</nav>

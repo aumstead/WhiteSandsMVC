@@ -1,0 +1,51 @@
+﻿.booking-details-wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.booking-details-guest-info {
+    margin-right: 15rem;
+    width: 40rem;
+}
+
+.booking-details-basic-info {
+    width: 40rem;
+}
+
+.booking-details-row {
+    margin-bottom: 2.5rem;
+}
+
+.booking-details-heading {
+    letter-spacing: .15rem;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.booking-details-heading-wrapper {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.booking-details-edit-entry {
+    font-size: 1.4rem;
+    margin-left: 3rem;
+    color: #000;
+    text-decoration: underline;
+}
+    .booking-details-edit-entry:hover {
+        cursor: pointer;
+        color: var(--color-grey);
+    }
+
+    .booking-details-row-info {
+        font-family: var(--font-sans);
+        font-size: 1.4rem;
+    }
+
+.booking-details-row--credit-card {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+}

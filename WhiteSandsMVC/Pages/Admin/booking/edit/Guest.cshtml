@@ -1,0 +1,42 @@
+﻿@page
+@model WhiteSandsMVC.Pages.Admin.booking.edit.GuestModel
+@{
+    ViewBag.Title = "Admin - Edit Guest";
+}
+
+<div class="admin-heading">
+    <h1 class="h1-heading">Edit Guest Details</h1>
+</div>
+
+<form class="booking-edit__form" method="post">
+    <div asp-validation-summary="All" class="text-error booking-edit__validation-summary"></div>
+    <div class="booking-edit__form-control">
+        <label class="booking-edit__label" asp-for="@Model.Input.FirstName">First Name</label>
+        <input class="booking-edit__input" asp-for="@Model.Input.FirstName" />
+        <span asp-validation-for="@Model.Input.FirstName" class="text-error booking-edit__validation-input"></span>
+    </div>
+    <div class="booking-edit__form-control">
+        <label class="booking-edit__label" asp-for="@Model.Input.LastName">Last Name</label>
+        <input class="booking-edit__input" asp-for="@Model.Input.LastName" />
+        <span asp-validation-for="@Model.Input.LastName" class="text-error booking-edit__validation-input"></span>
+    </div>
+    <div class="booking-edit__form-control">
+        <label class="booking-edit__label" asp-for="@Model.Input.PhoneNumber">Phone</label>
+        <input class="booking-edit__input" asp-for="@Model.Input.PhoneNumber" />
+        <span asp-validation-for="@Model.Input.PhoneNumber" class="text-error booking-edit__validation-input"></span>
+    </div>
+    <div class="booking-edit__form-control">
+        <label class="booking-edit__label" asp-for="@Model.Input.Email">Email</label>
+        <input class="booking-edit__input" asp-for="@Model.Input.Email" />
+        <span asp-validation-for="@Model.Input.Email" class="text-error booking-edit__validation-input"></span>
+    </div>
+    <div class="booking-edit__form-control">
+        <label class="booking-edit__label" asp-for="@Model.Input.Country">Country of Nationality</label>
+        <input class="booking-edit__input" asp-for="@Model.Input.Country" />
+    </div>
+    
+    <input type="hidden" asp-for="@Model.Input.GuestId" />
+    <input type="hidden" asp-for="@Model.Input.BookingId" />
+    <button type="submit" class="large-btn booking-edit__submit-btn mr-2 mt-2">Submit Changes</button>
+    <a asp-page="/admin/booking/details" asp-route-id="@Model.Input.BookingId" class="large-btn large-btn--inverse">Cancel</a>
+</form>

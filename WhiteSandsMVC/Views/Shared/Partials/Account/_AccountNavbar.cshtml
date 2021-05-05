@@ -7,7 +7,7 @@
         </div>
         <ul class="nav__ul">
             <li><a asp-controller="home" asp-action="index" class="nav__link">Resort Overview</a></li>
-            <li><a asp-controller="home" asp-action="accomodations" class="nav__link")>Accomodations</a></li>
+            <li><a asp-controller="home" asp-action="accomodations" class="nav__link" )>Accomodations</a></li>
             <li><a asp-controller="home" asp-action="media" class="nav__link">Photos & Videos</a></li>
             <li><a asp-controller="home" asp-action="amenities" class="nav__link">Activities</a></li>
         </ul>
@@ -19,6 +19,7 @@
         {
             <li class="profile-menu-li">
                 <a asp-controller="profile" asp-action="index" class="nav__link nav__link--profile nav__link--your-profile">Your Profile</a>
+
                 <form method="post" asp-controller="account" asp-action="logout">
                     <button type="submit" class="profile-logout-btn">Sign out</button>
                 </form>
@@ -41,8 +42,5 @@
         <li class="profile-menu-li">
             <a asp-controller="reservations" asp-action="selectdates" asp-all-route-data="parms" class="large-btn large-btn--inverse large-btn--check-rates account__check-rates-btn" id="check-rates-open-btn">Check rates</a>
         </li>
-
-
-
     </ul>
 </nav>

@@ -10,8 +10,8 @@ using WhiteSandsMVC.Models;
 namespace WhiteSandsMVC.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210109063518_AddHealthInterests")]
-    partial class AddHealthInterests
+    [Migration("20210504172744_DBInit")]
+    partial class DBInit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -262,6 +262,24 @@ namespace WhiteSandsMVC.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("WhiteSandsMVC.Models.BillOfSale", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BookingId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookingId")
+                        .IsUnique();
+
+                    b.ToTable("BillsOfSale");
+                });
+
             modelBuilder.Entity("WhiteSandsMVC.Models.Booking", b =>
                 {
                     b.Property<int>("Id")
@@ -284,6 +302,9 @@ namespace WhiteSandsMVC.Migrations
                     b.Property<int>("GuestId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Promo")
                         .HasColumnType("nvarchar(max)");
 
@@ -293,8 +314,8 @@ namespace WhiteSandsMVC.Migrations
                     b.Property<int>("RoomTypeId")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("TotalCost")
-                        .HasColumnType("money");
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -305,6 +326,55 @@ namespace WhiteSandsMVC.Migrations
                     b.HasIndex("RoomTypeId");
 
                     b.ToTable("Bookings");
+                });
+
+            modelBuilder.Entity("WhiteSandsMVC.Models.FoodInterest", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FoodInterests");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Restaurants & Bars"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Wine"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Brunch"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Cooking classes"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Farm to table"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Local specialties"
+                        });
                 });
 
             modelBuilder.Entity("WhiteSandsMVC.Models.Guest", b =>
@@ -442,6 +512,29 @@ namespace WhiteSandsMVC.Migrations
                             Id = 11,
                             Name = "Meditation"
                         });
+                });
+
+            modelBuilder.Entity("WhiteSandsMVC.Models.LineItemCharge", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("money");
+
+                    b.Property<int>("BillOfSaleId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BillOfSaleId");
+
+                    b.ToTable("LineItemCharges");
                 });
 
             modelBuilder.Entity("WhiteSandsMVC.Models.Room", b =>
@@ -902,6 +995,29 @@ namespace WhiteSandsMVC.Migrations
                         });
                 });
 
+            modelBuilder.Entity("WhiteSandsMVC.Models.UserFoodInterest", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("FoodInterestId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FoodInterestId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserFoodInterests");
+                });
+
             modelBuilder.Entity("WhiteSandsMVC.Models.UserHealthInterest", b =>
                 {
                     b.Property<int>("Id")
@@ -999,6 +1115,15 @@ namespace WhiteSandsMVC.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("WhiteSandsMVC.Models.BillOfSale", b =>
+                {
+                    b.HasOne("WhiteSandsMVC.Models.Booking", "Booking")
+                        .WithOne("BillOfSale")
+                        .HasForeignKey("WhiteSandsMVC.Models.BillOfSale", "BookingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("WhiteSandsMVC.Models.Booking", b =>
                 {
                     b.HasOne("WhiteSandsMVC.Models.Guest", "Guest")
@@ -1016,6 +1141,30 @@ namespace WhiteSandsMVC.Migrations
                     b.HasOne("WhiteSandsMVC.Models.RoomType", "RoomType")
                         .WithMany()
                         .HasForeignKey("RoomTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("WhiteSandsMVC.Models.LineItemCharge", b =>
+                {
+                    b.HasOne("WhiteSandsMVC.Models.BillOfSale", "BillOfSale")
+                        .WithMany()
+                        .HasForeignKey("BillOfSaleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("WhiteSandsMVC.Models.UserFoodInterest", b =>
+                {
+                    b.HasOne("WhiteSandsMVC.Models.FoodInterest", "Interest")
+                        .WithMany()
+                        .HasForeignKey("FoodInterestId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WhiteSandsMVC.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
