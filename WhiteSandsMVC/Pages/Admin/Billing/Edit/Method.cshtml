@@ -1,0 +1,26 @@
+﻿@page
+@model WhiteSandsMVC.Pages.Admin.Billing.Edit.MethodModel
+@{
+    ViewBag.Title = "Change Payment Method";
+}
+
+<div class="admin-heading">
+    <h1 class="h1-heading">Change Payment Method</h1>
+</div>
+
+<form class="booking-edit__form" method="post">
+    <div asp-validation-summary="All" class="text-error booking-edit__validation-summary"></div>
+    <div class="booking-edit__form-control">
+        <label class="booking-edit__label" asp-for="@Model.Input.PaymentMethod">Payment Method</label>
+        <select class="booking-edit__input" asp-for="@Model.Input.PaymentMethod">
+            <option value="">Select</option>
+            <option value="Credit/Debit Card">Credit/Debit Card</option>
+            <option value="Cash">Cash</option>
+        </select>
+        <span asp-validation-for="@Model.Input.PaymentMethod" class="text-error booking-edit__validation-input"></span>
+    </div>
+
+    <input type="hidden" asp-for="@Model.Input.BillOfSaleId" />
+    <button type="submit" class="large-btn booking-edit__submit-btn mr-2 mt-2">Submit Change</button>
+    <a asp-page="/Admin/Billing/Invoice" asp-route-billOfSaleId="@Model.Input.BillOfSaleId" class="large-btn large-btn--inverse">Cancel</a>
+</form>

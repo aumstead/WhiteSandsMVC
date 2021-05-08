@@ -11,7 +11,7 @@
         </ul>
     </div>
 
-    @if (User.IsInRole("Admin"))
+    @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
     {
         <div class="nav__right-flex-container">
             <a asp-controller="admin" asp-action="index" class="nav__link nav__link--profile">Admin Page</a>

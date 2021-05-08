@@ -13,12 +13,12 @@
 }
 
 .booking-details-row {
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.8rem;
 }
 
 .booking-details-heading {
     letter-spacing: .15rem;
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
     font-size: 1.4rem;
 }
 
@@ -48,4 +48,22 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 2.5rem;
+}
+
+.booking-details__line-item-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.booking-details__line-item-price {
+    font-weight: 800;
+    font-size: 1.4rem;
+}
+
+.booking-details-hr {
+    border: unset;
+    background-color: #e0e0e0;
+    height: 1px;
+    margin-bottom: 1rem;
 }

@@ -1,16 +1,16 @@
 [
   {
-    "UserName": "joan@scdp.com",
-    "Email": "joan@scdp.com",
-    "Title": "Ms.",
-    "FirstName": "Joan",
-    "LastName": "Holloway"
+    "UserName": "jim@whitesands.com",
+    "Email": "jim@whitesands.com",
+    "Title": "Mr.",
+    "FirstName": "Jim",
+    "LastName": "Halpert"
   },
   {
-    "UserName": "roger@scdp.com",
-    "Email": "roger@scdp.com",
-    "Title": "Mr.",
-    "FirstName": "Roger",
-    "LastName": "Sterling"
+    "UserName": "phyllis@whitesands.com",
+    "Email": "phyllis@whitesands.com",
+    "Title": "Mrs.",
+    "FirstName": "Phyllis",
+    "LastName": "Vance"
   }
 ]

@@ -261,48 +261,48 @@ namespace WhiteSandsMVC.Models
                 {
                     Id = 17,
                     RoomTypeId = 8,
-                    RoomNumber = "Paris",
+                    RoomNumber = "880",
                     View = "Mt. Suthep"
                 },new Room
                 {
                     Id = 18,
                     RoomTypeId = 8,
-                    RoomNumber = "New York",
+                    RoomNumber = "881",
                     View = "Mt.Suthep"
                 },
                 new Room
                 {
                     Id = 19,
                     RoomTypeId = 7,
-                    RoomNumber = "Tokyo",
+                    RoomNumber = "882",
                     View = "Beach"
                 },
                 new Room
                 {
                     Id = 20,
                     RoomTypeId = 7,
-                    RoomNumber = "London",
+                    RoomNumber = "883",
                     View = "Beach"
                 },
                 new Room
                 {
                     Id = 21,
                     RoomTypeId = 6,
-                    RoomNumber = "Rome",
+                    RoomNumber = "884",
                     View = "Beach"
                 },
                 new Room
                 {
                     Id = 22,
                     RoomTypeId = 6,
-                    RoomNumber = "Amsterdam",
+                    RoomNumber = "885",
                     View = "Beach"
                 },
                 new Room
                 {
                     Id = 23,
                     RoomTypeId = 6,
-                    RoomNumber = "Cairo",
+                    RoomNumber = "886",
                     View = "Beach"
                 }
             };
@@ -464,30 +464,12 @@ namespace WhiteSandsMVC.Models
                 },
             };
 
-            //ApplicationUser[] Users = new ApplicationUser[]
-            //{
-            //    new ApplicationUser
-            //    {
-            //        Id = Guid.NewGuid().ToString(),
-            //        UserName = "test1@gmail.com",
-            //        Email = "test1@gmail.com",
-            //        FirstName = "testFirstName"
-            //    },
-            //    new ApplicationUser
-            //    {
-            //        Id = Guid.NewGuid().ToString(),
-            //        UserName = "test2@gmail.com",
-            //        Email = "test2@gmail.com",
-            //        FirstName = "testFirstName"
-            //    },
-            //};
 
             modelBuilder.Entity<RoomType>().HasData(RoomTypes);
             modelBuilder.Entity<Room>().HasData(Rooms);
             modelBuilder.Entity<TravelInterest>().HasData(TravelInterests);
             modelBuilder.Entity<HealthInterest>().HasData(HealthInterests);
             modelBuilder.Entity<FoodInterest>().HasData(FoodInterests);
-            //modelBuilder.Entity<ApplicationUser>().HasData(Users);
         }
     }
 }

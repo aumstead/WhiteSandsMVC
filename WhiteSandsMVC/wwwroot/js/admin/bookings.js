@@ -5,10 +5,9 @@ $(document).ready(function () {
 });
 
 function loadList() {
-    console.log('in loadlist')
     dataTable = $('#DT_load').DataTable({
         "ajax": {
-            "url": "/api/bookings",
+            "url": "/api/bookings/all",
             "type": "GET",
             "dataType": "json"
         },
@@ -17,7 +16,20 @@ function loadList() {
             { "data": "id", "width": "10%", "className": "dt-body-center" },
             { "data": "guest.firstName", "width": "10%" },
             { "data": "guest.lastName", "width": "10%" },
-            { "data": "checkInDate", "width": "10%" },
+            {
+                "data": "checkInDate", "width": "10%", "className": "dt-body-center", "render": function (data) {
+                    let checkInDate = moment(data)
+                    let checkInDateFormatted = checkInDate.utc().format('M-D-YY');
+                    return checkInDateFormatted
+                }
+            },
+            {
+                "data": "checkOutDate", "width": "10%", "className": "dt-body-center", "render": function (data) {
+                    let checkOutDate = moment(data)
+                    let checkOutDateFormatted = checkOutDate.utc().format('M-D-YY');
+                    return checkOutDateFormatted
+                }
+            },
             { "data": "status", "width": "10%", "className": "dt-body-center" },
             {
                 "data": "id", "render": function (data) {

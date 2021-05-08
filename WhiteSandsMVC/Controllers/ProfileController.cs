@@ -40,7 +40,8 @@ namespace WhiteSandsMVC.Controllers
         {
             var user = await userManager.GetUserAsync(HttpContext.User);
             var isAdmin = await userManager.IsInRoleAsync(user, "Admin");
-            if (isAdmin)
+            var isEmployee = await userManager.IsInRoleAsync(user, "Employee");
+            if (isAdmin || isEmployee)
             {
                 return RedirectToAction("Index", "Admin");
             }

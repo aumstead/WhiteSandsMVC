@@ -1,0 +1,47 @@
+﻿@page
+@model WhiteSandsMVC.Pages.Admin.check_in.edit.RoomModel
+@{
+    ViewBag.Title = "Check In - Edit Room";
+}
+<div class="admin-heading">
+    <h1 class="h1-heading">Edit Room Details</h1>
+</div>
+
+<form class="booking-edit__form" method="post">
+    <div asp-validation-summary="All" class="text-error booking-edit__validation-summary"></div>
+    
+
+    <div class="booking-edit__form-control">
+        <label class="booking-edit__label" asp-for="@Model.Input.RoomTypeId"></label>
+        <select id="roomtypeIdSelect" class="booking-edit__input" asp-for="@Model.Input.RoomTypeId">
+            <option value="">Select Room Type</option>
+            @foreach (var roomType in Model.Input.RoomTypes)
+            {
+                <option value="@roomType.Id">@roomType.Name</option>
+            }
+        </select>
+        <span asp-validation-for="@Model.Input.RoomTypeId" class="text-error booking-edit__validation-input"></span>
+    </div>
+
+    <div class="booking-edit__form-control">
+        <label class="booking-edit__label" asp-for="@Model.Input.Status"></label>
+        <select class="booking-edit__input" asp-for="@Model.Input.Status">
+            <option value="">Select Status</option>
+            @foreach (var status in Model.Input.StatusTypes)
+            {
+                <option value="@status">@status</option>
+            }
+        </select>
+        <span asp-validation-for="@Model.Input.Status" class="text-error booking-edit__validation-input"></span>
+    </div>
+
+    <div class="booking-edit__form-control">
+        <label class="booking-edit__label" asp-for="@Model.Input.Notes"></label>
+        <textarea class="booking-edit__input" rows="2" asp-for="@Model.Input.Notes"></textarea>
+        <span asp-validation-for="@Model.Input.Notes" class="text-error booking-edit__validation-input"></span>
+    </div>
+
+    <input type="hidden" asp-for="@Model.Input.BookingId" />
+    <button type="submit" class="large-btn booking-edit__submit-btn mr-2 mt-2">Submit Changes</button>
+    <a asp-page="/admin/check-in/stepOneVerifyStay" asp-route-id="@Model.Input.BookingId" class="large-btn large-btn--inverse">Cancel</a>
+</form>

@@ -64,6 +64,13 @@
     cursor: pointer;
 }
 
+.d-flex {
+    display: flex;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
 .text-error {
     color: red;
 }
@@ -123,6 +130,9 @@
 }
 .mr-2{
     margin-right: 2rem;
+}
+.ml-2 {
+    margin-left: 2rem;
 }
 
 

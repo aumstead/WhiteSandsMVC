@@ -1,0 +1,13 @@
+﻿.check-out-body {
+    display: flex;
+    width: 100%;
+}
+
+.check-out-invoice-wrapper {
+    margin-right: 15rem;
+    width: 40rem;
+}
+
+.check-out-payment-wrapper {
+    width: 40rem;
+}

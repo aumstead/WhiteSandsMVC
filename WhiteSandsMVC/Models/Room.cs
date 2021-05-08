@@ -18,5 +18,8 @@ namespace WhiteSandsMVC.Models
 
         [Required, MaxLength(100, ErrorMessage = "Cannot exceed 100 characters.")]
         public string View { get; set; }
+
+        [Required]
+        public bool Available { get; set; } = true;
     }
 }

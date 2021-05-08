@@ -7,5 +7,6 @@ namespace WhiteSandsMVC.Models.Repositories
 {
     public interface IBillOfSaleRepository : IGenericRepository<BillOfSale>
     {
+        BillOfSale Update(BillOfSale billOfSaleChanges);
     }
 }

@@ -8,7 +8,6 @@ namespace WhiteSandsMVC.Models
 {
     public interface IRoomRepository : IGenericRepository<Room>
     {
-        
-
+        Room Update(Room roomChanges);
     }
 }

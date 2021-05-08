@@ -23,7 +23,7 @@ namespace WhiteSandsMVC.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        
+
         public IActionResult SelectDates(CheckRatesViewModel model)
         {
             return View(model);
@@ -95,6 +95,38 @@ namespace WhiteSandsMVC.Controllers
                 RoomType roomType = await _unitOfWork.RoomType.Get(model.RoomTypeId);
                 var baseTotal = roomType.Price * model.Nights;
 
+
+
+                BillOfSale bill = new BillOfSale();
+
+                await _unitOfWork.BillOfSale.Add(bill);
+                _unitOfWork.Save();
+
+                var roomTypeStr = (string.Format("{0:0.00}", roomType.Price));
+
+                LineItemCharge roomCharge = new LineItemCharge
+                {
+                    Name = $"{roomTypeStr} x {model.Nights} nights",
+                    Amount = baseTotal,
+                    BillOfSaleId = bill.Id
+                };
+
+                await _unitOfWork.LineItemCharge.Add(roomCharge);
+                _unitOfWork.Save();
+
+                decimal feePercent = .1m;
+                var serviceFee = Decimal.Multiply(baseTotal, feePercent);
+
+                LineItemCharge serviceCharge = new LineItemCharge
+                {
+                    Name = "Service Fee",
+                    Amount = serviceFee,
+                    BillOfSaleId = bill.Id
+                };
+
+                await _unitOfWork.LineItemCharge.Add(serviceCharge);
+                _unitOfWork.Save();
+
                 Booking booking = new Booking
                 {
                     GuestId = guest.Id,
@@ -105,49 +137,19 @@ namespace WhiteSandsMVC.Controllers
                     Adults = model.Adults,
                     Children = model.Children,
                     Promo = model.Promo,
-                    Status = Status.Paid
+                    Status = BookingStatus.Booked,
+                    BillOfSaleId = bill.Id
                 };
 
                 await _unitOfWork.Booking.Add(booking);
                 _unitOfWork.Save();
 
-                //BillOfSale bill = new BillOfSale
-                //{
-                //    BookingId = booking.Id
-                //};
-
-                //await _unitOfWork.BillOfSale.Add(bill);
-                //_unitOfWork.Save();
-
-                //LineItemCharge roomCharge = new LineItemCharge
-                //{
-                //    Name = $"{roomType.Price} x {model.Nights} nights",
-                //    Amount = baseTotal,
-                //    BillOfSaleId = bill.Id
-                //};
-
-                //await _unitOfWork.LineItemCharge.Add(roomCharge);
-                //_unitOfWork.Save();
-
-                decimal feePercent = .1m;
-                var serviceFee = Decimal.Multiply(baseTotal, feePercent);
-
-                //LineItemCharge serviceCharge = new LineItemCharge
-                //{
-                //    Name = "Service Fee",
-                //    Amount = serviceFee,
-                //    BillOfSaleId = bill.Id
-                //};
-
-                //await _unitOfWork.LineItemCharge.Add(serviceCharge);
-                //_unitOfWork.Save();
-
-                return RedirectToAction("BookingSuccess", "Reservations", new 
-                { 
+                return RedirectToAction("BookingSuccess", "Reservations", new
+                {
                     bookingId = booking.Id,
                     guestId = guest.Id,
                     roomTypeId = model.RoomTypeId,
-                    //billOfSaleId = bill.Id
+                    billOfSaleId = bill.Id
                 });
 
             }

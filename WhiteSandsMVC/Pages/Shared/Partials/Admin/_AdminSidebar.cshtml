@@ -1,9 +1,35 @@
 ﻿<div class="admin-sb">
     <nav class="admin-sb-nav">
-        <h5 class="admin-sb-title">Admin Menu</h5>
+        <h5 class="admin-sb-title">Menu</h5>
         <ul class="admin-sb-ul">
-            <li class=@(ViewBag.Title == "Admin - Home" ? "admin-sb-li--active" : "admin-sb-li")><a class="admin-sb-a" asp-controller="Admin" asp-action="Index">Home</a></li>
-            <li class=@(ViewBag.Title == "Admin - Bookings" ? "admin-sb-li--active" : "admin-sb-li")><a class="admin-sb-a" asp-controller="Admin" asp-action="Bookings">Bookings</a></li>
+            <li class=@(ViewBag.Title == "Admin - Home" ? "admin-sb-li--active" : "admin-sb-li")><a class="admin-sb-a" asp-page="/admin">Overview</a></li>
+            <li class="admin-sb-li">
+                <button class="admin-sb-btn" id="bookings-btn">Bookings
+                    <span id="chevron-down">
+                        <partial name="Partials/Svgs/_ChevronDown" />
+                    </span>
+                    <span id="chevron-up" class="hide-element">
+                        <partial name="Partials/svgs/_ChevronUp" />
+                    </span>
+                </button>
+            </li>
+            <li class="admin-sb-bookings-nav hide-element" id="bookings-nav">
+                <ul class="admin-sb-sub-ul">
+                    <li class="@(ViewBag.Title == "Admin - Bookings" ? "admin-sb-li--active" : "admin-sb-li")">
+                        <a class="admin-sb-sub-a" asp-page="/admin/bookings">All</a>
+                    </li>
+                    <li class="@(ViewBag.Title == "Admin - Arrivals" ? "admin-sb-li--active" : "admin-sb-li")">
+                        <a class="admin-sb-sub-a" asp-page="/admin/arrivals">Arrivals</a>
+                    </li>
+                    <li class="@(ViewBag.Title == "Admin - Departures" ? "admin-sb-li--active" : "admin-sb-li")">
+                        <a class="admin-sb-sub-a" asp-page="/admin/departures">Departures</a>
+                    </li>
+                    <li class="@(ViewBag.Title == "Admin - In-House" ? "admin-sb-li--active" : "admin-sb-li")">
+                        <a class="admin-sb-sub-a" asp-page="/admin/inhouse">In-House</a>
+                    </li>
+                </ul>
+            </li>
+            <li class=@(ViewBag.Title == "Admin - Billing" ? "admin-sb-li--active" : "admin-sb-li")><a class="admin-sb-a" asp-controller="Admin" asp-action="Billing">Billing</a></li>
             <li class=@(ViewBag.Title == "Admin - Guests" ? "admin-sb-li--active" : "admin-sb-li")><a class="admin-sb-a" asp-controller="Admin" asp-action="Guests">Guests</a></li>
             <li class=@(ViewBag.Title == "Admin - Rooms" ? "admin-sb-li--active" : "admin-sb-li")><a class="admin-sb-a" asp-controller="Admin" asp-action="Rooms">Rooms</a></li>
             <li class=@(ViewBag.Title == "Admin - Room Categories" ? "admin-sb-li--active" : "admin-sb-li")><a class="admin-sb-a" asp-controller="Admin" asp-action="RoomTypes">Room Categories</a></li>

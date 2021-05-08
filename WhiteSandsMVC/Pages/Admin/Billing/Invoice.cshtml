@@ -1,0 +1,114 @@
+﻿@page "{billOfSaleId}"
+@model WhiteSandsMVC.Pages.Admin.Billing.InvoiceModel
+@{
+    ViewBag.Title = "Billing";
+}
+
+<div class="admin-heading">
+    <h1 class="h1-heading">Billing</h1>
+</div>
+
+<div class="check-out-body">
+    <div class="check-out-invoice-wrapper">
+
+        <div class="verify-stay-heading-wrapper">
+            <h3 class="verify-stay-h2-heading">Guest</h3>
+        </div>
+
+        <div class="verify-stay-row">
+            <h4 class="verify-stay-heading">Name</h4>
+            <p class="verify-stay-row-info">@(Model.Input.Booking.Guest.FullName)</p>
+        </div>
+
+        <div class="verify-stay-heading-wrapper">
+            <h3 class="verify-stay-h2-heading">Dates</h3>
+        </div>
+
+        <div class="d-flex justify-between">
+            <div class="verify-stay-row">
+                <h4 class="verify-stay-heading">Check in</h4>
+                <p class="verify-stay-row-info">@Model.Input.Booking.CheckInDate.ToShortDateString()</p>
+            </div>
+
+            <div class="verify-stay-row">
+                <h4 class="verify-stay-heading">Check out</h4>
+                <p class="verify-stay-row-info">@Model.Input.Booking.CheckOutDate.ToShortDateString()</p>
+            </div>
+        </div>
+
+        <div class="verify-stay-heading-wrapper">
+            <h3 class="verify-stay-h2-heading">Invoice</h3>
+            <a asp-page="/Admin/billing/edit/invoice" asp-route-billOfSaleId="@Model.Input.Booking.BillOfSaleId" class="booking-details-edit-entry">Edit Invoice</a>
+        </div>
+
+        <div class="booking-details-row">
+            <h4 class="booking-details-heading">Status</h4>
+            <p class="booking-details-row-info">@Model.Input.BillOfSale.PaymentStatus</p>
+        </div>
+
+        <div class="booking-details-row">
+            <h4 class="booking-details-heading">Charges</h4>
+            @foreach (var charge in Model.Input.LineItemCharges)
+            {
+                <div class="booking-details__line-item-row">
+                    <span class="booking-details__line-item-price">$@string.Format("{0:0.00}", charge.Amount)</span>
+                    <span class="booking-details-row-info">@charge.Name</span>
+                </div>
+
+            }
+            <hr class="booking-details-hr" />
+            <h4 class="booking-details-heading">Total</h4>
+            <p class="booking-details-row-info text-bold">$@string.Format("{0:0.00}", Model.Input.TotalCost)</p>
+        </div>
+    </div>
+
+    <div class="check-out-payment-wrapper">
+        <div class="verify-stay-heading-wrapper">
+            <h3 class="verify-stay-h2-heading">Payment Method</h3>
+        </div>
+
+        <div class="booking-details-row">
+            <div class="d-flex justify-between">
+                <h4 class="booking-details-heading">Method</h4>
+                <a asp-page="/Admin/Billing/Edit/Method" asp-route-billOfSaleId="@Model.Input.BillOfSale.Id" class="booking-details-edit-entry">Change Method</a>
+            </div>
+            <p class="booking-details-row-info">@Model.Input.BillOfSale.PaymentMethod</p>
+        </div>
+
+        @if (Model.Input.BillOfSale.PaymentMethod == "Credit/Debit Card")
+        {
+            <div class="booking-details-row d-flex justify-between">
+                <div>
+                    <h4 class="booking-details-heading">Credit Card Name</h4>
+                    <p class="booking-details-row-info">@Model.Input.Booking.Guest.NameOnCreditCard</p>
+                </div>
+                <a asp-page="/Admin/Billing/Edit/CardInfo" asp-route-billOfSaleId="@Model.Input.BillOfSale.Id" asp-route-guestId="@Model.Input.Booking.GuestId" class="booking-details-edit-entry">Change Card Info</a>
+            </div>
+
+            <div class="booking-details-row">
+                <h4 class="booking-details-heading">Credit Card Number</h4>
+                <p class="booking-details-row-info">@Model.Input.Booking.Guest.CreditCardNumber</p>
+            </div>
+
+            <div class="booking-details-row--credit-card">
+                <div>
+                    <h4 class="booking-details-heading">Expiry Month</h4>
+                    <p class="booking-details-row-info">@Model.Input.Booking.Guest.CreditCardExpiryMonth</p>
+
+                </div>
+                <div>
+                    <h4 class="booking-details-heading">Expiry Year</h4>
+                    <p class="booking-details-row-info">@Model.Input.Booking.Guest.CreditCardExpiryYear</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="d-flex mt-3">
+    <form method="post">
+        <input type="hidden" asp-for="@Model.Input.Booking.BillOfSaleId" />
+        <button asp-route-bookingId="@Model.Input.Booking.BillOfSaleId" class="large-btn" style="display: block; width: max-content;">Set Status to 'Paid'</button>
+    </form>
+    <a asp-page="/Admin/Billing" class="large-btn large-btn--inverse ml-2">Cancel</a>
+</div>

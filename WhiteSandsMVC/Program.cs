@@ -28,6 +28,10 @@ namespace WhiteSandsMVC
                 var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
                 await context.Database.MigrateAsync();
                 await Seed.SeedUsers(userManager, roleManager);
+                await Seed.SeedGuests(context);
+                await Seed.SeedBillsOfSale(context);
+                await Seed.SeedBookings(context);
+                await Seed.SeedLineItemCharges(context);
             }
             catch (Exception ex)
             {

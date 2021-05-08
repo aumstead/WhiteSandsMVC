@@ -29,9 +29,8 @@ namespace WhiteSandsMVC.Models
         [ForeignKey("RoomTypeId")]
         public RoomType RoomType { get; set; }
 
-        //[Required, Column(TypeName="money")]
-        //public decimal TotalCost { get; set; }
-        
+        public int BillOfSaleId { get; set; }
+        [ForeignKey("BillOfSaleId")]
         public BillOfSale BillOfSale { get; set; }
 
         [Required]
@@ -39,6 +38,15 @@ namespace WhiteSandsMVC.Models
 
         [Required]
         public DateTime CheckOutDate { get; set; }
+
+        [NotMapped]
+        public int Nights { get
+            {
+                TimeSpan nights;
+                nights = CheckOutDate - CheckInDate;
+                return nights.Days;
+            }
+        }
 
         [Required]
         public byte Adults { get; set; }

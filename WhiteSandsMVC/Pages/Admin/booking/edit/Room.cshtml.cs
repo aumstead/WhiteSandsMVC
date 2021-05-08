@@ -12,7 +12,7 @@ using WhiteSandsMVC.Utility;
 
 namespace WhiteSandsMVC.Pages.Admin.booking.edit
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, Employee")]
     public class RoomModel : PageModel
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -36,10 +36,9 @@ namespace WhiteSandsMVC.Pages.Admin.booking.edit
 
             List<string> statusTypes = new List<string>();
 
-            statusTypes.Add(Status.Paid);
-            statusTypes.Add(Status.Booked);
-            statusTypes.Add(Status.CheckedIn);
-            statusTypes.Add(Status.CheckedOut);
+            statusTypes.Add(BookingStatus.Booked);
+            statusTypes.Add(BookingStatus.CheckedIn);
+            statusTypes.Add(BookingStatus.CheckedOut);
 
             Input = new InputModel
             {

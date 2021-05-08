@@ -1,0 +1,27 @@
+﻿@page
+@model WhiteSandsMVC.Pages.Admin.BillingModel
+@{
+    ViewBag.Title = "Admin - Billing";
+}
+<div class="admin-heading">
+    <h1 class="h1-heading">Billing</h1>
+</div>
+
+<table id="DT_load" class="admin-table nowrap hover row-border order-column">
+    <thead>
+        <tr>
+            <th>Booking ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Guest Status</th>
+            <th>Payment Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+</table>
+
+
+@section Scripts{
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" asp-append-version="true"></script>
+    <script src="~/js/admin/billing.js" asp-append-version="true"></script>
+}

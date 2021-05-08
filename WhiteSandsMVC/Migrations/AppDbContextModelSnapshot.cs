@@ -267,13 +267,15 @@ namespace WhiteSandsMVC.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BookingId")
-                        .HasColumnType("int");
+                    b.Property<string>("PaymentMethod")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PaymentStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BookingId")
-                        .IsUnique();
 
                     b.ToTable("BillsOfSale");
                 });
@@ -287,6 +289,9 @@ namespace WhiteSandsMVC.Migrations
 
                     b.Property<byte>("Adults")
                         .HasColumnType("tinyint");
+
+                    b.Property<int>("BillOfSaleId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CheckInDate")
                         .HasColumnType("datetime2");
@@ -316,6 +321,8 @@ namespace WhiteSandsMVC.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BillOfSaleId");
 
                     b.HasIndex("GuestId");
 
@@ -542,6 +549,9 @@ namespace WhiteSandsMVC.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<bool>("Available")
+                        .HasColumnType("bit");
+
                     b.Property<string>("RoomNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(10)")
@@ -563,6 +573,7 @@ namespace WhiteSandsMVC.Migrations
                         new
                         {
                             Id = 1,
+                            Available = true,
                             RoomNumber = "1",
                             RoomTypeId = 1,
                             View = "Lagoon"
@@ -570,6 +581,7 @@ namespace WhiteSandsMVC.Migrations
                         new
                         {
                             Id = 2,
+                            Available = true,
                             RoomNumber = "2",
                             RoomTypeId = 1,
                             View = "Lagoon"
@@ -577,6 +589,7 @@ namespace WhiteSandsMVC.Migrations
                         new
                         {
                             Id = 3,
+                            Available = true,
                             RoomNumber = "3",
                             RoomTypeId = 1,
                             View = "Mt. Suthep"
@@ -584,6 +597,7 @@ namespace WhiteSandsMVC.Migrations
                         new
                         {
                             Id = 4,
+                            Available = true,
                             RoomNumber = "4",
                             RoomTypeId = 1,
                             View = "Mt. Suthep"
@@ -591,6 +605,7 @@ namespace WhiteSandsMVC.Migrations
                         new
                         {
                             Id = 5,
+                            Available = true,
                             RoomNumber = "5",
                             RoomTypeId = 2,
                             View = "Lagoon"
@@ -598,6 +613,7 @@ namespace WhiteSandsMVC.Migrations
                         new
                         {
                             Id = 6,
+                            Available = true,
                             RoomNumber = "6",
                             RoomTypeId = 2,
                             View = "Mt. Suthep"
@@ -605,6 +621,7 @@ namespace WhiteSandsMVC.Migrations
                         new
                         {
                             Id = 7,
+                            Available = true,
                             RoomNumber = "7",
                             RoomTypeId = 3,
                             View = "Lagoon"
@@ -612,6 +629,7 @@ namespace WhiteSandsMVC.Migrations
                         new
                         {
                             Id = 8,
+                            Available = true,
                             RoomNumber = "8",
                             RoomTypeId = 3,
                             View = "Mt. Suthep"
@@ -619,6 +637,7 @@ namespace WhiteSandsMVC.Migrations
                         new
                         {
                             Id = 9,
+                            Available = true,
                             RoomNumber = "100",
                             RoomTypeId = 4,
                             View = "Beach"
@@ -626,6 +645,7 @@ namespace WhiteSandsMVC.Migrations
                         new
                         {
                             Id = 10,
+                            Available = true,
                             RoomNumber = "201",
                             RoomTypeId = 4,
                             View = "Beach"
@@ -633,6 +653,7 @@ namespace WhiteSandsMVC.Migrations
                         new
                         {
                             Id = 11,
+                            Available = true,
                             RoomNumber = "302",
                             RoomTypeId = 4,
                             View = "Garden"
@@ -640,6 +661,7 @@ namespace WhiteSandsMVC.Migrations
                         new
                         {
                             Id = 12,
+                            Available = true,
                             RoomNumber = "402",
                             RoomTypeId = 4,
                             View = "Garden"
@@ -647,6 +669,7 @@ namespace WhiteSandsMVC.Migrations
                         new
                         {
                             Id = 13,
+                            Available = true,
                             RoomNumber = "102",
                             RoomTypeId = 5,
                             View = "Beach"
@@ -654,6 +677,7 @@ namespace WhiteSandsMVC.Migrations
                         new
                         {
                             Id = 14,
+                            Available = true,
                             RoomNumber = "500",
                             RoomTypeId = 5,
                             View = "Beach"
@@ -661,6 +685,7 @@ namespace WhiteSandsMVC.Migrations
                         new
                         {
                             Id = 15,
+                            Available = true,
                             RoomNumber = "501",
                             RoomTypeId = 5,
                             View = "Garden"
@@ -668,6 +693,7 @@ namespace WhiteSandsMVC.Migrations
                         new
                         {
                             Id = 16,
+                            Available = true,
                             RoomNumber = "600",
                             RoomTypeId = 5,
                             View = "Garden"
@@ -675,49 +701,56 @@ namespace WhiteSandsMVC.Migrations
                         new
                         {
                             Id = 17,
-                            RoomNumber = "Paris",
+                            Available = true,
+                            RoomNumber = "880",
                             RoomTypeId = 8,
                             View = "Mt. Suthep"
                         },
                         new
                         {
                             Id = 18,
-                            RoomNumber = "New York",
+                            Available = true,
+                            RoomNumber = "881",
                             RoomTypeId = 8,
                             View = "Mt.Suthep"
                         },
                         new
                         {
                             Id = 19,
-                            RoomNumber = "Tokyo",
+                            Available = true,
+                            RoomNumber = "882",
                             RoomTypeId = 7,
                             View = "Beach"
                         },
                         new
                         {
                             Id = 20,
-                            RoomNumber = "London",
+                            Available = true,
+                            RoomNumber = "883",
                             RoomTypeId = 7,
                             View = "Beach"
                         },
                         new
                         {
                             Id = 21,
-                            RoomNumber = "Rome",
+                            Available = true,
+                            RoomNumber = "884",
                             RoomTypeId = 6,
                             View = "Beach"
                         },
                         new
                         {
                             Id = 22,
-                            RoomNumber = "Amsterdam",
+                            Available = true,
+                            RoomNumber = "885",
                             RoomTypeId = 6,
                             View = "Beach"
                         },
                         new
                         {
                             Id = 23,
-                            RoomNumber = "Cairo",
+                            Available = true,
+                            RoomNumber = "886",
                             RoomTypeId = 6,
                             View = "Beach"
                         });
@@ -1113,17 +1146,14 @@ namespace WhiteSandsMVC.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("WhiteSandsMVC.Models.BillOfSale", b =>
-                {
-                    b.HasOne("WhiteSandsMVC.Models.Booking", "Booking")
-                        .WithOne("BillOfSale")
-                        .HasForeignKey("WhiteSandsMVC.Models.BillOfSale", "BookingId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("WhiteSandsMVC.Models.Booking", b =>
                 {
+                    b.HasOne("WhiteSandsMVC.Models.BillOfSale", "BillOfSale")
+                        .WithMany()
+                        .HasForeignKey("BillOfSaleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("WhiteSandsMVC.Models.Guest", "Guest")
                         .WithMany()
                         .HasForeignKey("GuestId")

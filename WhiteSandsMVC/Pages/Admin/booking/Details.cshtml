@@ -13,59 +13,49 @@
     <div class="booking-details-guest-info">
         <div class="booking-details-heading-wrapper">
             <h3 class="h2-heading">Guest Info</h3>
-            <a asp-page="/admin/booking/edit/guest" asp-route-guestId="@Model.Booking.GuestId" asp-route-bookingId="@Model.Booking.Id" class="booking-details-edit-entry">Edit Entry</a>
+            <a asp-page="/admin/booking/edit/guest" asp-route-guestId="@Model.Input.Booking.GuestId" asp-route-bookingId="@Model.Input.Booking.Id" class="booking-details-edit-entry">Edit Entry</a>
         </div>
         <div class="booking-details-row">
             <h4 class="booking-details-heading">Name</h4>
-            <p class="booking-details-row-info">@(Model.Booking.Guest.FirstName + " " + Model.Booking.Guest.LastName)</p>
+            <p class="booking-details-row-info">@(Model.Input.Booking.Guest.FirstName + " " + Model.Input.Booking.Guest.LastName)</p>
         </div>
 
         <div class="booking-details-row">
             <h4 class="booking-details-heading">Phone Number</h4>
-            <p class="booking-details-row-info">@Model.Booking.Guest.PhoneNumber</p>
+            <p class="booking-details-row-info">@Model.Input.Booking.Guest.PhoneNumber</p>
         </div>
 
         <div class="booking-details-row">
             <h4 class="booking-details-heading">Email</h4>
-            <p class="booking-details-row-info">@Model.Booking.Guest.Email</p>
+            <p class="booking-details-row-info">@Model.Input.Booking.Guest.Email</p>
         </div>
 
         <div class="booking-details-row">
             <h4 class="booking-details-heading">Country</h4>
-            <p class="booking-details-row-info">@Model.Booking.Guest.Country</p>
+            <p class="booking-details-row-info">@Model.Input.Booking.Guest.Country</p>
         </div>
 
-        <div class="booking-details-heading-wrapper mt-5">
-            <h3 class="h2-heading">Payment Info</h3>
-            <a asp-page="/Admin/Booking/edit/payment" asp-route-guestId="@Model.Booking.GuestId" asp-route-bookingId="@Model.Booking.Id" class="booking-details-edit-entry">Edit Entry</a>
-        </div>
-
-        <div class="booking-details-row">
-            <h4 class="booking-details-heading">Credit Card Name</h4>
-            <p class="booking-details-row-info">@Model.Booking.Guest.NameOnCreditCard</p>
+        <div class="booking-details-heading-wrapper">
+            <h3 class="h2-heading">Billing Info</h3>
+            <a asp-page="/Admin/Booking/edit/room" asp-route-bookingId="@Model.Input.Booking.Id" class="booking-details-edit-entry">Go to Statement</a>
         </div>
 
         <div class="booking-details-row">
-            <h4 class="booking-details-heading">Credit Card Number</h4>
-            <p class="booking-details-row-info">@Model.Booking.Guest.CreditCardNumber</p>
+            <h4 class="booking-details-heading">Charges</h4>
+            @foreach (var charge in Model.Input.LineItemCharges)
+            {
+                <div class="booking-details__line-item-row">
+                    <span class="booking-details__line-item-price">$@string.Format("{0:0.00}", charge.Amount)</span>
+                    <span class="booking-details-row-info">@charge.Name</span>
+                </div>
+
+            }
+            <hr class="booking-details-hr" />
+            <h4 class="booking-details-heading">Total</h4>
+            <p class="booking-details-row-info text-bold">$@string.Format("{0:0.00}", Model.Input.TotalCost)</p>
         </div>
 
-        <div class="booking-details-row--credit-card">
-            <div>
-                <h4 class="booking-details-heading">Expiry Month</h4>
-                <p class="booking-details-row-info">@Model.Booking.Guest.CreditCardExpiryMonth</p>
-
-            </div>
-            <div>
-                <h4 class="booking-details-heading">Expiry Year</h4>
-                <p class="booking-details-row-info">@Model.Booking.Guest.CreditCardExpiryYear</p>
-            </div>
-        </div>
-
-        @*<div class="booking-details-row">
-                <h4 class="booking-details-heading">Total Cost</h4>
-                <p class="booking-details-row-info">$@string.Format("{0:0.00}", Model.Booking.TotalCost)</p>
-            </div>*@
+        
 
 
 
@@ -74,49 +64,73 @@
     <div class="booking-details-basic-info">
         <div class="booking-details-heading-wrapper">
             <h3 class="h2-heading">Room Info</h3>
-            <a asp-page="/Admin/Booking/edit/room" asp-route-bookingId="@Model.Booking.Id" class="booking-details-edit-entry">Edit Entry</a>
+            <a asp-page="/Admin/Booking/edit/room" asp-route-bookingId="@Model.Input.Booking.Id" class="booking-details-edit-entry">Edit Entry</a>
         </div>
-
 
         <div class="booking-details-row">
             <h4 class="booking-details-heading">Check in</h4>
-            <p class="booking-details-row-info">@Model.Booking.CheckInDate.ToShortDateString()</p>
+            <p class="booking-details-row-info">@Model.Input.Booking.CheckInDate.ToShortDateString()</p>
         </div>
 
         <div class="booking-details-row">
             <h4 class="booking-details-heading">Check out</h4>
-            <p class="booking-details-row-info">@Model.Booking.CheckOutDate.ToShortDateString()</p>
+            <p class="booking-details-row-info">@Model.Input.Booking.CheckOutDate.ToShortDateString()</p>
+        </div>
+
+        <div class="booking-details-row">
+            <h4 class="booking-details-heading">Nights</h4>
+            <p class="booking-details-row-info">@Model.Input.Booking.Nights</p>
         </div>
 
         <div class="booking-details-row">
             <h4 class="booking-details-heading">Room Type</h4>
-            <p class="booking-details-row-info">@Model.Booking.RoomType.Name</p>
+            <p class="booking-details-row-info">@Model.Input.Booking.RoomType.Name</p>
         </div>
 
         <div class="booking-details-row">
             <h4 class="booking-details-heading">Room Number</h4>
-            <p class="booking-details-row-info">@Model.Booking.Room.RoomNumber</p>
+            <p class="booking-details-row-info">@Model.Input.Booking.Room.RoomNumber</p>
         </div>
 
         <div class="booking-details-row">
             <h4 class="booking-details-heading">Status</h4>
-            <p class="booking-details-row-info">@Model.Booking.Status</p>
+            <p class="booking-details-row-info">@Model.Input.Booking.Status</p>
         </div>
 
         <div class="booking-details-row">
             <h4 class="booking-details-heading">Notes</h4>
-            <p class="booking-details-row-info">@Model.Booking.Notes</p>
+            <p class="booking-details-row-info">@Model.Input.Booking.Notes</p>
         </div>
 
-        <div class="booking-details-heading-wrapper">
-            <h3 class="h2-heading">Billing Info</h3>
-            <a asp-page="/Admin/Booking/edit/room" asp-route-bookingId="@Model.Booking.Id" class="booking-details-edit-entry">Edit Entry</a>
+        @*<div class="booking-details-heading-wrapper mt-5">
+            <h3 class="h2-heading">Payment Info</h3>
+            <a asp-page="/Admin/Booking/edit/payment" asp-route-guestId="@Model.Input.Booking.GuestId" asp-route-bookingId="@Model.Input.Booking.Id" class="booking-details-edit-entry">Edit Entry</a>
         </div>
 
-        @*<div class="booking-details-row">
-            <h4 class="booking-details-heading">Notes</h4>
-            <p class="booking-details-row-info">@Model.Booking.Notes</p>
+        <div class="booking-details-row">
+            <h4 class="booking-details-heading">Credit Card Name</h4>
+            <p class="booking-details-row-info">@Model.Input.Booking.Guest.NameOnCreditCard</p>
+        </div>
+
+        <div class="booking-details-row">
+            <h4 class="booking-details-heading">Credit Card Number</h4>
+            <p class="booking-details-row-info">@Model.Input.Booking.Guest.CreditCardNumber</p>
+        </div>
+
+        <div class="booking-details-row--credit-card">
+            <div>
+                <h4 class="booking-details-heading">Expiry Month</h4>
+                <p class="booking-details-row-info">@Model.Input.Booking.Guest.CreditCardExpiryMonth</p>
+
+            </div>
+            <div>
+                <h4 class="booking-details-heading">Expiry Year</h4>
+                <p class="booking-details-row-info">@Model.Input.Booking.Guest.CreditCardExpiryYear</p>
+            </div>
         </div>*@
+
+
+
     </div>
 
 </div>

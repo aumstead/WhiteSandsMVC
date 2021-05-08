@@ -5,7 +5,7 @@
 }
 
 <div class="admin-heading">
-    <h1 class="h1-heading">Bookings</h1>
+    <h1 class="h1-heading">All Bookings</h1>
     <a class="large-btn">Create Booking</a>
 </div>
 
@@ -16,14 +16,16 @@
             <th>First Name</th>
             <th>Last Name</th>
             <th>Check-in</th>
+            <th>Check-out</th>
             <th>Status</th>
-            <th></th>
+            <th>Actions</th>
         </tr>
     </thead>
 </table>
 
 
 @section Scripts{
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script src="~/js/admin/bookings.js"></script>
+    <script asp-append-version="true" type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script asp-append-version="true" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script asp-append-version="true" src="~/js/admin/bookings.js"></script>
 }

@@ -1,0 +1,64 @@
+﻿@page
+@model WhiteSandsMVC.Pages.Admin.check_in.edit.StayModel
+@{
+    ViewBag.Title = "Check In - Edit Stay";
+}
+
+<div class="admin-heading">
+    <h1 class="h1-heading">Edit Stay Details</h1>
+</div>
+
+<form class="booking-edit__form" method="post">
+    <div asp-validation-summary="All" class="text-error booking-edit__validation-summary"></div>
+    <input type="hidden" asp-for="@Model.Input.CheckIn" id="check-in-hidden" value="@Model.Input.CheckIn" />
+    <input type="hidden" asp-for="@Model.Input.CheckOut" id="check-out-hidden" value="@Model.Input.CheckOut" />
+    <input type="hidden" id="selectedRoomTypeHidden" value="" />
+
+    <div class="booking-edit__form-control">
+        <label class="booking-edit__label" asp-for="@Model.Input.CheckIn">Check In</label>
+        <input name="checkIn" type="text" id="checkInEl" class="booking-edit__input" value="@Model.Input.CheckIn" />
+        <span asp-validation-for="@Model.Input.CheckIn" class="text-error booking-edit__validation-input"></span>
+    </div>
+    <div class="booking-edit__form-control">
+        <label class="booking-edit__label" asp-for="@Model.Input.CheckOut"></label>
+        <input name="checkOut" type="text" id="checkOutEl" class="booking-edit__input" value="@Model.Input.CheckOut" />
+        <span asp-validation-for="@Model.Input.CheckOut" class="text-error booking-edit__validation-input"></span>
+    </div>
+
+    <input type="hidden" asp-for="@Model.Input.BookingId" />
+    <button type="submit" class="large-btn booking-edit__submit-btn mr-2 mt-2">Submit Changes</button>
+    <a asp-page="/admin/check-in/StepOneVerifyStay" asp-route-id="@Model.Input.BookingId" class="large-btn large-btn--inverse">Cancel</a>
+</form>
+
+@section Scripts {
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <script>
+        $(function () {
+            $('input[name="checkIn"]').daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+                minYear: 1901,
+                maxYear: parseInt(moment().format('YYYY'), 10)
+            }, function (start, end, label) {
+                const checkInHidden = document.getElementById('check-in-hidden')
+                checkInHidden.value = start.format('MM/DD/YYYY')
+            });
+        });
+
+        $(function () {
+            $('input[name="checkOut"]').daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+                minYear: 1901,
+                maxYear: parseInt(moment().format('YYYY'), 10)
+            }, function (start, end, label) {
+                const checkOutHidden = document.getElementById('check-out-hidden')
+                checkOutHidden.value = start.format('MM/DD/YYYY')
+            });
+        });
+
+
+    </script>
+}  

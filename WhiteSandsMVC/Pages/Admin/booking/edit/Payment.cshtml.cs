@@ -11,7 +11,7 @@ using WhiteSandsMVC.Models.Repositories;
 
 namespace WhiteSandsMVC.Pages.Admin.booking.edit
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, Employee")]
     public class PaymentModel : PageModel
     {
         private readonly IUnitOfWork _unitOfWork;

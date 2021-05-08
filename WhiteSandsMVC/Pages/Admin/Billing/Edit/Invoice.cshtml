@@ -1,0 +1,32 @@
+﻿@page
+@model WhiteSandsMVC.Pages.Admin.billing.edit.InvoiceModel
+@{
+    ViewBag.Title = "Edit Invoice";
+}
+<div class="admin-heading">
+    <h1 class="h1-heading">Edit Invoice</h1>
+</div>
+
+<div class="edit-invoice-wrapper">
+    <div class="verify-stay-heading-wrapper">
+        <h3 class="verify-stay-h2-heading">Charges</h3>
+    </div>
+
+    
+        @foreach (var charge in Model.Input.LineItemCharges)
+        {
+            <div class="booking-details__line-item-row">
+                <input class="edit-invoice-charge-input" value="@string.Format("{0:0.00}", charge.Amount)"/>
+                <input class="edit-invoice-charge-input" value="@charge.Name" />
+               
+            </div>
+
+        }
+        
+    </div>
+</div>
+
+<form class="booking-edit__form" method="post">
+    <div asp-validation-summary="All" class="text-error booking-edit__validation-summary"></div>
+
+</form>

@@ -1,14 +1,78 @@
 ﻿@page
 @model WhiteSandsMVC.Pages.Admin.AdminModel
-
+@inject UserManager<ApplicationUser> UserManager
 @{
     ViewBag.Title = "Admin - Home";
 }
 
 
-        <div class="admin-heading">
-            <h1 class="h1-heading">Razor Admin</h1>
-            <a class="large-btn">Create Booking</a>
-        </div>
+<div class="admin-heading">
+    <h1 class="h1-heading">Today is @Model.Input.Today.ToLongDateString()</h1>
+</div>
+
+<div class="admin-overview-wrapper">
+    <h3 class="h3-heading">Guests</h3>
+    <div class="admin-overview-card-row">
+        <a asp-page="/admin/arrivals" class="admin-overview-card">
+            <div class="admin-overview-card__top">
+                <span class="admin-overview-card__number">@Model.Input.Arrivals</span>
+                <span class="admin-overview-card__text">@(Model.Input.Arrivals == 1 ? "Arrival" : "Arrivals")</span>
+            </div>
+            <div class="admin-overview-card__bottom">
+                <span class="admin-overview-card__note">@Model.Input.Arrived/@Model.Input.Arrivals arrived</span>
+            </div>
+            <span class="admin-overview-card__go">Go &rarr;</span>
+        </a>
+
+
+        <a asp-page="/admin/departures" class="admin-overview-card">
+            <div class="admin-overview-card__top">
+                <span class="admin-overview-card__number">@Model.Input.Departures</span>
+                <span class="admin-overview-card__text">@(Model.Input.Departures == 1 ? "Departure" : "Departures")</span>
+            </div>
+            <div class="admin-overview-card__bottom">
+                <span class="admin-overview-card__note">@Model.Input.Departed/@Model.Input.Departures departed</span>
+            </div>
+            <span class="admin-overview-card__go">Go &rarr;</span>
+        </a>
+
+        <a asp-page="/admin/inhouse" class="admin-overview-card">
+            <div class="admin-overview-card__top">
+                <span class="admin-overview-card__number">@Model.Input.InHouse</span>
+                <span class="admin-overview-card__text">In-House</span>
+            </div>
+            <div class="admin-overview-card__bottom">
+                <span class="admin-overview-card__note">@Model.Input.Stayovers stayovers</span>
+            </div>
+            <span class="admin-overview-card__go">Go &rarr;</span>
+        </a>
+    </div>
+
+    <h3 class="h3-heading">Rooms</h3>
+    <div class="admin-overview-card-row">
+        <a asp-page="/admin/arrivals" class="admin-overview-card">
+            <div class="admin-overview-card__top">
+                <span class="admin-overview-card__number">@Model.Input.Occupied</span>
+                <span class="admin-overview-card__text">Occupied</span>
+            </div>
+            <div class="admin-overview-card__bottom">
+                <span class="admin-overview-card__note">Occupancy: @Model.Input.Occupied/@Model.Input.TotalRooms</span>
+            </div>
+            <span class="admin-overview-card__go">Go &rarr;</span>
+        </a>
+
+        <a asp-page="/admin/inhouse" class="admin-overview-card">
+            <div class="admin-overview-card__top">
+                <span class="admin-overview-card__number">@Model.Input.Available</span>
+                <span class="admin-overview-card__text">Available</span>
+            </div>
+            <div class="admin-overview-card__bottom">
+                <span class="admin-overview-card__note">Availability: @Model.Input.AvailablePercentage</span>
+            </div>
+            <span class="admin-overview-card__go">Go &rarr;</span>
+        </a>
+    </div>
+    <p class="admin-overview-note">*Note: App is in a demo state with dummy data, so state can be out of sync in terms of check in/check out status. Room availability and occupancy state is also disabled.</p>
+</div>
 
 

@@ -1,0 +1,17 @@
+﻿.billing-registration-box {
+    display: flex;
+}
+
+.billing-checkbox-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    width: 95rem;
+    margin-top: 3rem;
+}
+
+.billing-disabled-a {
+    pointer-events: none;
+    background-color: #5f5c5c;
+    border: 1px solid #5f5c5c;
+    color: #e6e6e6;
+}

@@ -16,29 +16,6 @@ namespace WhiteSandsMVC.Models
             _context = context;
         }
 
-        //public Booking Create(Booking booking)
-        //{
-        //    context.Bookings.Add(booking);
-        //    context.SaveChanges();
-        //    return booking;
-        //}
-
-        //public Booking Delete(int id)
-        //{
-        //    Booking bookingFromDb = context.Bookings.Find(id);
-        //    if (bookingFromDb != null)
-        //    {
-        //        context.Bookings.Remove(bookingFromDb);
-        //        context.SaveChanges();
-        //    }
-        //    return bookingFromDb;
-        //}
-
-        //public Booking GetBooking(int id)
-        //{
-        //    return context.Bookings.Find(id);
-        //}
-
         public Booking Update(Booking bookingChanges)
         {
             var booking = _context.Bookings.Attach(bookingChanges);
@@ -46,10 +23,5 @@ namespace WhiteSandsMVC.Models
             _context.SaveChanges();
             return bookingChanges;
         }
-
-        //public IEnumerable<Booking> GetAllBookings()
-        //{
-        //    return context.Bookings.Include(b => b.Guest);
-        //}
     }
 }

@@ -1,0 +1,9 @@
+﻿.edit-invoice-wrapper {
+    width: 40rem;
+}
+
+.edit-invoice-charge-input {
+    border: 1px solid #000;
+    font-size: 1.6rem;
+    padding: 1rem;
+}
