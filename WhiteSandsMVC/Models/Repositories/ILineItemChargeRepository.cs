@@ -7,5 +7,6 @@ namespace WhiteSandsMVC.Models.Repositories
 {
     public interface ILineItemChargeRepository : IGenericRepository<LineItemCharge>
     {
+        LineItemCharge Update(LineItemCharge lineItemChargeChanges);
     }
 }

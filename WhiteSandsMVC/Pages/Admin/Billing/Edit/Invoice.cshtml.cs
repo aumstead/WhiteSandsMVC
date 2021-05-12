@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -22,6 +23,7 @@ namespace WhiteSandsMVC.Pages.Admin.billing.edit
 
         [BindProperty]
         public InputModel Input { get; set; }
+
         public async Task<IActionResult> OnGet(int billOfSaleId)
         {
             var lineItems = await _unitOfWork.LineItemCharge.GetAll(item => item.BillOfSaleId == billOfSaleId);
@@ -36,18 +38,52 @@ namespace WhiteSandsMVC.Pages.Admin.billing.edit
 
             Input = new InputModel()
             {
-                LineItemCharges = lineItems,
+                PaymentStatus = invoice.PaymentStatus,
+                LineItemCharges = lineItems.ToList(),
                 TotalCost = total,
+                BillOfSaleId = billOfSaleId
             };
 
             return Page();
         }
 
+        public async Task<IActionResult> OnPost()
+        {
+            var lineItemsFromDb = await _unitOfWork.LineItemCharge.GetAll(item => item.BillOfSaleId == Input.BillOfSaleId);
+
+            var lineItemList = lineItemsFromDb.ToList();
+
+            var billOfSaleFromDb = await _unitOfWork.BillOfSale.Get(Input.BillOfSaleId);
+
+            if (lineItemList.Count == 0)
+            {
+                // user removed all charges
+                return RedirectToPage("/Admin/Billing/Invoice", new { billOfSaleId = Input.BillOfSaleId });
+            }
+
+            for (int i = 0; i < Input.LineItemCharges.Count; i++)
+            {
+                lineItemList[i].Amount = Input.LineItemCharges[i].Amount;
+                lineItemList[i].Name = Input.LineItemCharges[i].Name;
+                _unitOfWork.LineItemCharge.Update(lineItemList[i]);
+            }
+
+            billOfSaleFromDb.PaymentStatus = Input.PaymentStatus;
+
+            _unitOfWork.BillOfSale.Update(billOfSaleFromDb);
+            
+            return RedirectToPage("/Admin/Billing/Invoice", new { billOfSaleId = Input.BillOfSaleId });
+        }
+
         public class InputModel
         {
-            public IEnumerable<LineItemCharge> LineItemCharges { get; set; }
+            public List<LineItemCharge> LineItemCharges { get; set; }
             public decimal TotalCost { get; set; }
+
+            [Required]
+            [Display(Name = "Payment Status")]
             public string PaymentStatus { get; set; }
+            public int BillOfSaleId { get; set; }
         }
     }
 }

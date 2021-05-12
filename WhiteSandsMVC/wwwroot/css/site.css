@@ -20,6 +20,7 @@
 @import 'components/mobileActivitiesCarousel.css';
 @import 'components/checkRatesDrawer.css';
 @import 'components/searchBar.css';
+@import 'components/components.css';
 
 @import 'controllers/profile/profile.css';
 @import 'controllers/error/NotFound.css';
@@ -44,3 +45,7 @@
 @import 'pages/admin/check-in/billing.css';
 @import 'pages/admin/checkOut.css';
 @import 'pages/admin/editInvoice.css';
+
+@import 'my-library/spacing.css';
+@import 'my-library/text.css';
+@import 'my-library/color.css';

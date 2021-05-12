@@ -49,8 +49,8 @@
         <span asp-validation-for="@Model.Input.CreditCardExpiryYear" class="text-error booking-edit__validation-input"></span>
     </div>
 
-    @*<input type="hidden" asp-for="@Model.Input.GuestId" />*@
+    <input type="hidden" asp-for="@Model.Input.GuestId" />
     <input type="hidden" asp-for="@Model.Input.BillOfSaleId" />
-    <button type="submit" class="large-btn booking-edit__submit-btn mr-2 mt-2">Submit Changes</button>
+    <button type="submit" class="large-btn booking-edit__submit-btn mr-2 mt-2">Save Changes</button>
     <a asp-page="/admin/billing/invoice" asp-route-billOfSaleId="@Model.Input.BillOfSaleId" class="large-btn large-btn--inverse">Cancel</a>
 </form>

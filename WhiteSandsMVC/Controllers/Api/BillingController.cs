@@ -25,5 +25,19 @@ namespace WhiteSandsMVC.Controllers.Api
         {
             return Json(new { data = await _unitOfWork.Booking.GetAll(null, null, "Guest,BillOfSale") });
         }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public async Task<IActionResult> DeleteLineItemCharge(int id)
+        {
+            var chargeFromDb = await _unitOfWork.LineItemCharge.Get(id);
+            if (chargeFromDb == null)
+            {
+                return Json(new { success = false, message = "Server error while deleting" });
+            }
+            _unitOfWork.LineItemCharge.Remove(chargeFromDb);
+            _unitOfWork.Save();
+            return Json(new { success = true, message = "Delete successful" });
+        }
     }
 }

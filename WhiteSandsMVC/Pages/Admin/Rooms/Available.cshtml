@@ -1,0 +1,27 @@
+﻿@page
+@model WhiteSandsMVC.Pages.Admin.Rooms.AvailableModel
+@{
+    ViewBag.Title = "Available Rooms";
+}
+<div class="admin-heading">
+    <h1 class="h1-heading">Available Rooms</h1>
+</div>
+
+<table id="DT_load" class="admin-table nowrap hover row-border order-column">
+    <thead>
+        <tr>
+            <th>Room ID</th>
+            <th>Category</th>
+            <th>Room Number</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+</table>
+
+
+@section Scripts{
+    <script asp-append-version="true" type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script asp-append-version="true" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script asp-append-version="true" src="~/js/admin/rooms/available.js"></script>
+}

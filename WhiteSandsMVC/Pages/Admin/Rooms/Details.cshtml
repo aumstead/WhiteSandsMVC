@@ -1,0 +1,77 @@
+﻿@page "{roomId}"
+@model WhiteSandsMVC.Pages.Admin.Rooms.DetailsModel
+@{
+    ViewBag.Title = "Room Details";
+}
+
+<div class="admin-heading">
+    <h1 class="h1-heading">Suite @Model.Input.Room.RoomNumber Details</h1>
+</div>
+
+<div class="d-flex width-100">
+    <div class="width-40 mr-2">
+        <div class="booking-details-row">
+            <h4 class="booking-details-heading">Status</h4>
+            <p class="booking-details-row-info">@(Model.Input.Room.Available ? "Available" : "Occupied")</p>
+        </div>
+
+        <div class="booking-details-row">
+            <h4 class="booking-details-heading">Type</h4>
+            <p class="booking-details-row-info">@Model.Input.Room.RoomType.Name</p>
+        </div>
+
+        <div class="booking-details-row">
+            <h4 class="booking-details-heading">Number</h4>
+            <p class="booking-details-row-info">@Model.Input.Room.RoomNumber</p>
+        </div>
+
+        <div class="booking-details-row">
+            <h4 class="booking-details-heading">Price/Night</h4>
+            <p class="booking-details-row-info">@Model.Input.Room.RoomType.Price</p>
+        </div>
+
+        <div class="booking-details-row">
+            <h4 class="booking-details-heading">Location</h4>
+            <p class="booking-details-row-info">@Model.Input.Room.RoomType.Location</p>
+        </div>
+
+        <div class="booking-details-row">
+            <h4 class="booking-details-heading">View</h4>
+            <p class="booking-details-row-info">@Model.Input.Room.View</p>
+        </div>
+
+        <div class="booking-details-row">
+            <h4 class="booking-details-heading">Size</h4>
+            <p class="booking-details-row-info">@Model.Input.Room.RoomType.RoomSize</p>
+        </div>
+
+        <div class="booking-details-row">
+            <h4 class="booking-details-heading">Beds</h4>
+            <p class="booking-details-row-info">@Model.Input.Room.RoomType.Beds</p>
+        </div>
+
+        <div class="booking-details-row">
+            <h4 class="booking-details-heading">Adult Capacity</h4>
+            <p class="booking-details-row-info">@Model.Input.Room.RoomType.MaxAdultCapacity</p>
+        </div>
+
+        <div class="booking-details-row">
+            <h4 class="booking-details-heading">Child Capacity</h4>
+            <p class="booking-details-row-info">@Model.Input.Room.RoomType.MaxChildCapacity</p>
+        </div>
+
+        <div class="booking-details-row">
+            <h4 class="booking-details-heading">Extra Beds Available</h4>
+            <p class="booking-details-row-info">@Model.Input.Room.RoomType.ExtraBeds</p>
+        </div>
+
+        <div class="booking-details-row">
+            <h4 class="booking-details-heading">Bathroom</h4>
+            <p class="booking-details-row-info">@Model.Input.Room.RoomType.Bathroom</p>
+        </div>
+    </div>
+
+    <div class="width-40">
+        <img class="width-100" src="/Images/AccomodationsIndex/@Model.Input.Room.RoomType.PhotoPath" alt="@Model.Input.Room.RoomType.Name" />
+    </div>
+</div>

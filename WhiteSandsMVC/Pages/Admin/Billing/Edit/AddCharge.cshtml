@@ -1,0 +1,27 @@
+﻿@page
+@model WhiteSandsMVC.Pages.Admin.Billing.Edit.AddChargeModel
+@{
+    ViewBag.Title = "Add Charge";
+}
+<div class="admin-heading">
+    <h1 class="h1-heading">Add Charge</h1>
+</div>
+
+<form method="post" class="booking-edit__form">
+    <div asp-validation-summary="All" class="text-error booking-edit__validation-summary"></div>
+    <div class="booking-edit__form-control">
+        <label asp-for="@Model.Input.LineItemCharge.Name" class="booking-edit__label"></label>
+        <input asp-for="@Model.Input.LineItemCharge.Name" class="edit-invoice-charge-input" />
+        <span asp-validation-for="@Model.Input.LineItemCharge.Name" class="text-error booking-edit__validation-input"></span>
+    </div>
+
+    <div class="booking-edit__form-control">
+        <label asp-for="@Model.Input.LineItemCharge.Amount" class="booking-edit__label"></label>
+        <input asp-for="@Model.Input.LineItemCharge.Amount" class="edit-invoice-charge-input" />
+        <span asp-validation-for="@Model.Input.LineItemCharge.Amount" class="text-error booking-edit__validation-input"></span>
+    </div>
+
+    <input type="hidden" asp-for="@Model.Input.BillOfSaleId" />
+    <button type="submit" class="large-btn booking-edit__submit-btn mr-2 mt-2">Create New Charge</button>
+    <a asp-page="/Admin/Billing/Edit/Invoice" asp-route-billOfSaleId="@Model.Input.BillOfSaleId" class="large-btn large-btn--inverse">Cancel</a>
+</form>

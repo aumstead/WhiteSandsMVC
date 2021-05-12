@@ -22,7 +22,7 @@ function loadList() {
                 "data": "id", "render": function (data) {
                     return `
                         <div class="text-center">
-                            <a href="/Admin/booking/details/${data}" class="small-btn" style="cursor:pointer; width: 100px;">View Details
+                            <a href="/Admin/bookings/details/${data}" class="small-btn" style="cursor:pointer; width: 100px;">View Details
                             </a>
                             
                         </div>`;

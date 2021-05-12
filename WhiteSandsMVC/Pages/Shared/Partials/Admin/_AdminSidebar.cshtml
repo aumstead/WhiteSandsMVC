@@ -3,8 +3,10 @@
         <h5 class="admin-sb-title">Menu</h5>
         <ul class="admin-sb-ul">
             <li class=@(ViewBag.Title == "Admin - Home" ? "admin-sb-li--active" : "admin-sb-li")><a class="admin-sb-a" asp-page="/admin">Overview</a></li>
+            <li class="width-100 admin-sb-heading">Guests</li>
             <li class="admin-sb-li">
-                <button class="admin-sb-btn" id="bookings-btn">Bookings
+                <button class="admin-sb-btn" id="bookings-btn">
+                    Bookings
                     <span id="chevron-down">
                         <partial name="Partials/Svgs/_ChevronDown" />
                     </span>
@@ -15,24 +17,28 @@
             </li>
             <li class="admin-sb-bookings-nav hide-element" id="bookings-nav">
                 <ul class="admin-sb-sub-ul">
-                    <li class="@(ViewBag.Title == "Admin - Bookings" ? "admin-sb-li--active" : "admin-sb-li")">
-                        <a class="admin-sb-sub-a" asp-page="/admin/bookings">All</a>
-                    </li>
                     <li class="@(ViewBag.Title == "Admin - Arrivals" ? "admin-sb-li--active" : "admin-sb-li")">
-                        <a class="admin-sb-sub-a" asp-page="/admin/arrivals">Arrivals</a>
+                        <a class="admin-sb-sub-a" asp-page="/Admin/Arrivals">Arrivals</a>
                     </li>
                     <li class="@(ViewBag.Title == "Admin - Departures" ? "admin-sb-li--active" : "admin-sb-li")">
-                        <a class="admin-sb-sub-a" asp-page="/admin/departures">Departures</a>
+                        <a class="admin-sb-sub-a" asp-page="/Admin/Departures">Departures</a>
                     </li>
                     <li class="@(ViewBag.Title == "Admin - In-House" ? "admin-sb-li--active" : "admin-sb-li")">
-                        <a class="admin-sb-sub-a" asp-page="/admin/inhouse">In-House</a>
+                        <a class="admin-sb-sub-a" asp-page="/Admin/InHouse">In-House</a>
+                    </li>
+                    <li class="@(ViewBag.Title == "Admin - Bookings" ? "admin-sb-li--active" : "admin-sb-li")">
+                        <a class="admin-sb-sub-a" asp-page="/Admin/Bookings">All (Details)</a>
                     </li>
                 </ul>
             </li>
-            <li class=@(ViewBag.Title == "Admin - Billing" ? "admin-sb-li--active" : "admin-sb-li")><a class="admin-sb-a" asp-controller="Admin" asp-action="Billing">Billing</a></li>
-            <li class=@(ViewBag.Title == "Admin - Guests" ? "admin-sb-li--active" : "admin-sb-li")><a class="admin-sb-a" asp-controller="Admin" asp-action="Guests">Guests</a></li>
-            <li class=@(ViewBag.Title == "Admin - Rooms" ? "admin-sb-li--active" : "admin-sb-li")><a class="admin-sb-a" asp-controller="Admin" asp-action="Rooms">Rooms</a></li>
-            <li class=@(ViewBag.Title == "Admin - Room Categories" ? "admin-sb-li--active" : "admin-sb-li")><a class="admin-sb-a" asp-controller="Admin" asp-action="RoomTypes">Room Categories</a></li>
+            <li class=@(ViewBag.Title == "Admin - Billing" ? "admin-sb-li--active" : "admin-sb-li")><a class="admin-sb-a" asp-page="/Admin/Billing">Billing</a></li>
+            <li class="width-100 admin-sb-heading">Rooms</li>
+            <li class=@(ViewBag.Title == "Occupied Rooms" ? "admin-sb-li--active" : "admin-sb-li")><a class="admin-sb-a" asp-page="/Admin/Rooms/Occupied">Occupied</a></li>
+            <li class=@(ViewBag.Title == "Available Rooms" ? "admin-sb-li--active" : "admin-sb-li")><a class="admin-sb-a" asp-page="/Admin/Rooms/Available">Available</a></li>
+
+            @*<li class=@(ViewBag.Title == "Admin - Guests" ? "admin-sb-li--active" : "admin-sb-li")><a class="admin-sb-a" asp-controller="Admin" asp-action="Guests">Guests</a></li>
+        <li class=@(ViewBag.Title == "Admin - Rooms" ? "admin-sb-li--active" : "admin-sb-li")><a class="admin-sb-a" asp-controller="Admin" asp-action="Rooms">Rooms</a></li>
+        <li class=@(ViewBag.Title == "Admin - Room Categories" ? "admin-sb-li--active" : "admin-sb-li")><a class="admin-sb-a" asp-controller="Admin" asp-action="RoomTypes">Room Categories</a></li>*@
         </ul>
     </nav>
 </div>

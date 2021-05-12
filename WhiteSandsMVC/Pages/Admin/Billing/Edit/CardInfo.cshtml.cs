@@ -42,12 +42,30 @@ namespace WhiteSandsMVC.Pages.Admin.Billing.Edit
             return Page();
         }
 
+        public async Task<IActionResult> OnPost()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+            var guestObj = await _unitOfWork.Guest.Get(Input.GuestId);
+            if (guestObj == null)
+                return RedirectToAction("NotFound", "Error");
+            guestObj.NameOnCreditCard = Input.NameOnCreditCard;
+            guestObj.CreditCardNumber = Input.CreditCardNumber;
+            guestObj.CreditCardExpiryMonth = Input.CreditCardExpiryMonth;
+            guestObj.CreditCardExpiryYear = Input.CreditCardExpiryYear;
+            _unitOfWork.Guest.Update(guestObj);
+            return RedirectToPage("/Admin/Billing/Invoice", new { billOfSaleId = Input.BillOfSaleId });
+        }
+
         public class InputModel
         {
             [Required]
             [Display(Name = "Cardholder Name")]
             public string NameOnCreditCard { get; set; }
             [Required]
+            [CreditCard]
             [Display(Name = "Credit Card Number")]
             public string CreditCardNumber { get; set; }
             [Required]

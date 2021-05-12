@@ -50,7 +50,7 @@
 
     <h3 class="h3-heading">Rooms</h3>
     <div class="admin-overview-card-row">
-        <a asp-page="/admin/arrivals" class="admin-overview-card">
+        <a asp-page="/Admin/Rooms/Occupied" class="admin-overview-card">
             <div class="admin-overview-card__top">
                 <span class="admin-overview-card__number">@Model.Input.Occupied</span>
                 <span class="admin-overview-card__text">Occupied</span>
@@ -61,7 +61,7 @@
             <span class="admin-overview-card__go">Go &rarr;</span>
         </a>
 
-        <a asp-page="/admin/inhouse" class="admin-overview-card">
+        <a asp-page="/Admin/Rooms/Available" class="admin-overview-card">
             <div class="admin-overview-card__top">
                 <span class="admin-overview-card__number">@Model.Input.Available</span>
                 <span class="admin-overview-card__text">Available</span>

@@ -1,6 +1,61 @@
 [
   {
     "Name": "Service Fee",
+    "Amount": 30,
+    "BillOfSaleId": 154
+  },
+  {
+    "Name": "Service Fee",
+    "Amount": 30,
+    "BillOfSaleId": 155
+  },
+  {
+    "Name": "Service Fee",
+    "Amount": 30,
+    "BillOfSaleId": 156
+  },
+  {
+    "Name": "Service Fee",
+    "Amount": 30,
+    "BillOfSaleId": 157
+  },
+  {
+    "Name": "Service Fee",
+    "Amount": 30,
+    "BillOfSaleId": 158
+  },
+
+
+  {
+    "Name": "$300.00 x 1 night",
+    "Amount": 300,
+    "BillOfSaleId": 154
+  },
+  {
+    "Name": "$300.00 x 1 night",
+    "Amount": 300,
+    "BillOfSaleId": 155
+  },
+  {
+    "Name": "$300.00 x 1 night",
+    "Amount": 300,
+    "BillOfSaleId": 156
+  },
+  {
+    "Name": "$300.00 x 1 night",
+    "Amount": 300,
+    "BillOfSaleId": 157
+  },
+  {
+    "Name": "$300.00 x 1 night",
+    "Amount": 300,
+    "BillOfSaleId": 158
+  },
+
+
+
+  {
+    "Name": "Service Fee",
     "Amount": 900,
     "BillOfSaleId": 151
   },

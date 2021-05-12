@@ -23,29 +23,38 @@ namespace WhiteSandsMVC.Pages.Admin
         [BindProperty]
         public InputModel Input { get; set; }
 
-        public async Task<IActionResult> OnGet(int billOfSaleId)
+        public async Task<IActionResult> OnGet(int bookingId)
         {
-            //var booking = await _unitOfWork.Booking.GetFirstOrDefault((b => b.Id == bookingId), "Guest,RoomType,Room,BillOfSale");
+            var booking = await _unitOfWork.Booking.GetFirstOrDefault((b => b.Id == bookingId), "Guest,Room,BillOfSale");
 
-            //if (booking == null)
-            //    return RedirectToAction("NotFound", "Error");
+            if (booking == null)
+                return RedirectToAction("NotFound", "Error");
 
-            var lineItems = await _unitOfWork.LineItemCharge.GetAll(item => item.BillOfSaleId == billOfSaleId);
+            var invoice = await _unitOfWork.BillOfSale.Get(booking.BillOfSaleId);
 
-            var invoice = await _unitOfWork.BillOfSale.Get(billOfSaleId);
-
-            decimal total = 0;
-            foreach (var item in lineItems)
-            {
-                total += item.Amount;
-            }
 
             Input = new InputModel()
             {
-                //Booking = booking,
-                LineItemCharges = lineItems,
-                TotalCost = total,
-                PaymentStatus = invoice.PaymentStatus
+                Booking = booking
+            };
+
+            return Page();
+        }
+
+        public async Task<IActionResult> OnPost(int bookingId)
+        {
+            //var bookingFromDb = await _unitOfWork.Booking.Get(bookingId);
+            var bookingFromDb = await _unitOfWork.Booking.GetFirstOrDefault((b => b.Id == bookingId), "Guest,Room,BillOfSale");
+            if (bookingFromDb == null)
+                return RedirectToAction("NotFound", "Error");
+            bookingFromDb.Status = "Checked Out";
+            _unitOfWork.Booking.Update(bookingFromDb);
+
+            var invoice = await _unitOfWork.BillOfSale.Get(bookingFromDb.BillOfSaleId);
+
+            Input = new InputModel()
+            {
+                Booking = bookingFromDb
             };
 
             return Page();
@@ -53,10 +62,7 @@ namespace WhiteSandsMVC.Pages.Admin
 
         public class InputModel
         {
-            //public Booking Booking { get; set; }
-            public IEnumerable<LineItemCharge> LineItemCharges { get; set; }
-            public decimal TotalCost { get; set; }
-            public string PaymentStatus { get; set; }
+            public Booking Booking { get; set; }
         }
     }
 }

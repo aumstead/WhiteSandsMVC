@@ -9,34 +9,32 @@
     <partial name="Partials/_MobileNavigation" />
 </header>
 
-@*<partial name="Partials/_CheckRatesDrawer" />*@
-
 <div class="account-layout">
     <div class="account-layout__form-container">
         <h1 class="h1-heading account__heading">Sign in</h1>
         <p class="text-serif account__text">View and edit your White Sands account. Let us know your preferences!</p>
+        <button type="button" onclick="demoAdminLogin()" class="text-serif account__register-link account__anchor-btn d-block" asp-controller="account" asp-action="register">Demo: Login as admin</button>
+        <button type="button" onclick="demoMemberLogin()" class="text-serif account__register-link account__anchor-btn d-block" asp-controller="account" asp-action="register">Demo: Login as a hotel guest</button>
         <form class="account__form" method="post" id="loginForm">
             <div asp-validation-summary="All" class="text-error account__error-summary"></div>
             <div class="account__form-group">
-                <input class="account__input" asp-for="Email" placeholder="Email" onfocus="" onblur="this.placeholder = 'Email'" id="emailInput"/>
+                <input class="account__input" asp-for="Email" placeholder="Email" onfocus="" onblur="this.placeholder = 'Email'" id="emailInput" />
                 <label class="account__label" asp-for="Email"></label>
                 <span asp-validation-for="Email" class="text-error account__error-control"></span>
             </div>
 
             <div class="account__form-group">
-                <input class="account__input" asp-for="Password" placeholder="Password" onfocus="" onblur="this.placeholder = 'Password'" id="passwordInput"/>
+                <input class="account__input" asp-for="Password" placeholder="Password" onfocus="" onblur="this.placeholder = 'Password'" id="passwordInput" />
                 <label class="account__label" asp-for="Password"></label>
                 <span asp-validation-for="Password" class="text-error account__error-control"></span>
             </div>
 
-            
+
             <input class="styled-checkbox" type="checkbox" asp-for="RememberMe" />
             <label class="text-serif" asp-for="RememberMe"></label>
-            
+
 
             <div class="account__form-group--register">
-               
-                <button type="button" onclick="demoLogin()" class="text-serif account__register-link account__anchor-btn" asp-controller="account" asp-action="register">Try demo without registering</button>
                 <br />
                 <span class="text-serif">Need to create an account?</span>&nbsp;
                 <a class="text-serif account__register-link" asp-controller="account" asp-action="register">Register</a>

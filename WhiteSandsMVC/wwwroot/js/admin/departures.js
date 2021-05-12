@@ -25,10 +25,10 @@ function loadList() {
             },
             { "data": "status", "width": "10%", "className": "dt-body-center" },
             {
-                "data": "billOfSaleId", "render": function (data) {
+                "data": "id", "render": function (data) {
                     return `
                         <div class="text-center">
-                            <a href="/Admin/check-out/${data}" class="small-btn" style="cursor:pointer; width: 100px;">Check Out
+                            <a href="/Admin/CheckOut/${data}" class="small-btn" style="cursor:pointer; width: 100px;">Check Out
                             </a>
                             
                         </div>`;

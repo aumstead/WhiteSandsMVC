@@ -55,7 +55,8 @@ namespace WhiteSandsMVC
             services.AddScoped<IUserTravelInterestRepository, SQLUserTravelInterestRepository>();
             services.AddScoped<IUserHealthInterestRepository, SQLUserHealthInterestRepository>();
             services.AddScoped<IUserFoodInterestRepository, SQLUserFoodInterestRepository>();
-            services.AddControllersWithViews();
+            //services.AddControllersWithViews();
+            services.AddControllers();
             services.AddRazorPages();
             services.Configure<RouteOptions>(options =>
             {

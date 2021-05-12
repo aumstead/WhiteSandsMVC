@@ -533,6 +533,7 @@ namespace WhiteSandsMVC.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -567,13 +568,15 @@ namespace WhiteSandsMVC.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("RoomTypeId");
+
                     b.ToTable("Rooms");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            Available = true,
+                            Available = false,
                             RoomNumber = "1",
                             RoomTypeId = 1,
                             View = "Lagoon"
@@ -581,7 +584,7 @@ namespace WhiteSandsMVC.Migrations
                         new
                         {
                             Id = 2,
-                            Available = true,
+                            Available = false,
                             RoomNumber = "2",
                             RoomTypeId = 1,
                             View = "Lagoon"
@@ -589,7 +592,7 @@ namespace WhiteSandsMVC.Migrations
                         new
                         {
                             Id = 3,
-                            Available = true,
+                            Available = false,
                             RoomNumber = "3",
                             RoomTypeId = 1,
                             View = "Mt. Suthep"
@@ -597,7 +600,7 @@ namespace WhiteSandsMVC.Migrations
                         new
                         {
                             Id = 4,
-                            Available = true,
+                            Available = false,
                             RoomNumber = "4",
                             RoomTypeId = 1,
                             View = "Mt. Suthep"
@@ -605,7 +608,7 @@ namespace WhiteSandsMVC.Migrations
                         new
                         {
                             Id = 5,
-                            Available = true,
+                            Available = false,
                             RoomNumber = "5",
                             RoomTypeId = 2,
                             View = "Lagoon"
@@ -1178,6 +1181,15 @@ namespace WhiteSandsMVC.Migrations
                     b.HasOne("WhiteSandsMVC.Models.BillOfSale", "BillOfSale")
                         .WithMany()
                         .HasForeignKey("BillOfSaleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("WhiteSandsMVC.Models.Room", b =>
+                {
+                    b.HasOne("WhiteSandsMVC.Models.RoomType", "RoomType")
+                        .WithMany()
+                        .HasForeignKey("RoomTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

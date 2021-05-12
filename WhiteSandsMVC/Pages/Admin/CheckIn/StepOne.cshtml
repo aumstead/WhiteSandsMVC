@@ -1,0 +1,117 @@
+﻿@page "{bookingId}"
+@model WhiteSandsMVC.Pages.Admin.CheckIn.StepOneModel
+@{
+    ViewBag.Title = "Check In - Step One";
+}
+
+<div class="verify-stay-page-heading">
+    <h1 class="h1-heading">Check In</h1>
+</div>
+
+@if (Model.Input.Booking.Status == "Checked In")
+{
+    <div class="p-2 width-60 bg-dark-green color-white font-size-14 d-flex align-items-center mt-2">
+        <div>Guest is checked in. 'Checked in' status can be overridden on the <a asp-page="/Admin/Bookings/Details" asp-route-id="@Model.Input.Booking.Id" class="text-underline color-white hover-gray">booking's details page</a>.</div>
+    </div>
+    <a asp-page="/Admin/Arrivals" class="large-btn mt-3" style="display: block; width: max-content;">&larr; Back to List</a>
+}
+else
+{
+<div class="d-flex align-items-base">
+    <h2 class="h3-heading mr-2">Step 1: Verify Details</h2>
+    <a asp-page="/Admin/Bookings/Details" asp-route-id="@Model.Input.Booking.Id" asp-route-bookingId="@Model.Input.Booking.Id" class="color-black hover-gray font-size-14">Edit Details</a>
+</div>
+
+    
+
+    <div class="verify-stay-wrapper">
+        <div class="verify-stay-guest-info">
+            <div class="verify-stay-heading-wrapper">
+                <h3 class="verify-stay-h2-heading">Guest</h3>
+            </div>
+
+            <div class="verify-stay-row">
+                <h4 class="verify-stay-heading">Name</h4>
+                <p class="verify-stay-row-info">@(Model.Input.Booking.Guest.FirstName + " " + Model.Input.Booking.Guest.LastName)</p>
+            </div>
+
+            <div class="verify-stay-row">
+                <h4 class="verify-stay-heading">Phone Number</h4>
+                <p class="verify-stay-row-info">@Model.Input.Booking.Guest.PhoneNumber</p>
+            </div>
+
+            <div class="verify-stay-row">
+                <h4 class="verify-stay-heading">Email</h4>
+                <p class="verify-stay-row-info">@Model.Input.Booking.Guest.Email</p>
+            </div>
+
+            <div class="verify-stay-row">
+                <h4 class="verify-stay-heading">Country</h4>
+                <p class="verify-stay-row-info">@Model.Input.Booking.Guest.Country</p>
+            </div>
+
+            <div class="verify-stay-heading-wrapper">
+                <h3 class="verify-stay-h2-heading">Stay</h3>
+            </div>
+
+            <div class="verify-stay-row">
+                <h4 class="verify-stay-heading">Check in</h4>
+                <p class="verify-stay-row-info">@Model.Input.Booking.CheckInDate.ToShortDateString()</p>
+            </div>
+
+            <div class="verify-stay-row">
+                <h4 class="verify-stay-heading">Check out</h4>
+                <p class="verify-stay-row-info">@Model.Input.Booking.CheckOutDate.ToShortDateString()</p>
+            </div>
+
+            <div class="verify-stay-row">
+                <h4 class="verify-stay-heading">Nights</h4>
+                <p class="verify-stay-row-info">@Model.Input.Booking.Nights</p>
+            </div>
+        </div>
+
+        <div class="verify-stay-room-info">
+            <div class="verify-stay-heading-wrapper">
+                <h3 class="verify-stay-h2-heading">Room</h3>
+            </div>
+
+
+
+            <div class="verify-stay-row">
+                <h4 class="verify-stay-heading">Room Type</h4>
+                <p class="verify-stay-row-info">@Model.Input.Booking.RoomType.Name</p>
+            </div>
+
+            <div class="verify-stay-row">
+                <h4 class="verify-stay-heading">Room Number</h4>
+                <p class="verify-stay-row-info">@Model.Input.Booking.Room.RoomNumber</p>
+            </div>
+
+            <div class="verify-stay-row">
+                <h4 class="verify-stay-heading">Adults</h4>
+                <p class="verify-stay-row-info">@Model.Input.Booking.Adults</p>
+            </div>
+
+            <div class="verify-stay-row">
+                <h4 class="verify-stay-heading">Children</h4>
+                <p class="verify-stay-row-info">@Model.Input.Booking.Children</p>
+            </div>
+
+            <div class="verify-stay-row">
+                <h4 class="verify-stay-heading">Status</h4>
+                <p class="verify-stay-row-info">@Model.Input.Booking.Status</p>
+            </div>
+
+            <div class="verify-stay-row">
+                <h4 class="verify-stay-heading">Notes</h4>
+                <p class="verify-stay-row-info">@Model.Input.Booking.Notes</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="verify-stay-buttons">
+        <a asp-page="/Admin/Arrivals" class="large-btn mt-3" style="display: block; width: max-content;">&larr; Back to List</a>
+        <a asp-page="/Admin/CheckIn/StepTwo" asp-route-bookingId="@Model.Input.Booking.Id" class="large-btn mt-3" style="display: block; width: max-content;">Next &rarr;</a>
+    </div>
+}

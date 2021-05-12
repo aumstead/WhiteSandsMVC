@@ -39,6 +39,18 @@ namespace WhiteSandsMVC.Models.SeedData
                 await userManager.AddToRoleAsync(user, "Employee");
             }
 
+            var member = new ApplicationUser
+            {
+                UserName = "pete@scdp.com",
+                Email = "pete@scdp.com",
+                FirstName = "Pete",
+                LastName = "Campbell",
+                Title = "Mr."
+            };
+
+            await userManager.CreateAsync(member, "Gandalf1");
+            await userManager.AddToRoleAsync(member, "Member");
+
             var admin = new ApplicationUser
             {
                 UserName = "admin@whitesands.com",

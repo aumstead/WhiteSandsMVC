@@ -1,12 +1,17 @@
 ﻿@page "{billOfSaleId}"
 @model WhiteSandsMVC.Pages.Admin.Billing.InvoiceModel
 @{
-    ViewBag.Title = "Billing";
+    ViewBag.Title = "Invoice Statement";
 }
 
 <div class="admin-heading">
-    <h1 class="h1-heading">Billing</h1>
+    <h1 class="h1-heading">Invoice Statement</h1>
 </div>
+
+@if (Model.Input.BillOfSale.PaymentStatus == "Paid")
+{
+    <div class="p-2 width-60 bg-dark-green color-white font-size-14 d-flex align-items-center">Payment received.&nbsp;<a asp-page="/Admin/CheckIn/StepOne" asp-route-bookingId="@Model.Input.Booking.Id" class="text-underline color-white hover-gray">Click to go to check in area &rarr;</a> </div>
+}
 
 <div class="check-out-body">
     <div class="check-out-invoice-wrapper">
@@ -108,7 +113,20 @@
 <div class="d-flex mt-3">
     <form method="post">
         <input type="hidden" asp-for="@Model.Input.Booking.BillOfSaleId" />
-        <button asp-route-bookingId="@Model.Input.Booking.BillOfSaleId" class="large-btn" style="display: block; width: max-content;">Set Status to 'Paid'</button>
+        @if (Model.Input.BillOfSale.PaymentStatus == "Paid")
+        {
+            <button class="large-btn large-btn--disabled" style="display: block; width: max-content;">Payment Received</button>
+        }
+        else
+        {
+            <button asp-route-bookingId="@Model.Input.Booking.BillOfSaleId" class="large-btn" style="display: block; width: max-content;">Set Status to 'Paid'</button>
+        }
     </form>
-    <a asp-page="/Admin/Billing" class="large-btn large-btn--inverse ml-2">Cancel</a>
+    <a asp-page="/Admin/Billing" class="large-btn large-btn--inverse ml-2">Back to List</a>
+
 </div>
+
+@if (Model.Input.BillOfSale.PaymentStatus == "Paid")
+{
+    <div class="font-size-14 mt-2">*Status has been set to 'Paid'. This can be overridden on the <a asp-page="/Admin/Billing/Edit/Invoice" asp-route-billOfSaleId="@Model.Input.BillOfSale.Id" class="color-black hover-gray">edit invoice</a> page.</div>
+}

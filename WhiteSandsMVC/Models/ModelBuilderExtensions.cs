@@ -150,160 +150,183 @@ namespace WhiteSandsMVC.Models
                     Id = 1,
                     RoomTypeId = 1,
                     RoomNumber = "1",
-                    View = "Lagoon"
+                    View = "Lagoon",
+                    Available = false
                 },
                 new Room
                 {
                     Id = 2,
                     RoomTypeId = 1,
                     RoomNumber = "2",
-                    View = "Lagoon"
+                    View = "Lagoon",
+                    Available = false
                 },
                 new Room
                 {
                     Id = 3,
                     RoomTypeId = 1,
                     RoomNumber = "3",
-                    View = "Mt. Suthep"
+                    View = "Mt. Suthep",
+                    Available = false
                 },
                 new Room
                 {
                     Id = 4,
                     RoomTypeId = 1,
                     RoomNumber = "4",
-                    View = "Mt. Suthep"
+                    View = "Mt. Suthep",
+                    Available = false
                 },
                 new Room
                 {
                     Id = 5,
                     RoomTypeId = 2,
                     RoomNumber = "5",
-                    View = "Lagoon"
+                    View = "Lagoon",
+                    Available = false
                 },
                 new Room
                 {
                     Id = 6,
                     RoomTypeId = 2,
                     RoomNumber = "6",
-                    View = "Mt. Suthep"
+                    View = "Mt. Suthep",
+                    Available = true
                 },
                 new Room
                 {
                     Id = 7,
                     RoomTypeId = 3,
                     RoomNumber = "7",
-                    View = "Lagoon"
+                    View = "Lagoon",
+                    Available = true
                 },
                 new Room
                 {
                     Id = 8,
                     RoomTypeId = 3,
                     RoomNumber = "8",
-                    View = "Mt. Suthep"
+                    View = "Mt. Suthep",
+                    Available = true
                 },
                 new Room
                 {
                     Id = 9,
                     RoomTypeId = 4,
                     RoomNumber = "100",
-                    View = "Beach"
+                    View = "Beach",
+                    Available = true
                 },
                 new Room
                 {
                     Id = 10,
                     RoomTypeId = 4,
                     RoomNumber = "201",
-                    View = "Beach"
+                    View = "Beach",
+                    Available = true
                 },
                 new Room
                 {
                     Id = 11,
                     RoomTypeId = 4,
                     RoomNumber = "302",
-                    View = "Garden"
+                    View = "Garden",
+                    Available = true
                 },
                 new Room
                 {
                     Id = 12,
                     RoomTypeId = 4,
                     RoomNumber = "402",
-                    View = "Garden"
+                    View = "Garden",
+                    Available = true
                 },
                 new Room
                 {
                     Id = 13,
                     RoomTypeId = 5,
                     RoomNumber = "102",
-                    View = "Beach"
+                    View = "Beach",
+                    Available = true
                 },
                 new Room
                 {
                     Id = 14,
                     RoomTypeId = 5,
                     RoomNumber = "500",
-                    View = "Beach"
+                    View = "Beach",
+                    Available = true
                 },
                 new Room
                 {
                     Id = 15,
                     RoomTypeId = 5,
                     RoomNumber = "501",
-                    View = "Garden"
+                    View = "Garden",
+                    Available = true
                 },
                 new Room
                 {
                     Id = 16,
                     RoomTypeId = 5,
                     RoomNumber = "600",
-                    View = "Garden"
+                    View = "Garden",
+                    Available = true
                 },
                 new Room
                 {
                     Id = 17,
                     RoomTypeId = 8,
                     RoomNumber = "880",
-                    View = "Mt. Suthep"
+                    View = "Mt. Suthep",
+                    Available = true
                 },new Room
                 {
                     Id = 18,
                     RoomTypeId = 8,
                     RoomNumber = "881",
-                    View = "Mt.Suthep"
+                    View = "Mt.Suthep",
+                    Available = true
                 },
                 new Room
                 {
                     Id = 19,
                     RoomTypeId = 7,
                     RoomNumber = "882",
-                    View = "Beach"
+                    View = "Beach",
+                    Available = true
                 },
                 new Room
                 {
                     Id = 20,
                     RoomTypeId = 7,
                     RoomNumber = "883",
-                    View = "Beach"
+                    View = "Beach",
+                    Available = true
                 },
                 new Room
                 {
                     Id = 21,
                     RoomTypeId = 6,
                     RoomNumber = "884",
-                    View = "Beach"
+                    View = "Beach",
+                    Available = true
                 },
                 new Room
                 {
                     Id = 22,
                     RoomTypeId = 6,
                     RoomNumber = "885",
-                    View = "Beach"
+                    View = "Beach",
+                    Available = true
                 },
                 new Room
                 {
                     Id = 23,
                     RoomTypeId = 6,
                     RoomNumber = "886",
-                    View = "Beach"
+                    View = "Beach",
+                    Available = true
                 }
             };
 

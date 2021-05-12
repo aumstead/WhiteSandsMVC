@@ -12,21 +12,98 @@
         <h3 class="verify-stay-h2-heading">Charges</h3>
     </div>
 
-    
-        @foreach (var charge in Model.Input.LineItemCharges)
+    <form method="post">
+        <div asp-validation-summary="All" class="text-error booking-edit__validation-summary"></div>
+        <div class="text-error hide-element font-size-14 mb-2" id="jquery-error">There was an error deleting. Refreshing the page might solve the issue.</div>
+
+        <div class="booking-edit__form-control" style="width: 42rem;">
+            <label class="booking-edit__label" asp-for="@Model.Input.PaymentStatus"></label>
+            <select class="booking-edit__input" asp-for="@Model.Input.PaymentStatus">
+                <option value="">Select Status</option>
+                <option value="Paid">Paid</option>
+                <option value="Unpaid">Unpaid</option>
+            </select>
+            <span asp-validation-for="@Model.Input.PaymentStatus" class="text-error booking-edit__validation-input"></span>
+        </div>
+
+        @for (int i = 0; i < Model.Input.LineItemCharges.Count; i++)
         {
-            <div class="booking-details__line-item-row">
-                <input class="edit-invoice-charge-input" value="@string.Format("{0:0.00}", charge.Amount)"/>
-                <input class="edit-invoice-charge-input" value="@charge.Name" />
-               
+            <div class="d-flex mb-2" id="charge-row-@i">
+
+                <div class="d-flex flex-dir-col width-20 mr-2">
+                    <label asp-for="@Model.Input.LineItemCharges[i].Amount" class="booking-edit__label"></label>
+                    <input asp-for="@Model.Input.LineItemCharges[i].Amount" class="edit-invoice-charge-input" value="@string.Format("{0:0.00}", @Model.Input.LineItemCharges[i].Amount)" />
+                    <span asp-validation-for="@Model.Input.LineItemCharges[i].Amount" class="text-error booking-edit__validation-input"></span>
+                </div>
+
+                <div class="d-flex flex-dir-col width-20 mr-2">
+                    <label asp-for="@Model.Input.LineItemCharges[i].Name" class="booking-edit__label"></label>
+                    <input asp-for="@Model.Input.LineItemCharges[i].Name" class="edit-invoice-charge-input" value="@Model.Input.LineItemCharges[i].Name" />
+                    <span asp-validation-for="@Model.Input.LineItemCharges[i].Name" class="text-error booking-edit__validation-input"></span>
+                </div>
+
+                <input type="hidden" id="charge-@i" asp-for="@Model.Input.LineItemCharges[i].Id" />
+                <button type="button" id="remove-btn-@i" class="small-btn d-block mt-2 width-max-content edit-invoice-remove-btn cursor-pointer"><partial name="Partials/Svgs/_Trash" /> Remove Charge</button>
+
             </div>
 
+            <div class="hide-element mb-3" id="confirm-div-@i">
+                <span class="font-size-14">Are you sure you want to delete this charge?</span>
+                <button id="confirm-btn-@i" type="button" class="large-btn ml-2 mr-2" style="padding: 1rem; width: 6rem;">Yes</button>
+                <button id="cancel-btn-@i" type="button" class="large-btn large-btn--inverse cursor-pointer" style="padding: 1rem; width: 6rem;">No</button>
+            </div>
         }
-        
-    </div>
+
+        <a asp-page="/Admin/Billing/Edit/AddCharge" asp-route-billOfSaleId="@Model.Input.BillOfSaleId" class="small-btn d-block mb-2 mt-2 width-max-content" style="border-bottom: none;"><partial name="Partials/Svgs/_Plus" /> New Charge</a>
+
+        <input type="hidden" asp-for="@Model.Input.BillOfSaleId" />
+        <button type="submit" class="large-btn booking-edit__submit-btn mr-2 mt-2">Save Changes</button>
+        <a asp-page="/admin/billing/invoice" asp-route-billOfSaleId="@Model.Input.BillOfSaleId" class="large-btn large-btn--inverse">Back</a>
+    </form>
+
 </div>
 
-<form class="booking-edit__form" method="post">
-    <div asp-validation-summary="All" class="text-error booking-edit__validation-summary"></div>
 
-</form>
+<script>
+    for (let i = 0; i < @Model.Input.LineItemCharges.Count; i++) {
+        let removeBtn = document.getElementById(`remove-btn-${i}`);
+        let chargeId = document.getElementById(`charge-${i}`);
+        let confirmBtn = document.getElementById(`confirm-btn-${i}`);
+        let cancelBtn = document.getElementById(`cancel-btn-${i}`);
+        let confirmDiv = document.getElementById(`confirm-div-${i}`)
+
+        removeBtn.addEventListener('click', () => {
+            confirmDiv.classList.remove('hide-element')
+        })
+
+        cancelBtn.addEventListener('click', () => {
+            confirmDiv.classList.add('hide-element')
+        })
+
+        confirmBtn.addEventListener('click', () => {
+            $.ajax({
+                url: `/api/billing/${chargeId.value}`,
+                type: 'DELETE',
+                success: function (result) {
+                    const errorDiv = document.getElementById("jquery-error");
+                    if (result.success !== true) {
+                        errorDiv.classList.remove('hide-element');
+                        confirmDiv.classList.add('hide-element')
+                        return console.error("There was a server error during the DELETE request")
+                    } else {
+                        errorDiv.classList.add('hide-element');
+                        confirmDiv.classList.add('hide-element')
+                        const chargeRowEl = document.getElementById(`charge-row-${i}`)
+                        chargeRowEl.classList.add('hide-element');
+                    }
+                },
+                error: function (result) {
+                    console.error("There was a client-side error during the DELETE request.");
+                    confirmDiv.classList.add('hide-element')
+                    const errorDiv = document.getElementById("jquery-error");
+                    errorDiv.classList.remove('hide-element');
+                }
+            });
+        })
+    }
+</script>

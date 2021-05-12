@@ -56,7 +56,28 @@ namespace WhiteSandsMVC.Pages.Admin.Billing
             var billOfSaleObj = await _unitOfWork.BillOfSale.Get(Input.Booking.BillOfSaleId);
             billOfSaleObj.PaymentStatus = "Paid";
             _unitOfWork.BillOfSale.Update(billOfSaleObj);
-            return RedirectToPage("/admin/billing");
+
+            var booking = await _unitOfWork.Booking.GetFirstOrDefault((b => b.BillOfSaleId == Input.Booking.BillOfSaleId), "Guest,BillOfSale");
+
+            if (booking == null)
+                return RedirectToAction("NotFound", "Error");
+
+            var lineItems = await _unitOfWork.LineItemCharge.GetAll(item => item.BillOfSaleId == Input.Booking.BillOfSaleId);
+
+            decimal total = 0;
+            foreach (var item in lineItems)
+            {
+                total += item.Amount;
+            }
+
+            Input = new InputModel()
+            {
+                Booking = booking,
+                LineItemCharges = lineItems,
+                TotalCost = total,
+                BillOfSale = billOfSaleObj
+            };
+            return Page();
         }
 
         public class InputModel

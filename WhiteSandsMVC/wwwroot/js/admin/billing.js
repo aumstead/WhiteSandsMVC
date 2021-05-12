@@ -22,7 +22,7 @@ function loadList() {
                 "data": "billOfSaleId", "render": function (data) {
                     return `
                         <div class="text-center">
-                            <a href="/Admin/Billing/Invoice/${data}" class="small-btn" style="cursor:pointer; width: 100px;">Invoice
+                            <a href="/Admin/Billing/Invoice/${data}" class="small-btn" style="cursor:pointer; width: 100px;">View Invoice
                             </a>
                             
                         </div>`;

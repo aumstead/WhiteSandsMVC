@@ -34,7 +34,7 @@ function loadList() {
                 "data": "id", "render": function (data) {
                     return `
                         <div class="text-center">
-                            <a href="/Admin/check-in/step-one/${data}" class="small-btn" style="cursor:pointer; width: 100px;">Check In
+                            <a href="/Admin/Bookings/Details/${data}" class="small-btn" style="cursor:pointer; width: 100px;">View Details
                             </a>
                             
                         </div>`;

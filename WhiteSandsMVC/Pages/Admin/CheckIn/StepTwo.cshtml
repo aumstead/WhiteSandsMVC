@@ -1,0 +1,78 @@
+﻿@page 
+@model WhiteSandsMVC.Pages.Admin.CheckIn.StepTwoModel
+@{
+    ViewBag.Title = "Check In - Step Two";
+}
+
+<div class="verify-stay-page-heading">
+    <h1 class="h1-heading">Check In</h1>
+</div>
+
+<h2 class="h3-heading">Step 2: Billing and Registration</h2>
+
+<div asp-validation-summary="All" class="text-error font-size-14 mt-2 mb-2"></div>
+
+<div class="verify-stay-wrapper">
+    <div class="verify-stay-guest-info">
+
+        <div class="verify-stay-heading-wrapper">
+            <h3 class="verify-stay-h2-heading">Billing</h3>
+            <a asp-page="/Admin/Billing/Invoice" asp-route-billOfSaleId="@Model.Input.Booking.BillOfSaleId" class="booking-details-edit-entry">View Invoice</a>
+        </div>
+
+        <div class="booking-details-row">
+            <h4 class="booking-details-heading">Status</h4>
+            <p class="booking-details-row-info">@Model.Input.PaymentStatus</p>
+        </div>
+
+        <h4 class="booking-details-heading">Charges</h4>
+        @foreach (var charge in Model.Input.LineItemCharges)
+        {
+            <div class="booking-details__line-item-row">
+                <span class="booking-details__line-item-price">$@string.Format("{0:0.00}", charge.Amount)</span>
+                <span class="booking-details-row-info">@charge.Name</span>
+            </div>
+
+        }
+        <hr class="booking-details-hr" />
+        <h4 class="booking-details-heading">Total</h4>
+        <p class="booking-details-row-info text-bold">$@string.Format("{0:0.00}", Model.Input.TotalCost)</p>
+    </div>  
+
+
+</div>
+
+<div class="billing-checkbox-wrapper">
+    <input id="billing-checkbox" class="styled-checkbox" disabled type="checkbox" />
+    <label onclick="labelHandler()" class="text-serif">Registration Form Signed</label>
+</div>
+
+<form method="post">
+    <div class="verify-stay-buttons">
+        <a asp-page="/Admin/CheckIn/StepOne" asp-route-bookingId="@Model.Input.Booking.Id" class="large-btn mt-3" style="display: block; width: max-content;">&larr; Back</a>
+        <div class="billing-registration-box">
+            <button type="button" class="large-btn mt-3 mr-2 disable-click">Print Registration Form</button>
+
+
+            <input type="hidden" asp-for="@Model.Input.Booking.Id" />
+            <input type="hidden" asp-for="@Model.Input.PaymentStatus" />
+            <button type="submit" id="billing-button" class="large-btn mt-3 large-btn--disabled" style="display: block; width: max-content;">Finalize Check In</button>
+
+        </div>
+    </div>
+    
+</form>
+
+<script>
+    function labelHandler() {
+        const checkbox = document.getElementById("billing-checkbox");
+        const finalizeBtn = document.getElementById("billing-button");
+        if (checkbox.checked) {
+            checkbox.checked = false;
+            finalizeBtn.classList.add("large-btn--disabled");
+        } else {
+            checkbox.checked = true;
+            finalizeBtn.classList.remove("large-btn--disabled");
+        }
+    }
+</script>

@@ -539,6 +539,71 @@
     "Notes": "Requests extra bottled water.",
     "BillOfSaleId": 45
   },
+
+
+  {
+    "GuestId": 1,
+    "RoomId": 1,
+    "RoomTypeId": 1,
+    "CheckInDate": "2021-05-10",
+    "CheckOutDate": "2021-05-11",
+    "Adults": 1,
+    "Children": 1,
+    "Status": "Booked",
+    "Notes": "Requests extra bottled water.",
+    "BillOfSaleId": 154
+  },
+  {
+    "GuestId": 2,
+    "RoomId": 2,
+    "RoomTypeId": 1,
+    "CheckInDate": "2021-05-10",
+    "CheckOutDate": "2021-05-11",
+    "Adults": 1,
+    "Children": 0,
+    "Status": "Booked",
+    "Notes": "Requests extra bottled water.",
+    "BillOfSaleId": 155
+  },
+  {
+    "GuestId": 3,
+    "RoomId": 3,
+    "RoomTypeId": 1,
+    "CheckInDate": "2021-05-10",
+    "CheckOutDate": "2021-05-11",
+    "Adults": 2,
+    "Children": 3,
+    "Status": "Booked",
+    "Notes": "Requests extra bottled water.",
+    "BillOfSaleId": 156
+  },
+  {
+    "GuestId": 4,
+    "RoomId": 5,
+    "RoomTypeId": 2,
+    "CheckInDate": "2021-05-10",
+    "CheckOutDate": "2021-05-11",
+    "Adults": 2,
+    "Children": 0,
+    "Status": "Booked",
+    "Notes": "Requests extra bottled water.",
+    "BillOfSaleId": 157
+  },
+  {
+    "GuestId": 5,
+    "RoomId": 6,
+    "RoomTypeId": 2,
+    "CheckInDate": "2021-05-10",
+    "CheckOutDate": "2021-05-11",
+    "Adults": 2,
+    "Children": 0,
+    "Status": "Booked",
+    "Notes": "Requests extra bottled water.",
+    "BillOfSaleId": 158
+  },
+
+
+
   {
     "GuestId": 6,
     "RoomId": 1,
