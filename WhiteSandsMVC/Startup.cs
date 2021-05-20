@@ -30,7 +30,7 @@ namespace WhiteSandsMVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContextPool<AppDbContext>(
-                options => options.UseSqlServer(Configuration.GetConnectionString("WhiteSandsDbConnection")));
+                options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {

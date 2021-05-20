@@ -1,9 +1,10 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace WhiteSandsMVC.Migrations
 {
-    public partial class DBInit : Migration
+    public partial class PostgresInit : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -64,7 +65,7 @@ namespace WhiteSandsMVC.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     PaymentStatus = table.Column<string>(nullable: false),
                     PaymentMethod = table.Column<string>(nullable: false)
                 },
@@ -78,7 +79,7 @@ namespace WhiteSandsMVC.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(maxLength: 100, nullable: false)
                 },
                 constraints: table =>
@@ -91,7 +92,7 @@ namespace WhiteSandsMVC.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     FirstName = table.Column<string>(maxLength: 50, nullable: false),
                     LastName = table.Column<string>(maxLength: 50, nullable: false),
                     PhoneNumber = table.Column<string>(maxLength: 50, nullable: false),
@@ -114,28 +115,12 @@ namespace WhiteSandsMVC.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_HealthInterests", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Rooms",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    RoomTypeId = table.Column<int>(nullable: false),
-                    RoomNumber = table.Column<string>(maxLength: 10, nullable: false),
-                    View = table.Column<string>(maxLength: 100, nullable: false),
-                    Available = table.Column<bool>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Rooms", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -166,7 +151,7 @@ namespace WhiteSandsMVC.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(maxLength: 100, nullable: false)
                 },
                 constraints: table =>
@@ -179,7 +164,7 @@ namespace WhiteSandsMVC.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     RoleId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -200,7 +185,7 @@ namespace WhiteSandsMVC.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     UserId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -285,7 +270,7 @@ namespace WhiteSandsMVC.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(nullable: false),
                     Amount = table.Column<decimal>(type: "money", nullable: false),
                     BillOfSaleId = table.Column<int>(nullable: false)
@@ -306,7 +291,7 @@ namespace WhiteSandsMVC.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     UserId = table.Column<string>(nullable: false),
                     FoodInterestId = table.Column<int>(nullable: false)
                 },
@@ -332,7 +317,7 @@ namespace WhiteSandsMVC.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     UserId = table.Column<string>(nullable: false),
                     HealthInterestId = table.Column<int>(nullable: false)
                 },
@@ -354,11 +339,59 @@ namespace WhiteSandsMVC.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Rooms",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    RoomTypeId = table.Column<int>(nullable: false),
+                    RoomNumber = table.Column<string>(maxLength: 10, nullable: false),
+                    View = table.Column<string>(maxLength: 100, nullable: false),
+                    Available = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Rooms", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Rooms_RoomTypes_RoomTypeId",
+                        column: x => x.RoomTypeId,
+                        principalTable: "RoomTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserTravelInterests",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    UserId = table.Column<string>(nullable: false),
+                    TravelInterestId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserTravelInterests", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UserTravelInterests_TravelInterests_TravelInterestId",
+                        column: x => x.TravelInterestId,
+                        principalTable: "TravelInterests",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_UserTravelInterests_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Bookings",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     GuestId = table.Column<int>(nullable: false),
                     RoomId = table.Column<int>(nullable: false),
                     RoomTypeId = table.Column<int>(nullable: false),
@@ -400,32 +433,6 @@ namespace WhiteSandsMVC.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "UserTravelInterests",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(nullable: false),
-                    TravelInterestId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserTravelInterests", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_UserTravelInterests_TravelInterests_TravelInterestId",
-                        column: x => x.TravelInterestId,
-                        principalTable: "TravelInterests",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_UserTravelInterests_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.InsertData(
                 table: "FoodInterests",
                 columns: new[] { "Id", "Name" },
@@ -445,16 +452,16 @@ namespace WhiteSandsMVC.Migrations
                 values: new object[,]
                 {
                     { 11, "Meditation" },
+                    { 10, "Horseback riding" },
                     { 9, "Other water sports" },
                     { 8, "Surfing" },
                     { 7, "Diving" },
-                    { 6, "Golfing" },
-                    { 10, "Horseback riding" },
+                    { 5, "Skiing" },
                     { 4, "Nature Excursions" },
                     { 3, "Yoga" },
                     { 2, "Spa" },
                     { 1, "Fitness" },
-                    { 5, "Skiing" }
+                    { 6, "Golfing" }
                 });
 
             migrationBuilder.InsertData(
@@ -462,44 +469,14 @@ namespace WhiteSandsMVC.Migrations
                 columns: new[] { "Id", "Bathroom", "Beds", "Category", "ExtraBeds", "Location", "MaxAdultCapacity", "MaxChildCapacity", "Name", "Occupancy", "PhotoPath", "Price", "RoomSize" },
                 values: new object[,]
                 {
-                    { 1, "One full bathroom", "One king bed. One full sofa bed", 0, "One full sofa bed", "Overwater bungalow", (byte)3, (byte)2, "One-bedroom beach-view overwater bungalow", "3 adults or 2 adults and 2 children (up to the age of 12)", "bungalow1.jpg", 300m, "100 m2 (1,080 sq.ft.)" },
+                    { 6, "Two full bathrooms and one-half bathroom", "Two king and two queen beds", 3, "One rollaway", "Secluded, with pedestrian access to beach and main building", (byte)6, (byte)4, "Three-bedroom villa estate with plunge pool", "6 adults or 2 adults and 4 children (up to the age of 12)", "villa1.jpg", 1200m, "500 m2 (5,380 sq.ft.)" },
+                    { 8, "One full bathroom and one-half bathroom", "One king bed. One full sofa bed", 3, "One full sofa bed", "Beachfront, with pedestrian access to main building", (byte)3, (byte)2, "One-bedroom beachfront villa estate", "3 adults or 2 adults and 2 children (up to the age of 12)", "villa3.jpg", 600m, "253 m2 (2,722 sq.ft.)" },
+                    { 7, "Two full bathrooms", "One king and two queen beds. One full sofa bed", 3, "One full sofa bed", "Beachfront, with pedestrian access to main building", (byte)5, (byte)3, "Two-bedroom beachfront villa estate", "5 adults or 2 adults and 3 children (up to the age of 12)", "villa2.jpg", 900m, "300 m2 (3,228 sq.ft.)" },
+                    { 5, "Two full bathrooms", "One king bed. One full sofa bed", 2, "One full sofa bed", "Floors 1, 5-6", (byte)3, (byte)2, "Beachfront one-bedroom suite", "3 adults or 2 adults and 2 children (up to the age of 12)", "beachfront2.jpg", 450m, "130 m2 (1,400 sq.ft.)" },
                     { 2, "Two full bathrooms", "Two king beds. Two full sofa beds", 0, "Two full sofa beds", "Overwater bungalow", (byte)6, (byte)4, "Two-bedroom overwater bungalow suite", "6 adults or 2 adults and 4 children (up to the age of 12)", "bungalow2.jpg", 500m, "207 m2 (2,228 sq.ft.)" },
                     { 3, "Two full bathrooms", "One king bed and two queen beds. Two full sofa beds", 0, "Two full sofa beds", "Overwater bungalow", (byte)6, (byte)4, "Two-bedroom overwater bungalow suite with plunge pool", "6 adults or 2 adults and 4 children (up to the age of 12)", "bungalow3.jpg", 600m, "207 m2 (2,228 sq.ft.)" },
-                    { 4, "One full bathroom", "One king bed. One rollaway", 1, "One rollaway", "Floors 1-4", (byte)2, (byte)1, "Deluxe beachfront room", "2 adults or 2 adults and 1 child (up to the age of 12)", "beachfront1.jpg", 300m, "59 m2 (640 sq.ft.)" },
-                    { 6, "Two full bathrooms and one-half bathroom", "Two king and two queen beds", 3, "One rollaway", "Secluded, with pedestrian access to beach and main building", (byte)6, (byte)4, "Three-bedroom villa estate with plunge pool", "6 adults or 2 adults and 4 children (up to the age of 12)", "villa1.jpg", 1200m, "500 m2 (5,380 sq.ft.)" },
-                    { 7, "Two full bathrooms", "One king and two queen beds. One full sofa bed", 3, "One full sofa bed", "Beachfront, with pedestrian access to main building", (byte)5, (byte)3, "Two-bedroom beachfront villa estate", "5 adults or 2 adults and 3 children (up to the age of 12)", "villa2.jpg", 900m, "300 m2 (3,228 sq.ft.)" },
-                    { 8, "One full bathroom and one-half bathroom", "One king bed. One full sofa bed", 3, "One full sofa bed", "Beachfront, with pedestrian access to main building", (byte)3, (byte)2, "One-bedroom beachfront villa estate", "3 adults or 2 adults and 2 children (up to the age of 12)", "villa3.jpg", 600m, "253 m2 (2,722 sq.ft.)" },
-                    { 5, "Two full bathrooms", "One king bed. One full sofa bed", 2, "One full sofa bed", "Floors 1, 5-6", (byte)3, (byte)2, "Beachfront one-bedroom suite", "3 adults or 2 adults and 2 children (up to the age of 12)", "beachfront2.jpg", 450m, "130 m2 (1,400 sq.ft.)" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Rooms",
-                columns: new[] { "Id", "Available", "RoomNumber", "RoomTypeId", "View" },
-                values: new object[,]
-                {
-                    { 18, true, "881", 8, "Mt.Suthep" },
-                    { 23, true, "886", 6, "Beach" },
-                    { 22, true, "885", 6, "Beach" },
-                    { 21, true, "884", 6, "Beach" },
-                    { 20, true, "883", 7, "Beach" },
-                    { 19, true, "882", 7, "Beach" },
-                    { 17, true, "880", 8, "Mt. Suthep" },
-                    { 13, true, "102", 5, "Beach" },
-                    { 15, true, "501", 5, "Garden" },
-                    { 1, false, "1", 1, "Lagoon" },
-                    { 16, true, "600", 5, "Garden" },
-                    { 3, false, "3", 1, "Mt. Suthep" },
-                    { 4, false, "4", 1, "Mt. Suthep" },
-                    { 5, false, "5", 2, "Lagoon" },
-                    { 6, true, "6", 2, "Mt. Suthep" },
-                    { 7, true, "7", 3, "Lagoon" },
-                    { 2, false, "2", 1, "Lagoon" },
-                    { 9, true, "100", 4, "Beach" },
-                    { 10, true, "201", 4, "Beach" },
-                    { 11, true, "302", 4, "Garden" },
-                    { 12, true, "402", 4, "Garden" },
-                    { 14, true, "500", 5, "Beach" },
-                    { 8, true, "8", 3, "Mt. Suthep" }
+                    { 1, "One full bathroom", "One king bed. One full sofa bed", 0, "One full sofa bed", "Overwater bungalow", (byte)3, (byte)2, "One-bedroom beach-view overwater bungalow", "3 adults or 2 adults and 2 children (up to the age of 12)", "bungalow1.jpg", 300m, "100 m2 (1,080 sq.ft.)" },
+                    { 4, "One full bathroom", "One king bed. One rollaway", 1, "One rollaway", "Floors 1-4", (byte)2, (byte)1, "Deluxe beachfront room", "2 adults or 2 adults and 1 child (up to the age of 12)", "beachfront1.jpg", 300m, "59 m2 (640 sq.ft.)" }
                 });
 
             migrationBuilder.InsertData(
@@ -507,18 +484,48 @@ namespace WhiteSandsMVC.Migrations
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { 10, "Shopping" },
-                    { 9, "Art and Culture" },
-                    { 8, "Adventure Travel" },
-                    { 7, "City Escape" },
-                    { 6, "Vacation Rental" },
+                    { 11, "Sporting Events" },
+                    { 1, "Couples Getaway" },
+                    { 2, "Family Getaway" },
                     { 3, "Friends Getaway" },
                     { 4, "Solo Travel" },
-                    { 2, "Family Getaway" },
-                    { 1, "Couples Getaway" },
-                    { 11, "Sporting Events" },
                     { 5, "Beach Vacation" },
+                    { 6, "Vacation Rental" },
+                    { 7, "City Escape" },
+                    { 8, "Adventure Travel" },
+                    { 9, "Art and Culture" },
+                    { 10, "Shopping" },
                     { 12, "Culinary Travel" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Rooms",
+                columns: new[] { "Id", "Available", "RoomNumber", "RoomTypeId", "View" },
+                values: new object[,]
+                {
+                    { 1, false, "1", 1, "Lagoon" },
+                    { 20, true, "883", 7, "Beach" },
+                    { 19, true, "882", 7, "Beach" },
+                    { 23, true, "886", 6, "Beach" },
+                    { 22, true, "885", 6, "Beach" },
+                    { 21, true, "884", 6, "Beach" },
+                    { 16, true, "600", 5, "Garden" },
+                    { 15, true, "501", 5, "Garden" },
+                    { 14, true, "500", 5, "Beach" },
+                    { 13, true, "102", 5, "Beach" },
+                    { 17, true, "880", 8, "Mt. Suthep" },
+                    { 12, true, "402", 4, "Garden" },
+                    { 10, true, "201", 4, "Beach" },
+                    { 9, true, "100", 4, "Beach" },
+                    { 8, true, "8", 3, "Mt. Suthep" },
+                    { 7, true, "7", 3, "Lagoon" },
+                    { 6, true, "6", 2, "Mt. Suthep" },
+                    { 5, false, "5", 2, "Lagoon" },
+                    { 4, false, "4", 1, "Mt. Suthep" },
+                    { 3, false, "3", 1, "Mt. Suthep" },
+                    { 2, false, "2", 1, "Lagoon" },
+                    { 11, true, "302", 4, "Garden" },
+                    { 18, true, "881", 8, "Mt.Suthep" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -530,8 +537,7 @@ namespace WhiteSandsMVC.Migrations
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
                 column: "NormalizedName",
-                unique: true,
-                filter: "[NormalizedName] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
@@ -557,8 +563,7 @@ namespace WhiteSandsMVC.Migrations
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
-                unique: true,
-                filter: "[NormalizedUserName] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Bookings_BillOfSaleId",
@@ -584,6 +589,11 @@ namespace WhiteSandsMVC.Migrations
                 name: "IX_LineItemCharges_BillOfSaleId",
                 table: "LineItemCharges",
                 column: "BillOfSaleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Rooms_RoomTypeId",
+                table: "Rooms",
+                column: "RoomTypeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserFoodInterests_FoodInterestId",
@@ -658,9 +668,6 @@ namespace WhiteSandsMVC.Migrations
                 name: "Rooms");
 
             migrationBuilder.DropTable(
-                name: "RoomTypes");
-
-            migrationBuilder.DropTable(
                 name: "BillsOfSale");
 
             migrationBuilder.DropTable(
@@ -674,6 +681,9 @@ namespace WhiteSandsMVC.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "RoomTypes");
         }
     }
 }
