@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,17 @@ namespace WhiteSandsMVC.Models
 {
     public class AppDbContext : IdentityDbContext<ApplicationUser>
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options)
-            :base(options)
+        protected readonly IConfiguration Configuration;
+
+        public AppDbContext(IConfiguration configuration)
         {
-            
+            Configuration = configuration;
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        {
+            // connect to sqlite database
+            options.UseSqlite(Configuration.GetConnectionString("Sqlite"));
         }
 
         public DbSet<Booking> Bookings { get; set; }
