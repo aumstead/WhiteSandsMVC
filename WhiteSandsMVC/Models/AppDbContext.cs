@@ -21,7 +21,9 @@ namespace WhiteSandsMVC.Models
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             // connect to sqlite database
-            options.UseSqlite(Configuration.GetConnectionString("Sqlite"));
+            //options.UseSqlite(Configuration.GetConnectionString("Sqlite"));
+            // hardcoded for heroku
+            options.UseSqlite("Data Source=./wwwroot/sqlite/whitesandssqlite.db");
         }
 
         public DbSet<Booking> Bookings { get; set; }
