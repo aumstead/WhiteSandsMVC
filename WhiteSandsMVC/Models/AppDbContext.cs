@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,19 +10,10 @@ namespace WhiteSandsMVC.Models
 {
     public class AppDbContext : IdentityDbContext<ApplicationUser>
     {
-        protected readonly IConfiguration Configuration;
-
-        public AppDbContext(IConfiguration configuration)
+        public AppDbContext(DbContextOptions<AppDbContext> options)
+            :base(options)
         {
-            Configuration = configuration;
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-        {
-            // connect to sqlite database
-            //options.UseSqlite(Configuration.GetConnectionString("Sqlite"));
-            // hardcoded for heroku
-            options.UseSqlite("Data Source=./wwwroot/sqlite/whitesandssqlite.db");
+            
         }
 
         public DbSet<Booking> Bookings { get; set; }
