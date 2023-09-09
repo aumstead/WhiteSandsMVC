@@ -20,6 +20,7 @@
   <ItemGroup>
     <Folder Include="wwwroot\images\Reservations\" />
     <Folder Include="wwwroot\images\Reservations\Rooms\" />
+    <Folder Include="wwwroot\sqlite\" />
   </ItemGroup>
 
 </Project>

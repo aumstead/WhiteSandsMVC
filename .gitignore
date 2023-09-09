@@ -4,7 +4,6 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 appsettings.json
 appsettings.Development.json
-whitesandssqlite.*
 
 # User-specific files
 *.rsuser
@@ -341,3 +340,6 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/WhiteSandsMVC/wwwroot/sqlite
+/WhiteSandsMVC/appsettings.json
+/WhiteSandsMVC/appsettings.Development.json
